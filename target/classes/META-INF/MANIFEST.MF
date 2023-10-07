@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Built-By: gorbu
+Build-Jdk: 17.0.8.1
+Class-Path: javafx-controls-15.0.1.jar javafx-controls-15.0.1-win.jar ja
+ vafx-graphics-15.0.1.jar javafx-graphics-15.0.1-win.jar javafx-base-15.
+ 0.1.jar javafx-base-15.0.1-win.jar junit-3.8.1.jar
+Main-Class: Launcher
+Created-By: Maven Integration for Eclipse
+
