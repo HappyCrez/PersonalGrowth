@@ -30,7 +30,7 @@
             <Button fx:id="addButton" layoutX="195.0" layoutY="13.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="26.0" prefWidth="26.0" text="+" />
             <DatePicker fx:id="DatePicker" layoutX="228.0" layoutY="13.0" />
             <ListView fx:id="taskList" layoutX="13.0" layoutY="69.0" prefHeight="314.0" prefWidth="390.0" />
-            <Label fx:id="addLabel" layoutX="24.0" layoutY="18.0" prefHeight="18.0" prefWidth="167.0" />
+            <Label fx:id="statusLabel" layoutX="24.0" layoutY="18.0" prefHeight="18.0" prefWidth="167.0" />
          </children>
       </AnchorPane>
   </items>
