@@ -67,6 +67,21 @@ public class ToDoListController {
     }
 
     @FXML
+    void toHabbitsClicked(ActionEvent event) {
+        addLabel.setText("Вы перешли к трекеру привычек");
+    }
+
+    @FXML
+    void toMenuClicked(ActionEvent event) {
+        addLabel.setText("Вы перешли в меню");
+    }
+
+    @FXML
+    void toTimerClicked(ActionEvent event) {
+        addLabel.setText("Вы перешли к таймеру фокусировки");
+    }
+
+    @FXML
     void initialize() {
 
     }

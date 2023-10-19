@@ -18,6 +18,9 @@
                   <Button fx:id="tomorrowButton" layoutX="17.0" layoutY="63.0" mnemonicParsing="false" onAction="#tomorrowButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Завтра" />
                   <Button fx:id="weekButton" layoutX="17.0" layoutY="103.0" mnemonicParsing="false" onAction="#weekButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Неделя" />
                   <Button fx:id="completedButton" layoutX="17.0" layoutY="141.0" mnemonicParsing="false" onAction="#completedButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Выполненые" />
+                  <Button fx:id="toMenu" layoutX="17.0" layoutY="350.0" mnemonicParsing="false" onAction="#toMenuClicked" prefHeight="26.0" prefWidth="147.0" text="Меню" />
+                  <Button fx:id="toTimer" layoutX="16.0" layoutY="314.0" mnemonicParsing="false" onAction="#toTimerClicked" prefHeight="26.0" prefWidth="147.0" text="Таймер фокусировки" />
+                  <Button fx:id="toHabbits" layoutX="17.0" layoutY="278.0" mnemonicParsing="false" onAction="#toHabbitsClicked" prefHeight="26.0" prefWidth="147.0" text="Трекер привычек" />
                </children>
             </AnchorPane>
          </children>
