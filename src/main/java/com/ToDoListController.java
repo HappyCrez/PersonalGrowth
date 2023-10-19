@@ -25,7 +25,13 @@ public class ToDoListController {
 
     @FXML
     private Button completedButton, addButton, todayButton, tomorrowButton, weekButton;
+    
+    private ScreenController screenController;
 
+    public ToDoListController(ScreenController screenController) {
+    	this.screenController = screenController;
+    }
+    
     @FXML
     private ListView<?> taskList;
 
@@ -62,6 +68,7 @@ public class ToDoListController {
     @FXML
     void toMenuClicked(ActionEvent event) {
         statusLabel.setText("Вы перешли в меню");
+        screenController.activateScreen("MainView");
     }
 
     @FXML

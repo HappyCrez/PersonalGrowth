@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 
 public class FirstTest {
 	
-	MainSceneController controller;
+	ScreenController controller;
 	
 	@Test
 	public void myTest() {
-		controller = new MainSceneController();
+		controller = new ScreenController();
 		assertEquals(controller.pushTask(), true);
 	}
 	
