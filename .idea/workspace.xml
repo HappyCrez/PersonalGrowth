@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d066042f-9992-4e82-9778-5b8a502d767b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeFormat.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMLDesign.mdj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/com/PersonalGrowth/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/com/PersonalGrowth/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/com/PersonalGrowth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/com/PersonalGrowth/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Main.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2WyYrJpf7KXhoZy5ppCJgth5L5x" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "rntbtmr",
+    "last_opened_file_path": "C:/Users/79059/Desktop/Study/Documents/University/third_semester/CursWork",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="CursWork" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="CursWork" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d066042f-9992-4e82-9778-5b8a502d767b" name="Changes" comment="" />
+      <created>1697706483960</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697706483960</updated>
+      <workItem from="1697706485057" duration="4000" />
+      <workItem from="1697706498740" duration="11000" />
+      <workItem from="1697706533926" duration="1346000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
