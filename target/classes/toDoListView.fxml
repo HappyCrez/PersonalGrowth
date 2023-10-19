@@ -12,13 +12,12 @@
   <items>
       <VBox>
          <children>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="432.0" prefWidth="175.0">
                <children>
-                  <Button fx:id="todayButton" layoutX="17.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Сегодня" />
-                  <Button fx:id="tomorrowButton" layoutX="17.0" layoutY="63.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Завтра" />
-                  <Button fx:id="weekButton" layoutX="17.0" layoutY="103.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Неделя" />
-                  <Button fx:id="completedButton" layoutX="17.0" layoutY="357.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="147.0" text="Выполненые" />
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <Button fx:id="todayButton" layoutX="17.0" layoutY="24.0" mnemonicParsing="false" onAction="#todayButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Сегодня" />
+                  <Button fx:id="tomorrowButton" layoutX="17.0" layoutY="63.0" mnemonicParsing="false" onAction="#tomorrowButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Завтра" />
+                  <Button fx:id="weekButton" layoutX="17.0" layoutY="103.0" mnemonicParsing="false" onAction="#weekButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Неделя" />
+                  <Button fx:id="completedButton" layoutX="17.0" layoutY="141.0" mnemonicParsing="false" onAction="#completedButtonClicked" prefHeight="26.0" prefWidth="147.0" text="Выполненые" />
                </children>
             </AnchorPane>
          </children>

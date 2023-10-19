@@ -47,6 +47,26 @@ public class ToDoListController {
     }
 
     @FXML
+    void completedButtonClicked(ActionEvent event) {
+        addLabel.setText("Выполненые задачи");
+    }
+
+    @FXML
+    void todayButtonClicked(ActionEvent event) {
+        addLabel.setText("Задачи на сегодня");
+    }
+
+    @FXML
+    void tomorrowButtonClicked(ActionEvent event) {
+        addLabel.setText("Задачи на завтра!");
+    }
+
+    @FXML
+    void weekButtonClicked(ActionEvent event) {
+        addLabel.setText("Задачи на неделю");
+    }
+
+    @FXML
     void initialize() {
 
     }
