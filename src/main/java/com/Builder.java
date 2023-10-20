@@ -1,6 +1,7 @@
 package com;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,10 @@ public class Builder extends Application{
 	}
 	
 	private Parent loadView(Object controller, String screenName) {
-		FXMLLoader fxmlLoader = new FXMLLoader(Builder.class.getResource("/" + screenName + ".fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		URL xmlurl = getClass().getResource("/" + screenName + ".fxml");
+		fxmlLoader.setLocation(xmlurl);
+		fxmlLoader.setController(controller);
 		Parent root = null;
 		try {
 			root = fxmlLoader.load();
