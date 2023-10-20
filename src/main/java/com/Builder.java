@@ -38,7 +38,7 @@ public class Builder extends Application{
 	
 	private Parent loadView(Object controller, String screenName) {
 		FXMLLoader fxmlLoader = new FXMLLoader();
-		URL xmlurl = getClass().getResource("/" + screenName + ".fxml");
+		URL xmlurl = getClass().getResource("/views/" + screenName + ".fxml");
 		fxmlLoader.setLocation(xmlurl);
 		fxmlLoader.setController(controller);
 		Parent root = null;

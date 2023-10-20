@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="323.0" fitWidth="324.0" onMouseClicked="#mouseClicked" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logo.png" />
+            <Image url="@../images/logo.png" />
          </image>
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" height="93.53" radius="44.510000000000005" spread="0.03" width="86.51">
