@@ -63,12 +63,12 @@ public class ToDoListController {
     @FXML
     void toHabbitsClicked(ActionEvent event) {
         statusLabel.setText("Вы перешли к трекеру привычек");
+        screenController.activateScreen("habbitsView");
     }
 
     @FXML
     void toMenuClicked(ActionEvent event) {
         statusLabel.setText("Вы перешли в меню");
-        screenController.activateScreen("MainView");
     }
 
     @FXML
@@ -80,5 +80,4 @@ public class ToDoListController {
     void initialize() {
 
     }
-
 }

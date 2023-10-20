@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Builder extends Application{
+	
 	public static void main(String args[]) {
 		launch(args);
 	}
@@ -25,12 +26,12 @@ public class Builder extends Application{
 		toDoListStage.setScene(scene);
 		toDoListStage.show();
 		
-		Parent mainView = loadView(new Object(), "mainView");
+		Parent habitsView = loadView(new HabitsController(screenController), "habitsView");
 		Parent toDoListView = loadView(new ToDoListController(screenController), "toDoListView");
 
-		screenController.addScreen("ToDoListView", toDoListView);
-		screenController.addScreen("MainView", mainView);
-		screenController.activateScreen("ToDoListView");
+		screenController.addScreen("toDoListView", toDoListView);
+		screenController.addScreen("habbitsView", habitsView);
+		screenController.activateScreen("toDoListView");
 	}
 	
 	private Parent loadView(Object controller, String screenName) {

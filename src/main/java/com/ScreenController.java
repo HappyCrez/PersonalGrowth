@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class ScreenController {
+	
 	private HashMap<String, Parent> screens = new HashMap<String, Parent>();
 	private Scene mainScene;
 	
@@ -22,5 +23,4 @@ public class ScreenController {
 	public void addScreen(String screenName, Parent screen) {
 		screens.put(screenName, screen);
 	}
-	
 }
