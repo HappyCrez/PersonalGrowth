@@ -28,10 +28,12 @@ public class Builder extends Application{
 		
 		Parent habitsView = loadView(new HabitsController(screenController), "habitsView");
 		Parent toDoListView = loadView(new ToDoListController(screenController), "toDoListView");
-
+		Parent loadView = loadView(new LoadController(screenController), "loadView");
+		
 		screenController.addScreen("toDoListView", toDoListView);
 		screenController.addScreen("habbitsView", habitsView);
-		screenController.activateScreen("toDoListView");
+		screenController.addScreen("loadView", loadView);
+		screenController.activateScreen("loadView");
 	}
 	
 	private Parent loadView(Object controller, String screenName) {
