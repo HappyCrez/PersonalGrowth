@@ -2,29 +2,20 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 
-<VBox alignment="CENTER" onMouseClicked="#mouseClicked" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="bgPane" alignment="CENTER" onMouseClicked="#mouseClicked" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/loadViewStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="323.0" fitWidth="324.0" onMouseClicked="#mouseClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="logoImage" fitHeight="323.0" fitWidth="324.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/logo.png" />
          </image>
-         <effect>
-            <DropShadow blurType="ONE_PASS_BOX" height="93.53" radius="44.510000000000005" spread="0.03" width="86.51">
-               <color>
-                  <Color red="0.04602988809347153" green="0.029161794111132622" blue="0.23157894611358643" />
-               </color>
-            </DropShadow>
-         </effect>
          <VBox.margin>
             <Insets bottom="30.0" />
          </VBox.margin>
       </ImageView>
-      <Label alignment="TOP_CENTER" onMouseClicked="#mouseClicked" text="Нажмите левую кнопку мышки для продолжения.." />
+      <Label fx:id="infoLabel" alignment="TOP_CENTER" text="Нажмите левую кнопку мышки для продолжения.." />
    </children>
 </VBox>
