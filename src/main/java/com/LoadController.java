@@ -1,7 +1,6 @@
 package com;
 
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 
 public class LoadController {
 	
@@ -13,6 +12,6 @@ public class LoadController {
 	
 	@FXML
 	private void mouseClicked(){
-		screenController.activateScreen("toDoListView");
+		screenController.activateScreen("toDoListView", ScreenController.animationStyles.downToUp);
 	}
 }

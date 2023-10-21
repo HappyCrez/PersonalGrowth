@@ -16,8 +16,7 @@ public class HabitsController {
 	
 	@FXML
 	private void toToDoListClicked() {
-		System.out.println("to ToDoListBtn clicked");
-		screenController.activateScreen("toDoListView");
+		screenController.activateScreen("toDoListView", ScreenController.animationStyles.leftToRight);
 	}
 	
 	@FXML

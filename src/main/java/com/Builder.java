@@ -33,7 +33,7 @@ public class Builder extends Application{
 		screenController.addScreen("toDoListView", toDoListView);
 		screenController.addScreen("habbitsView", habitsView);
 		screenController.addScreen("loadView", loadView);
-		screenController.activateScreen("loadView");
+		screenController.activateScreen("loadView", ScreenController.animationStyles.instantShow);
 	}
 	
 	private Parent loadView(Object controller, String screenName) {

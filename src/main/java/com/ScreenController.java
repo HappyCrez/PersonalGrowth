@@ -16,7 +16,14 @@ public class ScreenController {
 	private HashMap<String, Parent> screens = new HashMap<String, Parent>();
 	private Scene mainScene;
 	private StackPane parentContainer;
-	private int sceneChangedCount = 0;
+	
+	public enum animationStyles
+	{
+		instantShow,
+		rightToLeft,
+		leftToRight,
+		downToUp
+	}
 	
 	public ScreenController (Scene mainScene) {
 		this.mainScene = mainScene;
@@ -28,22 +35,63 @@ public class ScreenController {
 		screens.put(screenName, screen);
 	}
 
-	public void activateScreen(String screenName) {
+	public void activateScreen(String screenName, animationStyles style) {
 		Parent root = screens.get(screenName);
-		if (sceneChangedCount == 0) {
-			parentContainer.getChildren().add(root);
-			sceneChangedCount++;
-			return;
-		}
-			
 		if (parentContainer.getChildren().contains(root)) {
 			parentContainer.getChildren().remove(root);
 		}
+
+		switch (style) {
+		case instantShow:
+			instantShowAnimation(root);
+			break;
+		case rightToLeft:
+			rightToLeftAnimation(root);
+			break;
+		case leftToRight:
+			leftToRightAnimation(root);
+			break;
+		case downToUp:
+			downToUpAnimation(root);
+			break;
+		default:
+			System.out.println("Unrecognize style in activateScreen func: " + style);
+			break;
+		}
+	}
+	
+	private void instantShowAnimation(Parent root) {
+		parentContainer.getChildren().add(root);
+	}
+	
+	private void rightToLeftAnimation(Parent root) {
 		root.translateXProperty().set(mainScene.getWidth());
 		parentContainer.getChildren().add(root);
 		
 		Timeline timeline = new Timeline();
 		KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+		KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+		timeline.getKeyFrames().add(kf);
+		timeline.play();
+	}
+	
+	private void leftToRightAnimation(Parent root) {
+		root.translateXProperty().set(-mainScene.getWidth());
+		parentContainer.getChildren().add(root);
+		
+		Timeline timeline = new Timeline();
+		KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+		KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+		timeline.getKeyFrames().add(kf);
+		timeline.play();
+	}
+	
+	private void downToUpAnimation(Parent root) {
+		root.translateYProperty().set(mainScene.getHeight());
+		parentContainer.getChildren().add(root);
+		
+		Timeline timeline = new Timeline();
+		KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
 		KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
 		timeline.getKeyFrames().add(kf);
 		timeline.play();
