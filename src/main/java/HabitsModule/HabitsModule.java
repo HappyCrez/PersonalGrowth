@@ -1,10 +1,7 @@
 package HabitsModule;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Month;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javafx.scene.control.Label;
@@ -14,6 +11,8 @@ public class HabitsModule {
 
 	private GridPane gridPane;
     private Label calendarLabel;
+
+    private Label grid[][];
 
     private static final int rowCount = 6, colCount = 7;
 
@@ -28,13 +27,15 @@ public class HabitsModule {
         this.gridPane = gridPane;
         this.calendarLabel = calendarLabel;
 
+        grid = new Label[rowCount][colCount];
+
         calendar = new GregorianCalendar();
 
         currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         currentMonth = calendar.get(Calendar.MONTH);
         currentYear = calendar.get(Calendar.YEAR);
         
-        calendar.set(calendar.DAY_OF_MONTH, 1);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
         updateGrid();
     }
     
@@ -45,27 +46,25 @@ public class HabitsModule {
     }
 
     private void updateCalendarLabel() {
-        calendarLabel.setText(Month.of(calendar.get(calendar.MONTH) + 1) + " " + calendar.get(calendar.YEAR));
+        calendarLabel.setText(Month.of(calendar.get(Calendar.MONTH) + 1) + " " + calendar.get(Calendar.YEAR));
     }
 
     private void setMonthDays() {
-        int dayCount = calendar.getActualMaximum(calendar.DAY_OF_MONTH);
+        int dayCount = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int firstDayOfWeek = (calendar.get(Calendar.DAY_OF_WEEK) + 5) % 7;
-        
-        
         int daysBefore = getCountDaysMonthBefore();
 
         for (int i = 0; i < firstDayOfWeek; i++) {
             dayLabelForGrid = new Label(daysBefore + i - firstDayOfWeek + 1 + "");
             dayLabelForGrid.getStyleClass().add("day");
             dayLabelForGrid.setId("noActiveDay");
-            gridPane.add(dayLabelForGrid, i, 0);
+            grid[0][i] = dayLabelForGrid;
         }
 
         for (int i = 0; i < dayCount; i++) {
             dayLabelForGrid = new Label(i + 1 + "");
             dayLabelForGrid.getStyleClass().add("day");
-            gridPane.add(dayLabelForGrid, (i + firstDayOfWeek) % 7, (i + firstDayOfWeek) / 7);
+            grid[(i + firstDayOfWeek) / 7][(i + firstDayOfWeek) % 7] = dayLabelForGrid;
         }
 
         int lastAfterDays = rowCount * colCount - (dayCount + firstDayOfWeek);
@@ -73,9 +72,15 @@ public class HabitsModule {
             dayLabelForGrid = new Label(i + 1 + "");
             dayLabelForGrid.getStyleClass().add("day");
             dayLabelForGrid.setId("noActiveDay");
-            gridPane.add(dayLabelForGrid, (rowCount * colCount - lastAfterDays + i) % 7, rowCount - (lastAfterDays - i - 1) / 7 - 1);
+            grid[rowCount - (lastAfterDays - i - 1) / 7 - 1][(rowCount * colCount - lastAfterDays + i) % 7] = dayLabelForGrid;
         }
 
+        for (int i = 0; i < rowCount; i++) {
+            for (int k = 0; k < colCount; k++) {
+                gridPane.add(grid[i][k], k, i);
+            }
+        }
+        
         if (calendar.get(Calendar.DAY_OF_MONTH) == currentDay &&
             calendar.get(Calendar.MONTH) == currentMonth &&
             calendar.get(Calendar.YEAR) == currentYear)
@@ -85,19 +90,19 @@ public class HabitsModule {
     }
 
     private int getCountDaysMonthBefore() {
-        calendar.add(calendar.MONTH, -1);
-        int daysCount = calendar.getActualMaximum(calendar.DAY_OF_MONTH);
-        calendar.add(calendar.MONTH, 1);
+        calendar.add(Calendar.MONTH, -1);
+        int daysCount = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        calendar.add(Calendar.MONTH, 1);
         return daysCount;
     }
 
     public void setNextMonth() {
-        calendar.add(calendar.MONTH, 1);
+        calendar.add(Calendar.MONTH, 1);
         updateGrid();
     }
 
     public void setPrevMonth() {
-        calendar.add(calendar.MONTH, -1);
+        calendar.add(Calendar.MONTH, -1);
         updateGrid();
     }
 }
