@@ -3,7 +3,7 @@
     -fx-font-weight: 700;
 }
 
-#activeDay {
+#today {
     -fx-font-weight: 700;
     -fx-background-color: lightblue;
     -fx-text-fill: black;
@@ -11,6 +11,6 @@
     -fx-padding: 3px 5px;
 }
 
-#noActiveDay {
+#passiveDay {
     -fx-text-fill: gray;
 }
