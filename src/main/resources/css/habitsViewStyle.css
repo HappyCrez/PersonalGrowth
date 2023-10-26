@@ -1,0 +1,16 @@
+
+.day {
+    -fx-font-weight: 700;
+}
+
+#activeDay {
+    -fx-font-weight: 700;
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
+    -fx-background-radius: 100%;
+    -fx-padding: 3px 5px;
+}
+
+#noActiveDay {
+    -fx-text-fill: gray;
+}
