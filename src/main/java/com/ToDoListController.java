@@ -7,7 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class ToDoListController {
 
@@ -21,69 +23,75 @@ public class ToDoListController {
     private DatePicker DatePicker;
 
     @FXML
-    private Button addButton;
+    private Label statusLabel;
 
     @FXML
-    private Label addLabel;
+    private Button completedButton, addButton, todayButton, tomorrowButton, weekButton;
+    
+    private ScreenController screenController;
+    @FXML
+    private TableView<TaskList> taskTableView;
 
     @FXML
-    private Button completedButton;
+    private TableColumn<TaskList, String> titleTableColumn;
 
     @FXML
-    private ListView<?> taskList;
-
+    private TableColumn<TaskList, String> descriptionTableColumn;
+    
     @FXML
-    private Button todayButton;
-
+    private TableColumn<TaskList, String> dateTableColumn;
+    
     @FXML
-    private Button tomorrowButton;
-
-    @FXML
-    private Button weekButton;
+    private TextField titleTextField, descriptionTextField, dateTextField;
+    
+    public ToDoListController(ScreenController screenController) {
+    	this.screenController = screenController;
+    }
 
     @FXML
     void addButtonClicked(ActionEvent event) {
-        addLabel.setText("Задача добавлена!");
+        TaskList taskList = new TaskList(titleTextField.getText(), descriptionTextField.getText(), dateTextField.getText());
+        taskTableView.getItems().add(taskList);
     }
 
     @FXML
     void completedButtonClicked(ActionEvent event) {
-        addLabel.setText("Выполненые задачи");
+        statusLabel.setText("Выполненые задачи");
     }
 
     @FXML
     void todayButtonClicked(ActionEvent event) {
-        addLabel.setText("Задачи на сегодня");
+        statusLabel.setText("Задачи на сегодня");
     }
 
     @FXML
     void tomorrowButtonClicked(ActionEvent event) {
-        addLabel.setText("Задачи на завтра!");
+        statusLabel.setText("Задачи на завтра!");
     }
 
     @FXML
     void weekButtonClicked(ActionEvent event) {
-        addLabel.setText("Задачи на неделю");
+        statusLabel.setText("Задачи на неделю");
     }
 
     @FXML
     void toHabbitsClicked(ActionEvent event) {
-        addLabel.setText("Вы перешли к трекеру привычек");
+        statusLabel.setText("Вы перешли к трекеру привычек");
+        screenController.activateScreen("habbitsView", ScreenController.animationStyles.rightToLeft);
     }
 
     @FXML
     void toMenuClicked(ActionEvent event) {
-        addLabel.setText("Вы перешли в меню");
+        statusLabel.setText("Вы перешли в меню");
     }
 
     @FXML
     void toTimerClicked(ActionEvent event) {
-        addLabel.setText("Вы перешли к таймеру фокусировки");
+        statusLabel.setText("Вы перешли к таймеру фокусировки");
     }
 
     @FXML
     void initialize() {
 
     }
-
 }

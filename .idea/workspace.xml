@@ -4,22 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d066042f-9992-4e82-9778-5b8a502d767b" name="Changes" comment="">
+    <list default="true" id="664023f0-0bd1-4ff3-8431-f823432c0083" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/CursWork.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MainSceneController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/MainSceneInterface.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ToDoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ToDoListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/toDoListView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/toDoListView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mainView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/toDoListView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/FirstTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/com/PersonalGrowth/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/com/PersonalGrowth/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/Launcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/MainSceneController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/MainSceneInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ToDoListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ToDoListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mainView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/toDoListView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/FirstTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,9 +43,10 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2WyYrJpf7KXhoZy5ppCJgth5L5x" />
+  <component name="ProjectId" id="2XOfXwiOxQTx7Y87YFFLOfNBLHz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,42 +57,22 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;PKbranch&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/79059/Desktop/PersonalGrowth-HCbranch&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="CursWork" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="CursWork" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d066042f-9992-4e82-9778-5b8a502d767b" name="Changes" comment="" />
-      <created>1697706483960</created>
+      <changelist id="664023f0-0bd1-4ff3-8431-f823432c0083" name="Changes" comment="" />
+      <created>1698505094216</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1697706483960</updated>
-      <workItem from="1697706485057" duration="4000" />
-      <workItem from="1697706498740" duration="11000" />
-      <workItem from="1697706533926" duration="1346000" />
-      <workItem from="1697709968143" duration="260000" />
-      <workItem from="1697710487418" duration="484000" />
+      <updated>1698505094216</updated>
+      <workItem from="1698505100493" duration="35000" />
+      <workItem from="1698505148539" duration="43000" />
+      <workItem from="1698512062577" duration="44000" />
+      <workItem from="1698512118061" duration="110000" />
+      <workItem from="1698512401860" duration="137000" />
     </task>
     <servers />
   </component>
