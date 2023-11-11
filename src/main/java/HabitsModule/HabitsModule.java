@@ -1,9 +1,6 @@
 package HabitsModule;
 
-import java.time.Month;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
@@ -19,7 +16,7 @@ public class HabitsModule {
 
     private Label dayLabelForGrid;
 
-    private Calendar calendar;
+    private HabitsCalendar calendar;
     private int currentDay,
                 currentMonth,
                 currentYear;
@@ -30,7 +27,7 @@ public class HabitsModule {
 
         grid = new Label[rowCount][colCount];
 
-        calendar = new GregorianCalendar();
+        calendar = new HabitsCalendar();
         currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         currentMonth = calendar.get(Calendar.MONTH);
         currentYear = calendar.get(Calendar.YEAR);
@@ -56,13 +53,13 @@ public class HabitsModule {
     }
 
     private void updateCalendarLabel() {
-        calendarLabel.setText(Month.of(calendar.get(Calendar.MONTH) + 1) + " " + calendar.get(Calendar.YEAR));
+        calendarLabel.setText(calendar.getCurrMonthName() + " " + calendar.get(Calendar.YEAR));
     }
 
     private void setMonthDays() {
         int dayCount = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int firstDayOfWeek = (calendar.get(Calendar.DAY_OF_WEEK) + 5) % 7; // At java Monday - 2 ((2 + 5) % 7 = 0)
-        int daysCountBefore = getCountDaysMonthBefore();
+        int daysCountBefore = calendar.getCountDaysMonthBefore();
         int lastFillCellNum = dayCount + firstDayOfWeek;
 
         fillDaysBeforeOfGridMassive(daysCountBefore, firstDayOfWeek);
@@ -70,13 +67,6 @@ public class HabitsModule {
         fillEndOfGridMassive(lastFillCellNum);
         
         fillGridPane();
-    }
-    
-    private int getCountDaysMonthBefore() {
-        calendar.add(Calendar.MONTH, -1);
-        int daysCount = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-        calendar.add(Calendar.MONTH, 1);
-        return daysCount;
     }
 
     private void fillDaysBeforeOfGridMassive(int daysCountBefore, int firstDayOfWeek) {
@@ -120,20 +110,12 @@ public class HabitsModule {
         for (int i = 0; i < rowCount; i++) {
             for (int k = 0; k < colCount; k++) {
                 Label day = grid[i][k];
-                if (checkCurrentDate(Integer.parseInt(day.getText())) && day.getId() != passiveLabelID)
-                    day.setId(todayLabelID);
+                if (calendar.checkForMonth(currentMonth, currentYear) &&
+                    Integer.parseInt(day.getText()) == currentDay &&
+                    day.getId() != passiveLabelID)
+                        day.setId(todayLabelID);
                 gridPane.add(day, k, i);
             }
         }
-    }
-
-    private boolean checkCurrentDate(int todayDay) {
-        if (todayDay == currentDay &&
-            calendar.get(Calendar.MONTH) == currentMonth &&
-            calendar.get(Calendar.YEAR) == currentYear)
-            {
-                return true;
-            }
-        return false;
     }
 }
