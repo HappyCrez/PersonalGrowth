@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -33,20 +34,17 @@ public class ToDoListController {
     private TableView<TaskList> taskTableView;
 
     @FXML
-    private TableColumn<TaskList, String> titleTableColumn;
+    private TableColumn<TaskList, String> titleTableColumn, descriptionTableColumn, dateTableColumn;
+    
+    @FXML
+    private TableColumn<TaskList, CheckBox> checkBoxColumn;
+
+    @FXML
+    private TextField titleTextField, descriptionTextField, dateTextField;
 
     public ToDoListController(ScreenController screenController) {
     	this.screenController = screenController;
     }
-
-    @FXML
-    private TableColumn<TaskList, String> descriptionTableColumn;
-
-    @FXML
-    private TableColumn<TaskList, String> dateTableColumn;
-    
-    @FXML
-    private TextField titleTextField, descriptionTextField, dateTextField;
 
     @FXML
     void addButtonClicked(ActionEvent event) {

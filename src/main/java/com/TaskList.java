@@ -1,17 +1,19 @@
 package com;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.CheckBox;
 
 public class TaskList {
-	private SimpleStringProperty titleTask = new SimpleStringProperty();
-	private SimpleStringProperty descriptionTask = new SimpleStringProperty();
-	private SimpleStringProperty dateTask = new SimpleStringProperty();
+	private SimpleStringProperty titleTask;
+	private SimpleStringProperty descriptionTask;
+	private SimpleStringProperty dateTask;
+	private CheckBox checkBox;
 	
 	public TaskList(String titleTask, String descriptionTask, String dateTask) {
-		super();
 		this.titleTask = new SimpleStringProperty(titleTask);
 		this.descriptionTask = new SimpleStringProperty(descriptionTask);
 		this.dateTask = new SimpleStringProperty(dateTask);
+		this.checkBox = new CheckBox();
 	}
 	
 	public String getTitleTask() {

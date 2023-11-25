@@ -13,7 +13,7 @@
 <?import javafx.scene.control.cell.*?> 
 <?import javafx.collections.*?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
   <items>
       <VBox>
          <children>
@@ -37,22 +37,26 @@
             <Label fx:id="statusLabel" layoutX="24.0" layoutY="18.0" prefHeight="18.0" prefWidth="167.0" />
             <TableView fx:id="taskTableView" editable="true" layoutX="24.0" layoutY="81.0" prefHeight="300.0" prefWidth="378.0">
               <columns>
-                <TableColumn fx:id="titleTableColumn" prefWidth="95.99994087219238" text="Название">
-                	<cellValueFactory>
-                		<PropertyValueFactory property="titleTask" />
-        			</cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="descriptionTableColumn" prefWidth="191.20000457763672" text="Описание">
-                	<cellValueFactory>
-                		<PropertyValueFactory property="descriptionTask" />
-        			</cellValueFactory>
-                </TableColumn>
-                  <TableColumn fx:id="dateTableColumn" prefWidth="91.2000732421875" text="Дата">
+                  <TableColumn fx:id="titleTableColumn" prefWidth="90" text="Название">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="titleTask" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="descriptionTableColumn" prefWidth="90" text="Описание">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="descriptionTask" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="dateTableColumn" prefWidth="90" text="Дата">
                    	<cellValueFactory>
-                		<PropertyValueFactory property="dateTask" />
-        			</cellValueFactory>
-                </TableColumn>
-                  
+                		   <PropertyValueFactory property="dateTask" />
+        			      </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="checkBoxColumn" text="👍">
+                   	<cellValueFactory>
+                		   <PropertyValueFactory property="checkBox" />
+        			      </cellValueFactory>
+                  </TableColumn>
               </columns>
             </TableView>
             <TextField fx:id="titleTextField" layoutX="24.0" layoutY="48.0" prefHeight="26.0" prefWidth="97.0" promptText="Название" />
