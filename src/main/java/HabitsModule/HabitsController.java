@@ -18,7 +18,7 @@ public class HabitsController {
 	private Label calendarLabel;
 
 	@FXML
-	private GridPane gridPane;
+	private GridPane calendarGridPane;
 
 	public HabitsController (ScreenController screenController) {
 		this.screenController = screenController;
@@ -26,7 +26,7 @@ public class HabitsController {
 	
 	@FXML
 	private void initialize() {
-		habitsModule = new HabitsModule(gridPane, calendarLabel);
+		habitsModule = new HabitsModule(calendarGridPane, calendarLabel);
 	}
 
 	@FXML

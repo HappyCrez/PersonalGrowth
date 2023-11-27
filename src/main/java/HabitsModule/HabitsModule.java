@@ -6,7 +6,7 @@ import javafx.scene.layout.GridPane;
 
 public class HabitsModule {
 
-	private GridPane gridPane;
+	private GridPane calendarGridPane;
     private Label calendarLabel;
 
     private Label grid[][];
@@ -21,8 +21,8 @@ public class HabitsModule {
                 currentMonth,
                 currentYear;
     
-    public HabitsModule(GridPane gridPane, Label calendarLabel) {
-        this.gridPane = gridPane;
+    public HabitsModule(GridPane calendarGridPane, Label calendarLabel) {
+        this.calendarGridPane = calendarGridPane;
         this.calendarLabel = calendarLabel;
 
         grid = new Label[rowCount][colCount];
@@ -47,7 +47,7 @@ public class HabitsModule {
     }
     
     private void updateGrid() {
-        gridPane.getChildren().clear();
+        calendarGridPane.getChildren().clear();
         updateCalendarLabel();
         setMonthDays();
     }
@@ -113,8 +113,10 @@ public class HabitsModule {
                 if (calendar.checkForMonth(currentMonth, currentYear) &&
                     Integer.parseInt(day.getText()) == currentDay &&
                     day.getId() != passiveLabelID)
+                    {
                         day.setId(todayLabelID);
-                gridPane.add(day, k, i);
+                    }
+                calendarGridPane.add(day, k, i);
             }
         }
     }

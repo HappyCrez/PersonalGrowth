@@ -6,9 +6,9 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.util.Callback;
 
 public class ToDoListController {
 
@@ -112,10 +112,5 @@ public class ToDoListController {
     @FXML
     void toTimerClicked(ActionEvent event) {
         statusLabel.setText("Вы перешли к таймеру фокусировки");
-    }
-
-    @FXML
-    void initialize() {
-        
     }
 }
