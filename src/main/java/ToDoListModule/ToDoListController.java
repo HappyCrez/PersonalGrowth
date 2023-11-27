@@ -2,12 +2,14 @@ package ToDoListModule;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.ScreenController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
@@ -44,14 +46,19 @@ public class ToDoListController {
     @FXML
     private TextField titleTextField, descriptionTextField;
 
+    private ObservableList<TaskItem> list;
+
     public ToDoListController(ScreenController screenController) {
         this.screenController = screenController;
+        list = FXCollections.observableArrayList();
     }
 
     @FXML
     void addButtonClicked(ActionEvent event) {
         TaskItem taskItem = new TaskItem(titleTextField.getText(), descriptionTextField.getText(), dateField.getValue());
-        taskTableView.getItems().add(taskItem);
+        list.add(taskItem);
+        taskTableView.getItems().clear();
+        taskTableView.getItems().addAll(list);
     }
 
     @FXML
@@ -62,43 +69,34 @@ public class ToDoListController {
     @FXML
     void todayButtonClicked(ActionEvent event) {
         LocalDate nowDate = LocalDate.now();
-        ObservableList<TaskItem> list = taskTableView.getItems();
-        ObservableList<TaskItem> todayList = FXCollections.observableArrayList();
+        taskTableView.getItems().clear();
         for (TaskItem e :  list) {
             if (e.getDateTask().toString().equals(nowDate.toString())) {
-                todayList.add(e);
+                taskTableView.getItems().add(e);
             }
         }
-        taskTableView.getItems().clear();
-        taskTableView.getItems().addAll(todayList);
     }
 
     @FXML
     void tomorrowButtonClicked(ActionEvent event) {
         LocalDate nowDate = LocalDate.now().plusDays(1);
-        ObservableList<TaskItem> list = taskTableView.getItems();
-        ObservableList<TaskItem> todayList = FXCollections.observableArrayList();
+        taskTableView.getItems().clear();
         for (TaskItem e :  list) {
             if (e.getDateTask().toString().equals(nowDate.toString())) {
-                todayList.add(e);
+                taskTableView.getItems().add(e);
             }
         }
-        taskTableView.getItems().clear();
-        taskTableView.getItems().addAll(todayList);
     }
 
     @FXML
     void weekButtonClicked(ActionEvent event) {
         LocalDate nowDate = LocalDate.now().plusDays(7);
-        ObservableList<TaskItem> list = taskTableView.getItems();
-        ObservableList<TaskItem> todayList = FXCollections.observableArrayList();
+        taskTableView.getItems().clear();
         for (TaskItem e :  list) {
             if (e.getDateTask().isBefore(nowDate)) {
-                todayList.add(e);
+                taskTableView.getItems().addAll(e);
             }
         }
-        taskTableView.getItems().clear();
-        taskTableView.getItems().addAll(todayList);
     }
 
     @FXML
