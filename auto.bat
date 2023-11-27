@@ -1,4 +1,4 @@
-@echo on
+@echo off
 if "%~1"=="" goto :exit
 if %~1==copy (
     xcopy "%~dp0src\main\resources\" "target\classes\" /q /s
