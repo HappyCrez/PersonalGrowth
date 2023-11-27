@@ -1,4 +1,4 @@
-package com;
+package ToDoListModule;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.CheckBox;
