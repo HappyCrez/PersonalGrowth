@@ -14,28 +14,45 @@ import javafx.stage.Stage;
 
 public class Builder extends Application{
 	
+	private int width = 800, height = 600;
+	
 	public static void main(String args[]) {
 		launch(args);
 	}
 
 	@Override
-	public void start(Stage toDoListStage) throws Exception {	
-		int width = 600, height = 400;
-		Scene scene = new Scene(new Pane(), width, height);
-		ScreenController screenController = new ScreenController(scene);
+	public void start(Stage Window) throws Exception {	
+		Scene mainScene = new Scene(new Pane());
+		ScreenController screenController = new ScreenController(mainScene);
 		
-		toDoListStage.setTitle("Personal Growth");
-		toDoListStage.setScene(scene);
-		toDoListStage.show();
+		setupWindow(Window, mainScene);
+
+		setLoadView(mainScene, screenController);
 		
-		Parent habitsView = loadView(new HabitsController(screenController), "habitsView");
-		Parent toDoListView = loadView(new ToDoListController(screenController), "toDoListView");
-		Parent loadView = loadView(new LoadController(screenController), "loadView");
+		loadAllViews(screenController);
+		//TODO::Notify that app was loaded
+	}
+	
+	private void setupWindow(Stage Window, Scene mainScene) {
+		Window.setWidth(width);
+		Window.setHeight(height);
+		Window.setTitle("Personal Growth");
+		Window.setScene(mainScene);
+		Window.show();
+	}
+
+	private void setLoadView(Scene mainScene, ScreenController controller) {
+		Parent loadView = loadView(new LoadController(controller), "loadView");
+		controller.addScreen("loadView", loadView);
+		controller.activateScreen("loadView", ScreenController.animationStyles.instantShow);
+	}
+	
+	private void loadAllViews(ScreenController controller) {
+		Parent habitsView = loadView(new HabitsController(controller), "habitsView");
+		Parent toDoListView = loadView(new ToDoListController(controller), "toDoListView");
 		
-		screenController.addScreen("toDoListView", toDoListView);
-		screenController.addScreen("habbitsView", habitsView);
-		screenController.addScreen("loadView", loadView);
-		screenController.activateScreen("loadView", ScreenController.animationStyles.instantShow);
+		controller.addScreen("toDoListView", toDoListView);
+		controller.addScreen("habbitsView", habitsView);
 	}
 	
 	private Parent loadView(Object controller, String screenName) {
