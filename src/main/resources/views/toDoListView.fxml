@@ -33,7 +33,7 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
             <Button fx:id="addButton" layoutX="375.0" layoutY="47.0" mnemonicParsing="false" onAction="#addButtonClicked" prefHeight="26.0" prefWidth="26.0" text="+" />
-            <DatePicker fx:id="DatePicker" layoutX="228.0" layoutY="13.0" />
+            <DatePicker fx:id="dateField" layoutX="228.0" layoutY="13.0" />
             <Label fx:id="statusLabel" layoutX="24.0" layoutY="18.0" prefHeight="18.0" prefWidth="167.0" />
             <TableView fx:id="taskTableView" editable="true" layoutX="24.0" layoutY="81.0" prefHeight="300.0" prefWidth="378.0">
               <columns>
@@ -52,12 +52,15 @@
                 		<PropertyValueFactory property="dateTask" />
         			</cellValueFactory>
                 </TableColumn>
-                  
+                  <TableColumn fx:id="checkBoxColumn" text="👍">
+                      <cellValueFactory>
+                          <PropertyValueFactory property="checkBox" />
+                      </cellValueFactory>
+                  </TableColumn>
               </columns>
             </TableView>
             <TextField fx:id="titleTextField" layoutX="24.0" layoutY="48.0" prefHeight="26.0" prefWidth="97.0" promptText="Название" />
-            <TextField fx:id="descriptionTextField" layoutX="122.0" layoutY="48.0" promptText="Описание" />
-            <TextField fx:id="dateTextField" layoutX="272.0" layoutY="48.0" prefHeight="26.0" prefWidth="98.0" promptText="Дата" />
+            <TextField fx:id="descriptionTextField" layoutX="122.0" layoutY="48.0" prefWidth="200" promptText="Описание" />
          </children>
       </AnchorPane>
   </items>
