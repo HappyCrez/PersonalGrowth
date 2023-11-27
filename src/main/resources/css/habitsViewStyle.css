@@ -1,3 +1,9 @@
+:root {
+    /* --main-color: black;
+    --main-font-family: "Microsoft YaHei Light";
+    --main-text-size: 14;
+    --main-font-weight: 700; */
+}
 
 .day {
     -fx-font-weight: 700;
