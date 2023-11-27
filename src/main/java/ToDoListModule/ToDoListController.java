@@ -92,7 +92,7 @@ public class ToDoListController {
         taskTableView.getItems().clear();
         for (TaskItem e :  list) {
             if (e.getDateTask().isBefore(nowDate)) {
-                taskTableView.getItems().addAll(e);
+                taskTableView.getItems().add(e);
             }
         }
     }
