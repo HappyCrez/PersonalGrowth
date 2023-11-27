@@ -2,40 +2,46 @@ package com;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.CheckBox;
+import java.time.LocalDate;
 
-public class TaskList {
-	private SimpleStringProperty titleTask;
-	private SimpleStringProperty descriptionTask;
-	private SimpleStringProperty dateTask;
+public class TaskItem {
+	private SimpleStringProperty titleTask = new SimpleStringProperty();
+	private SimpleStringProperty descriptionTask = new SimpleStringProperty();
+	private SimpleStringProperty dateTask = new SimpleStringProperty();
+	private LocalDate date;
 	private CheckBox checkBox;
 	private static int count = 0;
-	
-	public TaskList(String titleTask, String descriptionTask, String dateTask) {
+
+	public TaskItem(String titleTask, String descriptionTask, LocalDate dateTask) {
 		this.titleTask = new SimpleStringProperty(titleTask);
 		this.descriptionTask = new SimpleStringProperty(descriptionTask);
-		this.dateTask = new SimpleStringProperty(dateTask);
+		this.date = dateTask;
+		this.dateTask = new SimpleStringProperty(date.toString());
 		this.checkBox = new CheckBox();
 		this.checkBox.setId(Integer.toString(++count));
 	}
-	
 	public String getTitleTask() {
 		return titleTask.get();
 	}
-	
+
+	public String getDescriptionTask() {
+		return descriptionTask.get();
+	}
+
+	public LocalDate getDateTask() {
+		return date;
+	}
+
+	public CheckBox getCheckBox() {
+		return checkBox;
+	}
+
 	public void setTitleTask(String titleTask) {
 		this.titleTask.set(titleTask);
 	}
 	
-	public String getDescriptionTask() {
-		return descriptionTask.get();
-	}
-	
 	public void setDescriptionTask(String descriptionTask) {
 		this.descriptionTask.set(descriptionTask);
-	}
-	
-	public String getDateTask() {
-		return dateTask.get();
 	}
 	
 	public void setDateTask(String DateTask) {
@@ -44,9 +50,5 @@ public class TaskList {
 
 	public void setCheckBox(CheckBox checkBox) {
 		this.checkBox = checkBox;
-	}
-
-	public CheckBox getCheckBox() {
-		return checkBox;
 	}
 }

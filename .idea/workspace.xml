@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="664023f0-0bd1-4ff3-8431-f823432c0083" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auto.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/UML.mdj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/java/com/Builder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/java/com/HabitsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/java/com/Launcher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/java/com/LoadController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/java/com/ScreenController$animationStyles.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/java/com/ScreenController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/java/com/ToDoListController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/css/loadViewStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/images/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/images/logo1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/images/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/views/habitsView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/views/loadView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/src/main/resources/views/toDoListView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HabitsModule/HabitsCalendar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/HabitsModule/HabitsModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/habitsViewStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/HabitsModule/HabitsCalendar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/HabitsModule/HabitsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/HabitsModule/HabitsModule.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/Builder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/Launcher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/LoadController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ScreenController$animationStyles.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ScreenController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/TaskItem.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ToDoListController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/css/habitsViewStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/css/loadViewStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/images/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/images/logo1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/images/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/views/habitsView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/views/loadView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/views/toDoListView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UML.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/UML.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/HabitsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HabitsModule/HabitsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ToDoListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ToDoListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/habitsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/habitsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/toDoListView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/toDoListView.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2XOfXwiOxQTx7Y87YFFLOfNBLHz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging PKbranch",
+    "last_opened_file_path": "C:/Users/79059/Desktop/Study/Documents/University/third_semester/CursWork",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.Launcher" />
+      <module name="PersonalGrowth" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Launcher" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="664023f0-0bd1-4ff3-8431-f823432c0083" name="Changes" comment="" />
+      <created>1698505094216</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698505094216</updated>
+      <workItem from="1698505100493" duration="35000" />
+      <workItem from="1698505148539" duration="43000" />
+      <workItem from="1698512062577" duration="44000" />
+      <workItem from="1698512118061" duration="110000" />
+      <workItem from="1698512401860" duration="137000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

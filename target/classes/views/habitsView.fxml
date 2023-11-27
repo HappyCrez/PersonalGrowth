@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane  dividerPositions="0.3"
+            stylesheets="@../css/habitsViewStyle.css"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane>
+         <children>
+            <VBox styleClass="leftBarButtons" AnchorPane.leftAnchor="0"
+                                              AnchorPane.rightAnchor="0"
+                                              AnchorPane.bottomAnchor="0">
+               <children>
+                  <Button fx:id="toToDoList" onAction="#toToDoListClicked">Список задач</Button>
+                  <Button fx:id="toTimer"    onAction="#toTimerClicked"   >Таймер фокусировки</Button>
+                  <Button fx:id="toSettings" onAction="#toSettingsClicked">Настройки</Button>
+               </children>
+            </VBox>
+            <ListView fx:id="taskList" AnchorPane.leftAnchor="0"
+                                       AnchorPane.rightAnchor="0"
+                                       AnchorPane.topAnchor="0"
+                                       AnchorPane.bottomAnchor="150.0"/>
+         </children>
+   </AnchorPane>
+   <AnchorPane>
+      <children>
+         <VBox AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+            <children>
+               <GridPane styleClass="gridStyle">
+                  <columnConstraints>
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                  <children>
+                     <Label GridPane.columnIndex="0">Пн</Label>
+                     <Label GridPane.columnIndex="1">Вт</Label>
+                     <Label GridPane.columnIndex="2">Ср</Label>
+                     <Label GridPane.columnIndex="3">Чт</Label>
+                     <Label GridPane.columnIndex="4">Пт</Label>
+                     <Label GridPane.columnIndex="5">Сб</Label>
+                     <Label GridPane.columnIndex="6">Вс</Label>
+                  </children>
+               </GridPane>
+               <GridPane fx:id="calendarGridPane">
+                  <columnConstraints>
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  </rowConstraints>
+               </GridPane>
+            </children>
+         </VBox>
+         <Button styleClass="btnArrow" onAction="#nextMounth" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="60">-&gt;</Button>
+         <Button styleClass="btnArrow" onAction="#prevMounth" AnchorPane.leftAnchor="40"  AnchorPane.topAnchor="60">&lt;-</Button>
+         <Label fx:id="calendarLabel" AnchorPane.leftAnchor="40" AnchorPane.rightAnchor="40" AnchorPane.topAnchor="20"></Label>
+      </children>
+   </AnchorPane>
+  </items>
+</SplitPane>
