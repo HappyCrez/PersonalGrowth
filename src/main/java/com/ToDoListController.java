@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.util.Callback;
 
 public class ToDoListController {
 
@@ -37,12 +38,12 @@ public class ToDoListController {
     @FXML
     private TableColumn<TaskItem, CheckBox> checkBoxColumn;
 
+    @FXML
+    private TextField titleTextField, descriptionTextField;
+
     public ToDoListController(ScreenController screenController) {
         this.screenController = screenController;
     }
-    
-    @FXML
-    private TextField titleTextField, descriptionTextField;
 
     @FXML
     void addButtonClicked(ActionEvent event) {
@@ -115,6 +116,6 @@ public class ToDoListController {
 
     @FXML
     void initialize() {
-
+        
     }
 }
