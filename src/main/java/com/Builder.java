@@ -1,72 +1,50 @@
 package com;
 
-import java.io.IOException;
-import java.net.URL;
-
-import HabitsModule.HabitsController;
-import ToDoListModule.ToDoListController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Builder extends Application{
 	
-	private int width = 800, height = 600;
+	private int mainWindowWidth = 800, mainWindowHeight = 600;
+	private Stage mainWindow;
+	private Scene mainScene;
+	private ScreenController screenController;
+	private Image windowIcon;
 	
 	public static void main(String args[]) {
+		System.setProperty("javafx.preloader", "com.LoadWindow");
 		launch(args);
 	}
 
 	@Override
-	public void start(Stage Window) throws Exception {	
-		Scene mainScene = new Scene(new Pane());
-		ScreenController screenController = new ScreenController(mainScene);
-		
-		setupWindow(Window, mainScene);
+	public void init() {
+		// TODO::Delete delay for show (pre)loadingView
+		long start = System.currentTimeMillis();
+		while(System.currentTimeMillis() - start < 5000) ;
 
-		setLoadView(mainScene, screenController);
-		
-		loadAllViews(screenController);
-		//TODO::Notify that app was loaded
-	}
-	
-	private void setupWindow(Stage Window, Scene mainScene) {
-		Window.setWidth(width);
-		Window.setHeight(height);
-		Window.setTitle("Personal Growth");
-		Window.setScene(mainScene);
-		Window.show();
+		windowIcon = new Image("/images/logo.png");
+		mainScene = new Scene(new Pane(), mainWindowWidth, mainWindowHeight);
+		screenController = new ScreenController(mainScene);
+		LoadHelper.loadAllViews(screenController);
 	}
 
-	private void setLoadView(Scene mainScene, ScreenController controller) {
-		Parent loadView = loadView(new LoadController(controller), "loadView");
-		controller.addScreen("loadView", loadView);
-		controller.activateScreen("loadView", ScreenController.animationStyles.instantShow);
-	}
-	
-	private void loadAllViews(ScreenController controller) {
-		Parent habitsView = loadView(new HabitsController(controller), "habitsView");
-		Parent toDoListView = loadView(new ToDoListController(controller), "toDoListView");
+	@Override
+	public void start(Stage mainWindow) throws Exception {	
+		this.mainWindow = mainWindow;
+		setupWindow(mainWindow, mainScene);
 		
-		controller.addScreen("toDoListView", toDoListView);
-		controller.addScreen("habbitsView", habitsView);
+		screenController.activateScreen("toDoListView", ScreenController.animationStyles.instantShow);
 	}
 	
-	private Parent loadView(Object controller, String screenName) {
-		FXMLLoader fxmlLoader = new FXMLLoader();
-		URL xmlurl = getClass().getResource("/views/" + screenName + ".fxml");
-		fxmlLoader.setLocation(xmlurl);
-		fxmlLoader.setController(controller);
-		Parent root = null;
-		try {
-			root = fxmlLoader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println(screenName + " onload error");
-		}
-		return root;
+	private void setupWindow(Stage window, Scene scene) {
+		window.centerOnScreen();
+		window.sizeToScene();
+		window.setScene(scene);
+		window.getIcons().add(windowIcon);
+		window.setTitle("Personal Growth");
+		mainWindow.show();
 	}
 }
