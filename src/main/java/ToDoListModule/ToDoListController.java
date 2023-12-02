@@ -100,7 +100,7 @@ public class ToDoListController {
     @FXML
     void toHabbitsClicked(ActionEvent event) {
         statusLabel.setText("Вы перешли к трекеру привычек");
-        screenController.activateScreen("habbitsView", ScreenController.animationStyles.rightToLeft);
+        screenController.activateScreen("habbitsView", ScreenController.animationStyles.downToUp);
     }
 
     @FXML

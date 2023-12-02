@@ -18,7 +18,7 @@ public class LoadWindow extends Preloader {
         this.loadWindow = loadWindow;
         Image logo = new Image("/images/logo.png");
         Scene loadScene = createLoadScene();
-        setupLoadWindow(loadScene, logo);
+        setupLoadWindow(loadWindow, loadScene, logo);
     }
 
     private Scene createLoadScene() {
@@ -28,19 +28,19 @@ public class LoadWindow extends Preloader {
         return scene;
     }
 
-    private void setupLoadWindow(Scene loadScene, Image icon) {
-        loadWindow.initStyle(StageStyle.TRANSPARENT);
-        loadWindow.getIcons().add(icon);
-        loadWindow.setScene(loadScene);
-        loadWindow.sizeToScene();
-        setStageCenter();
-        loadWindow.show();
+    private void setupLoadWindow(Stage window, Scene loadScene, Image icon) {
+        window.initStyle(StageStyle.TRANSPARENT);
+        window.getIcons().add(icon);
+        window.setScene(loadScene);
+        window.sizeToScene();
+        setStageCenter(window);
+        window.show();
     }
 
-    private void setStageCenter() {
+    private void setStageCenter(Stage window) {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-        loadWindow.setX((screenBounds.getWidth() - loadWindowSize) / 2); 
-        loadWindow.setY((screenBounds.getHeight() - loadWindowSize) / 2);
+        window.setX((screenBounds.getWidth() - loadWindowSize) / 2); 
+        window.setY((screenBounds.getHeight() - loadWindowSize) / 2);
     }
     
     @Override

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class HabitsController {
 	
@@ -19,6 +20,9 @@ public class HabitsController {
 
 	@FXML
 	private GridPane calendarGridPane;
+
+	@FXML
+	private VBox taskList;
 
 	public HabitsController (ScreenController screenController) {
 		this.screenController = screenController;
@@ -41,7 +45,7 @@ public class HabitsController {
 	
 	@FXML
 	private void toToDoListClicked() {
-		screenController.activateScreen("toDoListView", ScreenController.animationStyles.leftToRight);
+		screenController.activateScreen("toDoListView", ScreenController.animationStyles.downToUp);
 	}
 	
 	@FXML

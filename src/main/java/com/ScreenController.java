@@ -28,6 +28,8 @@ public class ScreenController {
 	public ScreenController (Scene mainScene) {
 		this.mainScene = mainScene;
 		parentContainer = new StackPane();
+		parentContainer.setMinWidth(300);
+		parentContainer.setMinHeight(300);
 		mainScene.setRoot(parentContainer);
 	}
 	
@@ -70,7 +72,7 @@ public class ScreenController {
 		
 		Timeline timeline = new Timeline();
 		KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-		KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
 		timeline.getKeyFrames().add(kf);
 		timeline.play();
 	}
@@ -81,7 +83,7 @@ public class ScreenController {
 		
 		Timeline timeline = new Timeline();
 		KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-		KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
 		timeline.getKeyFrames().add(kf);
 		timeline.play();
 	}
@@ -92,7 +94,7 @@ public class ScreenController {
 		
 		Timeline timeline = new Timeline();
 		KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-		KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
 		timeline.getKeyFrames().add(kf);
 		timeline.play();
 	}
