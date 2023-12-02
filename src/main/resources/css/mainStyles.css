@@ -13,8 +13,19 @@
     -fx-font-weight: 400;
 }
 
-.v-box, .anchor-pane, .split-pane, .stack-pane, .border-pane, .scroll-pane{
+.v-box, .anchor-pane, .split-pane, .stack-pane, .border-pane{
     -fx-background-color: root-light-color;
+}
+
+.scroll-pane {
+    -fx-alignment: center;
+    -fx-pref-width: 220px;
+    
+    -fx-border-color: root-dark-color;
+    -fx-border-width: 0 0 0 2px;
+    
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: always;
 }
 
 .ikonli-font-icon {
@@ -25,6 +36,13 @@
     -fx-background-color:derive(black,80%);
     -fx-background-insets: 0, 0, 0;
     -fx-background-radius: 0.4em;
+}
+
+.task-item {
+    -fx-spacing: 20px;
+    -fx-padding: 5px 5px;
+    -fx-border-color: #000;
+    -fx-border-width: 0 0 1px 0;
 }
 
 .label {

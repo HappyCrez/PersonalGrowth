@@ -1,6 +1,10 @@
 package HabitsModule;
 
+import java.time.LocalDate;
+
 import com.ScreenController;
+
+import ToDoListModule.TaskItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,6 +35,8 @@ public class HabitsController {
 	@FXML
 	private void initialize() {
 		habitsModule = new HabitsModule(calendarGridPane, calendarLabel);
+		for (int i = 0; i < 10; i++)
+			taskList.getChildren().add(new TaskItem("Title", "description", LocalDate.now().toString()));
 	}
 
 	@FXML

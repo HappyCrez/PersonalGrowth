@@ -1,35 +1,43 @@
 package ToDoListModule;
 
-import javafx.beans.property.SimpleStringProperty;
+import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import java.time.LocalDate;
 
-public class TaskItem {
-	private SimpleStringProperty titleTask = new SimpleStringProperty();
-	private SimpleStringProperty descriptionTask = new SimpleStringProperty();
-	private SimpleStringProperty dateTask = new SimpleStringProperty();
-	private LocalDate date;
+public class TaskItem extends HBox{
+	@FXML
+	private Label title;
+	@FXML
+	private Label description;
+	@FXML
 	private CheckBox checkBox;
-	private static int count = 0;
+	
+	private Label date;
+	private LocalDate dateInfo;
 
-	public TaskItem(String titleTask, String descriptionTask, LocalDate dateTask) {
-		this.titleTask = new SimpleStringProperty(titleTask);
-		this.descriptionTask = new SimpleStringProperty(descriptionTask);
-		this.date = dateTask;
-		this.dateTask = new SimpleStringProperty(date.toString());
+	public TaskItem(String title, String description, String date) {
+		this.title = new Label(title);
+		this.description = new Label(description);
+		this.date = new Label(date);
+
 		this.checkBox = new CheckBox();
-		this.checkBox.setId(Integer.toString(++count));
+		this.dateInfo = LocalDate.parse(date);
+
+		this.getChildren().addAll(this.date, this.description, this.title);
+		this.getStyleClass().add("task-item");
 	}
 	public String getTitleTask() {
-		return titleTask.get();
+		return title.getText();
 	}
 
 	public String getDescriptionTask() {
-		return descriptionTask.get();
+		return description.getText();
 	}
 
-	public LocalDate getDateTask() {
-		return date;
+	public LocalDate getDate() {
+		return dateInfo;
 	}
 
 	public CheckBox getCheckBox() {
@@ -37,15 +45,15 @@ public class TaskItem {
 	}
 
 	public void setTitleTask(String titleTask) {
-		this.titleTask.set(titleTask);
+		this.title.setText(titleTask);
 	}
 	
 	public void setDescriptionTask(String descriptionTask) {
-		this.descriptionTask.set(descriptionTask);
+		this.description.setText(descriptionTask);
 	}
 	
 	public void setDateTask(String DateTask) {
-		this.dateTask.set(DateTask);
+		this.date.setText(DateTask);
 	}
 
 	public void setCheckBox(CheckBox checkBox) {
