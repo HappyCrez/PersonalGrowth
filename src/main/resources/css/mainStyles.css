@@ -1,0 +1,50 @@
+.root {
+    root-light-color: #d3d6da;
+    root-dark-color: #3c2d2d;
+    
+    root-blocks-color: #fff; 
+    root-task-list-color: #adb3b9;
+
+    root-append-color: #eb5151;
+
+
+    -fx-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: 400;
+}
+
+.v-box, .anchor-pane, .split-pane, .stack-pane, .border-pane, .scroll-pane{
+    -fx-background-color: root-light-color;
+}
+
+.ikonli-font-icon {
+    -fx-icon-size: 20px;
+}
+
+.thumb {
+    -fx-background-color:derive(black,80%);
+    -fx-background-insets: 0, 0, 0;
+    -fx-background-radius: 0.4em;
+}
+
+.label {
+
+}
+
+.button {
+    -fx-text-fill: root-dark-color;
+    -fx-font-weight: 700;
+
+    -fx-padding: 7px 12px;
+    
+    -fx-background-radius: 5px;
+    -fx-background-color: root-append-color;
+    
+    -fx-pref-width: 140px;
+    -fx-pref-height: 25px;
+}
+
+.button:hover {
+    -fx-text-fill: root-light-color;
+    -fx-background-color: root-dark-color;
+}

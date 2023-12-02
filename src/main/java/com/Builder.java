@@ -25,7 +25,7 @@ public class Builder extends Application{
 	public void init() {
 		// TODO::Delete delay for show (pre)loadingView
 		long start = System.currentTimeMillis();
-		while(System.currentTimeMillis() - start < 300)  ;  // 1.3s
+		while(System.currentTimeMillis() - start < 300)  ;  // 0.3s
 
 		windowIcon = new Image("/images/logo.png");
 		mainScene = createScene();
