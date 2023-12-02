@@ -36,6 +36,13 @@
     -fx-node-orientation: right_to_left;
 }
 
+.taskItem {
+    -fx-spacing: 20px;
+    -fx-padding: 5px 5px;
+    -fx-border-color: #000;
+    -fx-border-width: 0 0 1px 0;
+}
+
 /*      Calendar     */
 
 .calendar {
