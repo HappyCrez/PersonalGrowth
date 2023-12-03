@@ -6,6 +6,9 @@
     root-task-list-color: #adb3b9;
 
     root-append-color: #eb5151;
+    
+    root-scroller-color: rgba(70,70,70,0.7);
+    root-scroller-bg-color: rgba(160,160,160,1);
 
 
     -fx-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
@@ -35,7 +38,7 @@
 }
 
 .scroll-pane > .scroll-bar:vertical {
-    -fx-background-color: #d1d1d1;
+    -fx-background-color: root-scroller-bg-color;
     -fx-background-radius: 5px;
 }
 
@@ -58,7 +61,7 @@
 }
 
 .thumb {
-    -fx-background-color:derive(black,80%);
+    -fx-background-color: root-scroller-color;
     -fx-background-insets: 0, 0, 0;
     -fx-background-radius: 0.4em;
 }
