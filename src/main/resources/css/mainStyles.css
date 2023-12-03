@@ -25,11 +25,36 @@
     -fx-border-width: 0 0 0 2px;
     
     -fx-hbar-policy: never;
-    -fx-vbar-policy: always;
+    -fx-vbar-policy: as-needed;
 }
 
-.ikonli-font-icon {
-    -fx-icon-size: 20px;
+/*      SCROLL-PANE      */
+
+.scroll-pane > .viewport {
+    -fx-background-color: root-light-color;
+}
+
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: #d1d1d1;
+    -fx-background-radius: 5px;
+}
+
+/*      REMOVE SCROLL BUTTONS         */
+
+.scroll-pane > .scroll-bar:vertical > .increment-button,
+.scroll-pane > .scroll-bar:vertical > .decrement-button {
+    -fx-padding: 0 0 0 0;
+}
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
+    -fx-padding: 0 0 0 0;
+}
+
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-padding: 0 0 0 0;
+}
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-padding: 0 0 0 0;
 }
 
 .thumb {
@@ -38,15 +63,15 @@
     -fx-background-radius: 0.4em;
 }
 
+.ikonli-font-icon {
+    -fx-icon-size: 20px;
+}
+
 .task-item {
     -fx-spacing: 20px;
     -fx-padding: 5px 5px;
     -fx-border-color: #000;
     -fx-border-width: 0 0 1px 0;
-}
-
-.label {
-
 }
 
 .button {
