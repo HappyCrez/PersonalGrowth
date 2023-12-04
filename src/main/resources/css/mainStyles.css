@@ -77,6 +77,11 @@
     -fx-border-width: 0 0 1px 0;
 }
 
+.task-item > .label{
+    -fx-max-width: 150px;
+    -fx-wrap-text: true;
+}
+
 .button {
     -fx-text-fill: root-dark-color;
     -fx-font-weight: 700;

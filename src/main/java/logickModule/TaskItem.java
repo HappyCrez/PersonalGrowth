@@ -16,10 +16,7 @@ public class TaskItem extends AnchorPane{
 
 	public TaskItem(String content, String date) {
 		this.content = content;
-		if (content.length() > 15)
-			this.contentLabel = new Label(content.substring(0, 15) + " ...");
-		else
-			this.contentLabel = new Label(content);
+		this.contentLabel = new Label(content);
 		
 		this.date = new Label(date);
 		this.dateInfo = LocalDate.parse(date);
