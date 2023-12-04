@@ -10,5 +10,5 @@ if %~1==build (
     call mvn package
 )
 :runnable
-call mvn exec:java "-Dexec.mainClass=com.Launcher"
+call mvn exec:java "-Dexec.mainClass=plannerApp.Launcher"
 :exit

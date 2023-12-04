@@ -1,4 +1,4 @@
-package ToDoListModule;
+package logickModule;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;

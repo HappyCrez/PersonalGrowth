@@ -1,4 +1,4 @@
-package com;
+package plannerApp;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -15,7 +15,7 @@ public class Builder extends Application{
 	private Image windowIcon;
 	
 	public static void main(String args[]) {
-		System.setProperty("javafx.preloader", "com.LoadWindow");
+		System.setProperty("javafx.preloader", "loader.LoadWindow");
 		launch(args);
 	}
 

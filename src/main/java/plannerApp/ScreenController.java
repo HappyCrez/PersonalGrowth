@@ -1,4 +1,4 @@
-package com;
+package plannerApp;
 
 import java.util.HashMap;
 

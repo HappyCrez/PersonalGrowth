@@ -1,4 +1,4 @@
-package com;
+package plannerApp;
 
 import java.io.IOException;
 import java.net.URL;

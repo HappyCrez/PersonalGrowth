@@ -1,9 +1,6 @@
-package com;
+package plannerApp;
 
 import java.time.LocalDate;
-
-import HabitsModule.HabitsModule;
-import ToDoListModule.TaskItem;
 
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
@@ -14,10 +11,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import logickModule.CalendarLogic;
+import logickModule.TaskItem;
 
 public class AppController {
     ScreenController controller;
-    HabitsModule habitsModule;
+    CalendarLogic habitsModule;
     private ObservableList<Node> list;
     
 	@FXML
@@ -37,7 +36,7 @@ public class AppController {
     
 	@FXML
 	private void initialize() {
-		habitsModule = new HabitsModule(calendarGridPane, calendarLabel);
+		habitsModule = new CalendarLogic(calendarGridPane, calendarLabel);
 
         list = FXCollections.observableArrayList();
         for (Node e : taskList.getChildren())

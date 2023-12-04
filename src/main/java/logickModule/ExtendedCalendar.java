@@ -1,9 +1,9 @@
-package HabitsModule;
+package logickModule;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class HabitsCalendar extends GregorianCalendar{
+public class ExtendedCalendar extends GregorianCalendar{
     
     public int getCountDaysMonthBefore() {
         add(Calendar.MONTH, -1);

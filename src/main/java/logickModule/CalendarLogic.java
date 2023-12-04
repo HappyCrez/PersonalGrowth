@@ -1,10 +1,10 @@
-package HabitsModule;
+package logickModule;
 
 import java.util.Calendar;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-public class HabitsModule {
+public class CalendarLogic {
 
 	private GridPane calendarGridPane;
     private Label calendarLabel;
@@ -16,18 +16,18 @@ public class HabitsModule {
 
     private Label dayLabelForGrid;
 
-    private HabitsCalendar calendar;
+    private ExtendedCalendar calendar;
     private int currentDay,
                 currentMonth,
                 currentYear;
     
-    public HabitsModule(GridPane calendarGridPane, Label calendarLabel) {
+    public CalendarLogic(GridPane calendarGridPane, Label calendarLabel) {
         this.calendarGridPane = calendarGridPane;
         this.calendarLabel = calendarLabel;
 
         grid = new Label[rowCount][colCount];
 
-        calendar = new HabitsCalendar();
+        calendar = new ExtendedCalendar();
         currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         currentMonth = calendar.get(Calendar.MONTH);
         currentYear = calendar.get(Calendar.YEAR);
