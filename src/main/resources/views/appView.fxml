@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane styleClass="border-pane"
+            stylesheets="@../css/appViewStyle.css"
+            xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1">
+    
+    <!-- TOP BAR MOVEMENT BUTTONS -->
+    <top>
+        <ButtonBar  styleClass="topBar"
+                    BorderPane.alignment="CENTER" >
+            <buttons>
+                <Button styleClass="barButtons"
+                        fx:id="toTimer"
+                        onAction="#toTimerClicked"   >
+                    <graphic>
+                        <FontIcon iconLiteral="mdi-clock"/>
+                    </graphic>
+                </Button>
+                <Button styleClass="barButtons"
+                        fx:id="toSettings"
+                        onAction="#toSettingsClicked">
+                    <graphic>
+                        <FontIcon iconLiteral="mdi-settings"/>
+                    </graphic>
+                </Button>
+            </buttons>
+        </ButtonBar>
+    </top>
+
+    <!-- TO DO LIST -->
+    <left>
+        <ScrollPane styleClass="scroll-pane">
+                  <!-- nodeOrientation="RIGHT_TO_LEFT" -->
+            <content>
+                <VBox fx:id="taskList">
+                <children>
+                    <AnchorPane styleClass="taskForm">
+                        <children>
+                            <TextArea fx:id="contentField"
+                                AnchorPane.leftAnchor="0"
+                                AnchorPane.topAnchor="0"
+                                AnchorPane.bottomAnchor="0"/>
+                            <Button fx:id="addButton" onAction="#addTask"
+                                AnchorPane.rightAnchor="10"
+                                AnchorPane.bottomAnchor="0">
+                                <graphic>
+                                    <FontIcon styleClass="small-icon" iconLiteral="mdi-plus"/>
+                                </graphic>
+                            </Button>
+                        </children>
+                    </AnchorPane>
+                    <!-- TASK LIST -->
+                </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </left>
+  
+    <!-- CALENDAR -->
+    <center>
+        <AnchorPane>
+        <children>
+            <VBox styleClass="calendar"
+                AnchorPane.leftAnchor="100.0" 
+                AnchorPane.rightAnchor="100.0" 
+                AnchorPane.topAnchor="100.0">
+                <children>
+                    <GridPane styleClass="weekDays">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label GridPane.columnIndex="0">Пн</Label>
+                            <Label GridPane.columnIndex="1">Вт</Label>
+                            <Label GridPane.columnIndex="2">Ср</Label>
+                            <Label GridPane.columnIndex="3">Чт</Label>
+                            <Label GridPane.columnIndex="4">Пт</Label>
+                            <Label GridPane.columnIndex="5">Сб</Label>
+                            <Label GridPane.columnIndex="6">Вс</Label>
+                        </children>
+                    </GridPane>
+                    <GridPane fx:id="calendarGridPane">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                    </GridPane>
+                </children>
+            </VBox>
+            
+            <Button styleClass="btnArrow" onAction="#nextMounth"
+            AnchorPane.rightAnchor="100"  AnchorPane.topAnchor="40">
+                <graphic>
+                    <FontIcon styleClass="small-icon" iconLiteral="mdi-arrow-down"/>
+                </graphic>
+            </Button>
+            <Button styleClass="btnArrow" onAction="#prevMounth"
+            AnchorPane.rightAnchor="140"  AnchorPane.topAnchor="40">
+                <graphic>
+                    <FontIcon styleClass="small-icon" iconLiteral="mdi-arrow-up"/>
+                </graphic>
+            </Button>
+            <Label fx:id="calendarLabel" AnchorPane.leftAnchor="100"
+                                         AnchorPane.rightAnchor="180"
+                                         AnchorPane.topAnchor="40">
+            
+            </Label>
+        </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

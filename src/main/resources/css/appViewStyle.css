@@ -1,0 +1,130 @@
+/*      Top bar     */
+
+.topBar {
+    -fx-padding: 20px 50px;
+    -fx-background-color: root-blocks-color;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 10px;
+    -fx-button-min-width: 10px;
+}
+
+.barButtons {
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+    -fx-background-radius: 5px;
+}
+
+/*      Left bar     */
+
+#taskList {
+    -fx-pref-width: 300px;
+    -fx-padding: 10px 20px;
+    -fx-spacing: 20px;
+    -fx-fill-width: true; 
+
+    -fx-alignment: top-right;
+    -fx-node-orientation: left_to_right;
+}
+
+.taskForm {  
+    -fx-pref-height: 70px;
+}
+
+.task-left-group {
+    -fx-spacing: 20px;
+}
+
+#addButton {
+    -fx-pref-width: 70px;
+    -fx-pref-height: 25px;
+    -fx-padding: 0;
+}
+
+.small-icon{
+    -fx-icon-size: 11px;
+}
+
+#checkTask > .box{
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+}
+
+#contentField {
+    -fx-pref-width: 150px;
+    -fx-max-width: 150px;
+    -fx-wrap-text: true;
+}
+
+#contentField > .scroll-pane > .scroll-bar:vertical {
+    -fx-pref-width: 4px;
+}
+
+/*      Calendar     */
+
+.calendar {
+    -fx-padding: 10px;
+    -fx-background-color: root-blocks-color;
+    -fx-background-radius: 15px;
+}
+
+.weekDays {
+    -fx-padding: 10px 0;
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+}
+
+#calendarGridPane {
+    -fx-pref-width: 250px;
+    -fx-pref-height: 300px;
+}
+
+.btnArrow {
+    -fx-pref-width: 35px;
+    -fx-pref-height: 35px;
+    
+    -fx-background-color: root-light-color;
+
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: root-dark-color;
+    
+    -fx-padding: 0;
+}
+
+.btnArrow:hover {
+    -fx-background-color: #fff;
+    -fx-background-insets: 1px;
+}
+
+.btnArrow:hover > .ikonli-font-icon {
+    -fx-icon-color: blue;
+}
+
+#calendarLabel {
+    -fx-alignment: center;
+    -fx-font-size: 15px;
+    -fx-font-weight: 700;
+
+    -fx-background-color: root-blocks-color;
+    -fx-background-radius: 5px;
+
+    -fx-padding: 6px;
+}
+
+.day {
+    -fx-font-family: sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+}
+
+#today {
+    -fx-font-weight: 700;
+    -fx-background-color: rgb(29, 84, 102);
+    -fx-text-fill: #fff;
+    -fx-background-radius: 100%;
+    -fx-padding: 5px 10px;
+}
+
+#passiveDay {
+    -fx-text-fill: gray;
+}

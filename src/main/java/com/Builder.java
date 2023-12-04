@@ -34,7 +34,7 @@ public class Builder extends Application{
 	@Override
 	public void start(Stage mainWindow) throws Exception {	
 		setupWindow(mainWindow, mainScene);
-		screenController.activateScreen("toDoListView", ScreenController.animationStyles.instantShow);
+		screenController.activateScreen("appView", ScreenController.animationStyles.instantShow);
 	}
 	
 	private Scene createScene() {

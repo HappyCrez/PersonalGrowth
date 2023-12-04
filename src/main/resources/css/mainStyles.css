@@ -10,7 +10,6 @@
     root-scroller-color: rgba(70,70,70,0.7);
     root-scroller-bg-color: rgba(160,160,160,1);
 
-
     -fx-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     -fx-font-size: 12px;
     -fx-font-weight: 400;
@@ -22,10 +21,10 @@
 
 .scroll-pane {
     -fx-alignment: center;
-    -fx-pref-width: 220px;
+    -fx-pref-width: 300px;
     
     -fx-border-color: root-dark-color;
-    -fx-border-width: 0 0 0 2px;
+    -fx-border-width: 0;
     
     -fx-hbar-policy: never;
     -fx-vbar-policy: as-needed;
@@ -71,6 +70,7 @@
 }
 
 .task-item {
+    -fx-alignment: top-left;
     -fx-spacing: 20px;
     -fx-padding: 5px 5px;
     -fx-border-color: #000;
@@ -93,4 +93,8 @@
 .button:hover {
     -fx-text-fill: root-light-color;
     -fx-background-color: root-dark-color;
+}
+
+.button:hover > .ikonli-font-icon {
+    -fx-icon-color: white;
 }
