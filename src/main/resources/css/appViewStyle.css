@@ -14,7 +14,15 @@
     -fx-background-radius: 5px;
 }
 
-/*      Left bar     */
+/*      Center       */
+
+.center-view {
+    -fx-alignment: center;
+    -fx-spacing: 50px;
+    -fx-padding: 50px;
+}
+
+/*      ToDoList         */
 
 #taskList {
     -fx-pref-width: 300px;
@@ -61,7 +69,16 @@
 
 /*      Calendar     */
 
+.calendar-container {
+    -fx-spacing: 20px;
+}
+
+.calendar-top-bar {
+    -fx-spacing: 10px;
+}
+
 .calendar {
+    -fx-pref-width: 350px;
     -fx-padding: 10px;
     -fx-background-color: root-blocks-color;
     -fx-background-radius: 15px;
@@ -102,6 +119,8 @@
 
 #calendarLabel {
     -fx-alignment: center;
+    -fx-pref-width: 250px;
+
     -fx-font-size: 15px;
     -fx-font-weight: 700;
 

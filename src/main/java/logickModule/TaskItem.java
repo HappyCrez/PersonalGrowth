@@ -10,14 +10,10 @@ public class TaskItem extends AnchorPane{
 	private Label contentLabel;
 	private CheckBox checkTask;
 	private Label date;
-	
-	private String content;
 	private LocalDate dateInfo;
 
 	public TaskItem(String content, String date) {
-		this.content = content;
 		this.contentLabel = new Label(content);
-		
 		this.date = new Label(date);
 		this.dateInfo = LocalDate.parse(date);
 		this.checkTask = new CheckBox();

@@ -21,7 +21,6 @@
 
 .scroll-pane {
     -fx-alignment: center;
-    -fx-pref-width: 300px;
     
     -fx-border-color: root-dark-color;
     -fx-border-width: 0;
