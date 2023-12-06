@@ -1,29 +1,66 @@
 package logickModule;
 
+import java.time.LocalDate;
 import java.util.Calendar;
+
+import org.kordamp.ikonli.javafx.FontIcon;
+
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
-public class CalendarLogic {
+public class CalendarBox extends StackPane implements EventHandler{
+    
+    private VBox content;
 
-	private GridPane calendarGridPane;
-    private Label calendarLabel;
+    private HBox MonthYearBar;
+    private Label MonthYear;
+    private Button nextMonth, prevMonth;
+	
+    // Calendar days
+    private VBox rowContainer;
 
     private Label grid[][];
 
     private static final int rowCount = 6, colCount = 7;
-    private static String dayLabelClassName = "day", todayLabelID = "today", passiveLabelID = "passiveDay";
+    private static String todayLabelID = "today", passiveLabelID = "passiveDay";
 
     private Label dayLabelForGrid;
+    private LocalDate activeDate;
 
     private ExtendedCalendar calendar;
     private int currentDay,
                 currentMonth,
                 currentYear;
     
-    public CalendarLogic(GridPane calendarGridPane, Label calendarLabel) {
-        this.calendarGridPane = calendarGridPane;
-        this.calendarLabel = calendarLabel;
+    public CalendarBox() {
+        content = new VBox();
+        MonthYearBar = new HBox();
+        
+        nextMonth = new Button("",new FontIcon("mdi-arrow-up"));
+        nextMonth.getStyleClass().add("btnArrow");
+        nextMonth.setOnAction(this);
+
+        prevMonth = new Button("",new FontIcon("mdi-arrow-down"));
+        prevMonth.getStyleClass().add("btnArrow");
+        prevMonth.setOnAction(this);
+        
+        MonthYear = new Label();
+        MonthYear.setId("calendarLabel");
+
+        MonthYearBar.getStyleClass().add("calendar-top-bar");
+        MonthYearBar.getChildren().addAll(MonthYear, nextMonth, prevMonth);
+
+        rowContainer = new VBox();
+        rowContainer.getStyleClass().add("calendar-row-container");
+
+        content.getStyleClass().add("calendar-container");
+        content.getChildren().addAll(MonthYearBar, rowContainer);
+        this.getChildren().add(content);
 
         grid = new Label[rowCount][colCount];
 
@@ -34,6 +71,8 @@ public class CalendarLogic {
         
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         updateGrid();
+        
+        activeDate = LocalDate.now();
     }
     
     public void setNextMonth() {
@@ -47,13 +86,13 @@ public class CalendarLogic {
     }
     
     private void updateGrid() {
-        calendarGridPane.getChildren().clear();
+        rowContainer.getChildren().clear();
         updateCalendarLabel();
         setMonthDays();
     }
 
     private void updateCalendarLabel() {
-        calendarLabel.setText(calendar.getCurrMonthName() + " " + calendar.get(Calendar.YEAR));
+        MonthYear.setText(calendar.getCurrMonthName() + " " + calendar.get(Calendar.YEAR));
     }
 
     private void setMonthDays() {
@@ -72,7 +111,6 @@ public class CalendarLogic {
     private void fillDaysBeforeOfGridMassive(int daysCountBefore, int firstDayOfWeek) {
         for (int i = 0; i < firstDayOfWeek; i++) {
             dayLabelForGrid = new Label(daysCountBefore + i - firstDayOfWeek + 1 + "");
-            dayLabelForGrid.getStyleClass().add(dayLabelClassName);
             dayLabelForGrid.setId(passiveLabelID);
             grid[0][i] = dayLabelForGrid;
         }
@@ -81,7 +119,6 @@ public class CalendarLogic {
     private void fillDaysOfGridMassive(int dayCount, int firstDayOfWeek) {
         for (int i = 0; i < dayCount; i++) {
             dayLabelForGrid = new Label(i + 1 + "");
-            dayLabelForGrid.getStyleClass().add(dayLabelClassName);
 
             int row = (i + firstDayOfWeek) / 7;
             int col = (i + firstDayOfWeek) % 7;
@@ -93,7 +130,6 @@ public class CalendarLogic {
         int cellsCount = countFreeCellsAtEndOfMassive(lastFillCellNum);
         for (int i = 0; i < cellsCount; i++) {
             dayLabelForGrid = new Label(i + 1 + "");
-            dayLabelForGrid.getStyleClass().add(dayLabelClassName);
             dayLabelForGrid.setId(passiveLabelID);
 
             int row = rowCount - (cellsCount - i - 1) / 7 - 1;
@@ -108,6 +144,8 @@ public class CalendarLogic {
 
     private void fillGridPane() {
         for (int i = 0; i < rowCount; i++) {
+            HBox row = new HBox();
+            row.getStyleClass().add("calendar-row");
             for (int k = 0; k < colCount; k++) {
                 Label day = grid[i][k];
                 if (calendar.checkForMonth(currentMonth, currentYear) &&
@@ -116,8 +154,32 @@ public class CalendarLogic {
                     {
                         day.setId(todayLabelID);
                     }
-                calendarGridPane.add(day, k, i);
+                day.setOnMouseClicked(this);
+                row.getChildren().add(day);
             }
+            rowContainer.getChildren().add(row);
+        }
+    }
+
+    public String getActiveDate() {
+        return activeDate.toString();
+    }
+
+    @Override
+    public void handle(Event event) {
+        if (event.getSource().getClass().getSimpleName().equals("Label")) {
+            Label lbl = (Label) event.getSource();
+            if (lbl.getId() != null || lbl.getId() == passiveLabelID) return;
+            String date =
+                calendar.get(Calendar.YEAR) + "-" +
+                calendar.get(Calendar.MONTH) + "-" +
+                ((lbl.getText().length() > 1) ? lbl.getText(): "0" + lbl.getText());
+            
+            activeDate = LocalDate.parse(date);
+        }
+        else {
+
+            setNextMonth();
         }
     }
 }

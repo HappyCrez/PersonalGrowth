@@ -34,7 +34,8 @@
     </top>
 
     <center>
-        <HBox styleClass="center-view">
+        <HBox   fx:id="centerView"
+                styleClass="center-view">
         <children>
             <!-- TO DO LIST -->
             <ScrollPane styleClass="scroll-pane">
@@ -64,72 +65,8 @@
                 </content>
             </ScrollPane>
             
-            <!-- CALENDAR -->
-            <VBox styleClass="calendar-container">
-            <children>
-                <HBox styleClass="calendar-top-bar">
-                <children>
-                    <Label fx:id="calendarLabel"> </Label>
-                    <Button styleClass="btnArrow" onAction="#nextMounth">
-                        <graphic>
-                            <FontIcon styleClass="small-icon" iconLiteral="mdi-arrow-down"/>
-                        </graphic>
-                    </Button>
-                    <Button styleClass="btnArrow" onAction="#prevMounth">
-                        <graphic>
-                            <FontIcon styleClass="small-icon" iconLiteral="mdi-arrow-up"/>
-                        </graphic>
-                    </Button>
-                </children>
-                </HBox>
-                <VBox styleClass="calendar">
-                    <children>
-                        <GridPane styleClass="weekDays">
-                            <columnConstraints>
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <Label GridPane.columnIndex="0">Пн</Label>
-                                <Label GridPane.columnIndex="1">Вт</Label>
-                                <Label GridPane.columnIndex="2">Ср</Label>
-                                <Label GridPane.columnIndex="3">Чт</Label>
-                                <Label GridPane.columnIndex="4">Пт</Label>
-                                <Label GridPane.columnIndex="5">Сб</Label>
-                                <Label GridPane.columnIndex="6">Вс</Label>
-                            </children>
-                        </GridPane>
-                        <GridPane fx:id="calendarGridPane">
-                            <columnConstraints>
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                        </GridPane>
-                    </children>
-                </VBox>
-            </children>    
-            </VBox>
+            <!--    CalendarBox    -->
+            
         </children>
         </HBox>
     </center>
