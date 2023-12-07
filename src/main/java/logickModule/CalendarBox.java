@@ -217,8 +217,10 @@ public class CalendarBox extends StackPane implements EventHandler{
     private LocalDate parseDate(String day) throws DateTimeParseException {
         String year = Integer.toString(calendar.get(Calendar.YEAR));
         
+        
         String month = Integer.toString((calendar.get(Calendar.MONTH) + 1) % 13);
         month = (month.length() == 1)? "0" + month : month; 
+        
         
         day = (day.length() == 1)? "0" + day : day;
 
