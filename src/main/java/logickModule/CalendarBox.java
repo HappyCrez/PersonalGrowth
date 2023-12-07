@@ -24,13 +24,14 @@ public class CalendarBox extends StackPane implements EventHandler{
     // Calendar days
     private VBox rowContainer;
 
-    private Label grid[][];
+    private Button grid[][];
 
     private static final int rowCount = 6, colCount = 7;
     private static String todayLabelID = "today", passiveLabelID = "passiveDay";
 
-    private Label dayLabelForGrid;
+    private Button dayLabelForGrid;
     private LocalDate activeDate;
+    private Button activeButton;
 
     private ExtendedCalendar calendar;
     private int currentDay,
@@ -62,7 +63,7 @@ public class CalendarBox extends StackPane implements EventHandler{
         content.getChildren().addAll(MonthYearBar, rowContainer);
         this.getChildren().add(content);
 
-        grid = new Label[rowCount][colCount];
+        grid = new Button[rowCount][colCount];
 
         calendar = new ExtendedCalendar();
         currentDay = calendar.get(Calendar.DAY_OF_MONTH);
@@ -70,22 +71,22 @@ public class CalendarBox extends StackPane implements EventHandler{
         currentYear = calendar.get(Calendar.YEAR);
         
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        updateGrid();
+        refillGrid();
         
         activeDate = LocalDate.now();
     }
     
     public void setNextMonth() {
         calendar.add(Calendar.MONTH, 1);
-        updateGrid();
+        refillGrid();
     }
 
     public void setPrevMonth() {
         calendar.add(Calendar.MONTH, -1);
-        updateGrid();
+        refillGrid();
     }
     
-    private void updateGrid() {
+    private void refillGrid() {
         rowContainer.getChildren().clear();
         updateCalendarLabel();
         setMonthDays();
@@ -105,12 +106,12 @@ public class CalendarBox extends StackPane implements EventHandler{
         fillDaysOfGridMassive(dayCount, firstDayOfWeek);
         fillEndOfGridMassive(lastFillCellNum);
         
-        fillGridPane();
+        updateGridPane();
     }
 
     private void fillDaysBeforeOfGridMassive(int daysCountBefore, int firstDayOfWeek) {
         for (int i = 0; i < firstDayOfWeek; i++) {
-            dayLabelForGrid = new Label(daysCountBefore + i - firstDayOfWeek + 1 + "");
+            dayLabelForGrid = new Button(daysCountBefore + i - firstDayOfWeek + 1 + "");
             dayLabelForGrid.setId(passiveLabelID);
             grid[0][i] = dayLabelForGrid;
         }
@@ -118,7 +119,7 @@ public class CalendarBox extends StackPane implements EventHandler{
 
     private void fillDaysOfGridMassive(int dayCount, int firstDayOfWeek) {
         for (int i = 0; i < dayCount; i++) {
-            dayLabelForGrid = new Label(i + 1 + "");
+            dayLabelForGrid = new Button(i + 1 + "");
 
             int row = (i + firstDayOfWeek) / 7;
             int col = (i + firstDayOfWeek) % 7;
@@ -129,7 +130,7 @@ public class CalendarBox extends StackPane implements EventHandler{
     private void fillEndOfGridMassive(int lastFillCellNum) {
         int cellsCount = countFreeCellsAtEndOfMassive(lastFillCellNum);
         for (int i = 0; i < cellsCount; i++) {
-            dayLabelForGrid = new Label(i + 1 + "");
+            dayLabelForGrid = new Button(i + 1 + "");
             dayLabelForGrid.setId(passiveLabelID);
 
             int row = rowCount - (cellsCount - i - 1) / 7 - 1;
@@ -142,17 +143,18 @@ public class CalendarBox extends StackPane implements EventHandler{
         return rowCount * colCount - lastFillCellNum;
     }
 
-    private void fillGridPane() {
+    private void updateGridPane() {
         for (int i = 0; i < rowCount; i++) {
             HBox row = new HBox();
             row.getStyleClass().add("calendar-row");
             for (int k = 0; k < colCount; k++) {
-                Label day = grid[i][k];
+                Button day = grid[i][k];
                 if (calendar.checkForMonth(currentMonth, currentYear) &&
                     Integer.parseInt(day.getText()) == currentDay &&
                     day.getId() != passiveLabelID)
                     {
                         day.setId(todayLabelID);
+                        activeButton = day;
                     }
                 day.setOnMouseClicked(this);
                 row.getChildren().add(day);
@@ -167,19 +169,37 @@ public class CalendarBox extends StackPane implements EventHandler{
 
     @Override
     public void handle(Event event) {
-        if (event.getSource().getClass().getSimpleName().equals("Label")) {
-            Label lbl = (Label) event.getSource();
-            if (lbl.getId() != null || lbl.getId() == passiveLabelID) return;
-            String date =
-                calendar.get(Calendar.YEAR) + "-" +
-                calendar.get(Calendar.MONTH) + "-" +
-                ((lbl.getText().length() > 1) ? lbl.getText(): "0" + lbl.getText());
-            
-            activeDate = LocalDate.parse(date);
-        }
-        else {
+        Button eventItem = (Button)event.getSource();
 
+        if (eventItem == nextMonth) {
             setNextMonth();
+            return;
         }
+        else if (eventItem == prevMonth) {
+            setPrevMonth();
+            return;
+        }
+
+        if (activeButton == eventItem) return;
+        if (eventItem.getId() != null && eventItem.getId().equals(passiveLabelID)) return;
+
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        String month = Integer.toString((calendar.get(Calendar.MONTH) + 1) % 13);
+        month = (month.length() == 1)? "0" + month : month; 
+        String day = eventItem.getText();
+        day = (day.length() == 1)? "0" + day : day;
+
+        String date = String.format("%s-%s-%s", year, month, day);
+        
+        try {
+            activeDate = LocalDate.parse(date);
+        } catch (Exception e) {
+            System.out.println(String.format("Can't parse string: '%s'", date));
+            e.getStackTrace();
+        }
+
+        activeButton.getStyleClass().remove("activeDate");
+        activeButton = eventItem;
+        activeButton.getStyleClass().add("activeDate");
     }
 }
