@@ -18,7 +18,7 @@ public class CalendarBox extends StackPane implements EventHandler{
     
     private VBox content;
 
-    private HBox MonthYearBar;
+    private HBox topBar;
     private Label MonthYear;
     private Button nextMonth, prevMonth;
 	
@@ -41,7 +41,7 @@ public class CalendarBox extends StackPane implements EventHandler{
     
     public CalendarBox() {
         content = new VBox();
-        MonthYearBar = new HBox();
+        topBar = new HBox();
         
         nextMonth = new Button("",new FontIcon("mdi-arrow-up"));
         nextMonth.getStyleClass().add("btnArrow");
@@ -54,14 +54,14 @@ public class CalendarBox extends StackPane implements EventHandler{
         MonthYear = new Label();
         MonthYear.setId("calendarLabel");
 
-        MonthYearBar.getStyleClass().add("calendar-top-bar");
-        MonthYearBar.getChildren().addAll(MonthYear, nextMonth, prevMonth);
+        topBar.getStyleClass().add("calendar-top-bar");
+        topBar.getChildren().addAll(MonthYear, nextMonth, prevMonth);
 
         rowContainer = new VBox();
         rowContainer.getStyleClass().add("calendar-row-container");
 
         content.getStyleClass().add("calendar-container");
-        content.getChildren().addAll(MonthYearBar, rowContainer);
+        content.getChildren().addAll(topBar, rowContainer);
         this.getChildren().add(content);
 
         grid = new Button[rowCount][colCount];
@@ -74,30 +74,30 @@ public class CalendarBox extends StackPane implements EventHandler{
         activeDate = LocalDate.now();
         
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        refillGrid();
+        fillCallendarBox(rowContainer);
     }
     
     public void setNextMonth() {
         calendar.add(Calendar.MONTH, 1);
-        refillGrid();
+        fillCallendarBox(rowContainer);
     }
 
     public void setPrevMonth() {
         calendar.add(Calendar.MONTH, -1);
-        refillGrid();
+        fillCallendarBox(rowContainer);
     }
     
-    private void refillGrid() {
+    private void fillCallendarBox(VBox container) {
         rowContainer.getChildren().clear();
         updateCalendarLabel();
-        setMonthDays();
+        setMonthDays(container);
     }
 
     private void updateCalendarLabel() {
         MonthYear.setText(calendar.getCurrMonthName() + " " + calendar.get(Calendar.YEAR));
     }
 
-    private void setMonthDays() {
+    private void setMonthDays(VBox container) {
         int dayCount = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int firstDayOfWeek = (calendar.get(Calendar.DAY_OF_WEEK) + 5) % 7; // At java Monday - 2 ((2 + 5) % 7 = 0)
         int daysCountBefore = calendar.getCountDaysMonthBefore();
@@ -107,7 +107,7 @@ public class CalendarBox extends StackPane implements EventHandler{
         fillDaysOfGridMassive(dayCount, firstDayOfWeek);
         fillEndOfGridMassive(lastFillCellNum);
         
-        updateGridPane();
+        updateGridPane(container);
     }
 
     private void fillDaysBeforeOfGridMassive(int daysCountBefore, int firstDayOfWeek) {
@@ -146,7 +146,7 @@ public class CalendarBox extends StackPane implements EventHandler{
         return rowCount * colCount - lastFillCellNum;
     }
 
-    private void updateGridPane() {
+    private void updateGridPane(VBox container) {
         for (int i = 0; i < rowCount; i++) {
             HBox row = new HBox();
             row.getStyleClass().add("calendar-row");
@@ -170,7 +170,7 @@ public class CalendarBox extends StackPane implements EventHandler{
                 day.setOnMouseClicked(this);
                 row.getChildren().add(day);
             }
-            rowContainer.getChildren().add(row);
+            container.getChildren().add(row);
         }
     }
 
