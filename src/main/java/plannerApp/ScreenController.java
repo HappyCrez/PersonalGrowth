@@ -2,24 +2,16 @@ package plannerApp;
 
 import java.util.HashMap;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
 
 public class ScreenController {
 	
 	private HashMap<String, Parent> screens = new HashMap<String, Parent>();
-	private Scene mainScene;
 	private StackPane parentContainer;
 	
 	public ScreenController (Scene mainScene) {
-		this.mainScene = mainScene;
 		parentContainer = new StackPane();
 		parentContainer.setMinWidth(300);
 		parentContainer.setMinHeight(300);
@@ -35,6 +27,6 @@ public class ScreenController {
 		if (parentContainer.getChildren().contains(root)) {
 			parentContainer.getChildren().remove(root);
 		}
-		Animation.animate(mainScene, parentContainer, root, style);		
+		Animation.animate(parentContainer, root, style);		
 	}
 }
