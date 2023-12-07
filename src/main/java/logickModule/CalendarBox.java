@@ -1,6 +1,7 @@
 package logickModule;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -27,7 +28,7 @@ public class CalendarBox extends StackPane implements EventHandler{
     private Button grid[][];
 
     private static final int rowCount = 6, colCount = 7;
-    private static String todayLabelID = "today", passiveLabelID = "passiveDay";
+    private static String activeDateClass = "activeDate", todayID = "today", passiveDayID = "passiveDay";
 
     private Button dayLabelForGrid;
     private LocalDate activeDate;
@@ -111,16 +112,17 @@ public class CalendarBox extends StackPane implements EventHandler{
 
     private void fillDaysBeforeOfGridMassive(int daysCountBefore, int firstDayOfWeek) {
         for (int i = 0; i < firstDayOfWeek; i++) {
-            dayLabelForGrid = new Button(daysCountBefore + i - firstDayOfWeek + 1 + "");
-            dayLabelForGrid.setId(passiveLabelID);
+            String dayText = Integer.toString(daysCountBefore + i - firstDayOfWeek + 1);
+            dayLabelForGrid = new Button(dayText);
+            dayLabelForGrid.setId(passiveDayID);
             grid[0][i] = dayLabelForGrid;
         }
     }
 
     private void fillDaysOfGridMassive(int dayCount, int firstDayOfWeek) {
         for (int i = 0; i < dayCount; i++) {
-            dayLabelForGrid = new Button(i + 1 + "");
-
+            String dayText = Integer.toString(i + 1);
+            dayLabelForGrid = new Button(dayText);
             int row = (i + firstDayOfWeek) / 7;
             int col = (i + firstDayOfWeek) % 7;
             grid[row][col] = dayLabelForGrid;
@@ -130,8 +132,9 @@ public class CalendarBox extends StackPane implements EventHandler{
     private void fillEndOfGridMassive(int lastFillCellNum) {
         int cellsCount = countFreeCellsAtEndOfMassive(lastFillCellNum);
         for (int i = 0; i < cellsCount; i++) {
-            dayLabelForGrid = new Button(i + 1 + "");
-            dayLabelForGrid.setId(passiveLabelID);
+            String dayText = Integer.toString(i + 1);
+            dayLabelForGrid = new Button(dayText);
+            dayLabelForGrid.setId(passiveDayID);
 
             int row = rowCount - (cellsCount - i - 1) / 7 - 1;
             int col = (rowCount * colCount - cellsCount + i) % 7;
@@ -151,9 +154,9 @@ public class CalendarBox extends StackPane implements EventHandler{
                 Button day = grid[i][k];
                 if (calendar.checkForMonth(currentMonth, currentYear) &&
                     Integer.parseInt(day.getText()) == currentDay &&
-                    day.getId() != passiveLabelID)
+                    day.getId() != passiveDayID)
                     {
-                        day.setId(todayLabelID);
+                        day.setId(todayID);
                         activeButton = day;
                     }
                 day.setOnMouseClicked(this);
@@ -171,35 +174,43 @@ public class CalendarBox extends StackPane implements EventHandler{
     public void handle(Event event) {
         Button eventItem = (Button)event.getSource();
 
-        if (eventItem == nextMonth) {
+        if (eventItem == nextMonth)
             setNextMonth();
-            return;
-        }
-        else if (eventItem == prevMonth) {
+        else if (eventItem == prevMonth)
             setPrevMonth();
-            return;
-        }
+        else if (eventItem.getId() != null && eventItem.getId().equals(passiveDayID))
+            passiveHandle(eventItem);
+        else
+            setActiveButton(eventItem);
+    }
 
+    private void passiveHandle(Button eventItem) {
+        if (Integer.parseInt(eventItem.getText()) < 15) setPrevMonth();
+        else setNextMonth();
+    }
+
+    private void setActiveButton(Button eventItem) {
         if (activeButton == eventItem) return;
-        if (eventItem.getId() != null && eventItem.getId().equals(passiveLabelID)) return;
 
+        try {
+            activeDate = parseDate(eventItem.getText());
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+        activeButton.getStyleClass().remove(activeDateClass);
+        activeButton = eventItem;
+        activeButton.getStyleClass().add(activeDateClass);
+    }
+
+    private LocalDate parseDate(String day) throws DateTimeParseException {
         String year = Integer.toString(calendar.get(Calendar.YEAR));
+        
         String month = Integer.toString((calendar.get(Calendar.MONTH) + 1) % 13);
         month = (month.length() == 1)? "0" + month : month; 
-        String day = eventItem.getText();
+        
         day = (day.length() == 1)? "0" + day : day;
 
         String date = String.format("%s-%s-%s", year, month, day);
-        
-        try {
-            activeDate = LocalDate.parse(date);
-        } catch (Exception e) {
-            System.out.println(String.format("Can't parse string: '%s'", date));
-            e.getStackTrace();
-        }
-
-        activeButton.getStyleClass().remove("activeDate");
-        activeButton = eventItem;
-        activeButton.getStyleClass().add("activeDate");
+        return LocalDate.parse(date);
     }
 }
