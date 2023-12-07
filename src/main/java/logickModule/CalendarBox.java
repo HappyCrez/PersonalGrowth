@@ -7,11 +7,17 @@ import java.util.Calendar;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import javafx.event.ActionEvent;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class CalendarBox extends StackPane {
     
@@ -21,8 +27,9 @@ public class CalendarBox extends StackPane {
     private Label MonthYear;
     private Button nextMonth, prevMonth;
 	
-    // Calendar days
-    private VBox rowContainer;
+    // Calendar containers
+    private VBox calendarContainer;
+    private VBox nextCalendarContainer;
 
     private Button grid[][];
 
@@ -53,11 +60,11 @@ public class CalendarBox extends StackPane {
         topBar.getStyleClass().add("calendar-top-bar");
         topBar.getChildren().addAll(MonthYear, nextMonth, prevMonth);
 
-        rowContainer = new VBox();
-        rowContainer.getStyleClass().add("calendar-row-container");
+        calendarContainer = new VBox();
+        calendarContainer.getStyleClass().add("calendar-row-container");
 
         content.getStyleClass().add("calendar-container");
-        content.getChildren().addAll(topBar, rowContainer);
+        content.getChildren().addAll(topBar, calendarContainer);
         this.getChildren().add(content);
 
         grid = new Button[rowCount][colCount];
@@ -70,21 +77,39 @@ public class CalendarBox extends StackPane {
         activeDate = LocalDate.now();
         
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        fillCallendarBox(rowContainer);
+        fillCallendarBox(calendarContainer);
     }
     
     public void setNextMonth() {
         calendar.add(Calendar.MONTH, 1);
-        fillCallendarBox(rowContainer);
+        fillCallendarBox(calendarContainer);
     }
 
     public void setPrevMonth() {
         calendar.add(Calendar.MONTH, -1);
-        fillCallendarBox(rowContainer);
+        fillCallendarBox(calendarContainer);
     }
 
     public String getActiveDate() {
         return activeDate.toString();
+    }
+
+    private void onSwitchAnimation(final Pane prevPane, final Pane nextPane) {
+        nextPane.translateYProperty().set(prevPane.getHeight());
+		this.getChildren().add(nextPane);
+        
+		Timeline timeline = new Timeline();
+        float timeDelay = 0.1f;
+		KeyValue prevPaneMovement = new KeyValue(prevPane.translateYProperty(), -prevPane.getHeight(), Interpolator.LINEAR);
+		KeyFrame prevPaneKeyFrame = new KeyFrame(Duration.seconds(timeDelay), prevPaneMovement);
+		KeyValue nextPaneMovement = new KeyValue(nextPane.translateYProperty(), 40, Interpolator.LINEAR);
+		KeyFrame nextPaneKeyFrame = new KeyFrame(Duration.seconds(timeDelay), nextPaneMovement);
+		timeline.getKeyFrames().addAll(prevPaneKeyFrame, nextPaneKeyFrame);
+        timeline.onFinishedProperty().set((ActionEvent e)->{
+            prevPane.getChildren().clear();
+            calendarContainer = nextCalendarContainer;
+        });
+		timeline.play();
     }
     
     private Button createArrow(FontIcon content) {
@@ -94,7 +119,7 @@ public class CalendarBox extends StackPane {
     }
     
     private void fillCallendarBox(VBox container) {
-        rowContainer.getChildren().clear();
+        container.getChildren().clear();
         updateCalendarLabel();
         setMonthDays(container);
     }
