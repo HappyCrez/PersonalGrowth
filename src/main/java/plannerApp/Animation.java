@@ -5,7 +5,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
@@ -18,19 +17,19 @@ public class Animation {
 		downToUp
 	}
 
-    public static void animate(Scene scene, Pane parent, Parent children, animationStyles style) {
+    public static void animate(Pane parent, Parent children, animationStyles style) {
         switch (style) {
             case instantShow:
-                instantShowAnimation(scene, parent, children);
+                instantShowAnimation(parent, children);
                 break;
             case rightToLeft:
-                rightToLeftAnimation(scene, parent, children);
+                rightToLeftAnimation(parent, children);
                 break;
             case leftToRight:
-                leftToRightAnimation(scene, parent, children);
+                leftToRightAnimation(parent, children);
                 break;
             case downToUp:
-                downToUpAnimation(scene, parent, children);
+                downToUpAnimation(parent, children);
                 break;
             default:
                 System.out.println("Unrecognize style in activateScreen func: " + style);
@@ -38,23 +37,12 @@ public class Animation {
             }
     }
 	
-    private static void instantShowAnimation(Scene scene, Pane parent, Parent children) {
+    private static void instantShowAnimation(Pane parent, Parent children) {
 		parent.getChildren().add(children);
 	}
 	
-	private static void rightToLeftAnimation(Scene scene, Pane parent, Parent children) {
-		children.translateXProperty().set(scene.getWidth());
-		parent.getChildren().add(children);
-		
-		Timeline timeline = new Timeline();
-		KeyValue kv = new KeyValue(children.translateXProperty(), 0, Interpolator.EASE_IN);
-		KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
-		timeline.getKeyFrames().add(kf);
-		timeline.play();
-	}
-	
-	private static void leftToRightAnimation(Scene scene, Pane parent, Parent children) {
-		children.translateXProperty().set(-scene.getWidth());
+	private static void rightToLeftAnimation(Pane parent, Parent children) {
+		children.translateXProperty().set(parent.getWidth());
 		parent.getChildren().add(children);
 		
 		Timeline timeline = new Timeline();
@@ -64,8 +52,19 @@ public class Animation {
 		timeline.play();
 	}
 	
-	private static void downToUpAnimation(Scene scene, Pane parent, Parent children) {
-		children.translateYProperty().set(scene.getHeight());
+	private static void leftToRightAnimation(Pane parent, Parent children) {
+		children.translateXProperty().set(-parent.getWidth());
+		parent.getChildren().add(children);
+		
+		Timeline timeline = new Timeline();
+		KeyValue kv = new KeyValue(children.translateXProperty(), 0, Interpolator.EASE_IN);
+		KeyFrame kf = new KeyFrame(Duration.seconds(0.3), kv);
+		timeline.getKeyFrames().add(kf);
+		timeline.play();
+	}
+	
+	private static void downToUpAnimation(Pane parent, Parent children) {
+		children.translateYProperty().set(parent.getHeight());
 		parent.getChildren().add(children);
 		
 		Timeline timeline = new Timeline();

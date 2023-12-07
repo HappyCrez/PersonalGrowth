@@ -35,6 +35,6 @@ public class ScreenController {
 		if (parentContainer.getChildren().contains(root)) {
 			parentContainer.getChildren().remove(root);
 		}
-		Animation.animate(mainScene, parentContainer, root, style);		
+		Animation.animate(parentContainer, root, style);		
 	}
 }
