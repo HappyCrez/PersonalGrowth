@@ -12,7 +12,7 @@ public class ExtendedCalendar extends GregorianCalendar{
         return daysCount;
     }
 
-    public boolean checkForMonth(int month, int year) {
+    public boolean compareMonthYear(int month, int year) {
         if (get(Calendar.MONTH) == month &&
             get(Calendar.YEAR) == year)
                 return true;

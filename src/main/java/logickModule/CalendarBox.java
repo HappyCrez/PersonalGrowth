@@ -6,15 +6,14 @@ import java.util.Calendar;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class CalendarBox extends StackPane implements EventHandler{
+public class CalendarBox extends StackPane {
     
     private VBox content;
 
@@ -43,13 +42,10 @@ public class CalendarBox extends StackPane implements EventHandler{
         content = new VBox();
         topBar = new HBox();
         
-        nextMonth = new Button("",new FontIcon("mdi-arrow-up"));
-        nextMonth.getStyleClass().add("btnArrow");
-        nextMonth.setOnAction(this);
-
-        prevMonth = new Button("",new FontIcon("mdi-arrow-down"));
-        prevMonth.getStyleClass().add("btnArrow");
-        prevMonth.setOnAction(this);
+        nextMonth = createArrow(new FontIcon("mdi-arrow-up"));
+        nextMonth.setOnAction((ActionEvent e)-> {setNextMonth();});
+        prevMonth = createArrow(new FontIcon("mdi-arrow-down"));
+        prevMonth.setOnAction((ActionEvent e)-> {setPrevMonth();});
         
         MonthYear = new Label();
         MonthYear.setId("calendarLabel");
@@ -85,6 +81,16 @@ public class CalendarBox extends StackPane implements EventHandler{
     public void setPrevMonth() {
         calendar.add(Calendar.MONTH, -1);
         fillCallendarBox(rowContainer);
+    }
+
+    public String getActiveDate() {
+        return activeDate.toString();
+    }
+    
+    private Button createArrow(FontIcon content) {
+        Button btnArrow = new Button("", content);
+        btnArrow.getStyleClass().add("btnArrow");
+        return btnArrow;
     }
     
     private void fillCallendarBox(VBox container) {
@@ -152,57 +158,56 @@ public class CalendarBox extends StackPane implements EventHandler{
             row.getStyleClass().add("calendar-row");
             for (int k = 0; k < colCount; k++) {
                 Button day = grid[i][k];
+                row.getChildren().add(day);
+                
+                if (day.getId() == passiveDayID) {
+                    day.setOnAction((ActionEvent e) -> { passiveHandle(e); });
+                    continue;
+                }
+                else {
+                    day.setOnAction((ActionEvent e) -> { activeHandle(e); });
+                }
 
-                int activeDay = activeDate.getDayOfMonth();
-                int activeMonth = (activeDate.getMonthValue() - 1) % 12;
-                int activeYear = activeDate.getYear();    
-
-                if (calendar.checkForMonth(activeMonth, activeYear) &&
-                    Integer.parseInt(day.getText()) == activeDay &&
-                    day.getId() != passiveDayID)
+                if (compareActiveDate(day))
                     { setActiveButton(day); }
 
-                if (calendar.checkForMonth(currentMonth, currentYear) &&
-                    Integer.parseInt(day.getText()) == currentDay &&
-                    day.getId() != passiveDayID)
-                    {   day.setId(todayID); }
+                if (calendar.compareMonthYear(currentMonth, currentYear) &&
+                    Integer.parseInt(day.getText()) == currentDay)
+                    { day.setId(todayID); }
 
-                day.setOnMouseClicked(this);
-                row.getChildren().add(day);
             }
             container.getChildren().add(row);
         }
     }
 
-    public String getActiveDate() {
-        return activeDate.toString();
+    private boolean compareActiveDate(Button day) {
+        int activeDay = activeDate.getDayOfMonth();
+        int activeMonth = (activeDate.getMonthValue() - 1) % 12;
+        int activeYear = activeDate.getYear();
+
+        if (calendar.compareMonthYear(activeMonth, activeYear) &&
+            Integer.parseInt(day.getText()) == activeDay)
+            return true;
+        return false;
     }
 
-    @Override
-    public void handle(Event event) {
+    private void passiveHandle(ActionEvent event) {
         Button eventItem = (Button)event.getSource();
-
-        if (eventItem == nextMonth)
-            setNextMonth();
-        else if (eventItem == prevMonth)
-            setPrevMonth();
-        else if (eventItem.getId() != null && eventItem.getId().equals(passiveDayID))
-            passiveHandle(eventItem);
-        else
-            setActiveButton(eventItem);
-    }
-
-    private void passiveHandle(Button eventItem) {
         if (Integer.parseInt(eventItem.getText()) < 15) setPrevMonth();
         else setNextMonth();
     }
 
-    private void setActiveButton(Button eventItem) {
-        if (activeButton == eventItem) return;
+    private void activeHandle(ActionEvent event) {
+        Button eventItem = (Button)event.getSource();
+        setActiveButton(eventItem);
+    }
 
-        updateActiveDate(eventItem);
+    private void setActiveButton(Button btn) {
+        if (activeButton == btn) return;
+
+        updateActiveDate(btn);
         if (activeButton != null) activeButton.getStyleClass().remove(activeDateClass);
-        activeButton = eventItem;
+        activeButton = btn;
         activeButton.getStyleClass().add(activeDateClass);
     }
 
@@ -217,10 +222,8 @@ public class CalendarBox extends StackPane implements EventHandler{
     private LocalDate parseDate(String day) throws DateTimeParseException {
         String year = Integer.toString(calendar.get(Calendar.YEAR));
         
-        
         String month = Integer.toString((calendar.get(Calendar.MONTH) + 1) % 13);
         month = (month.length() == 1)? "0" + month : month; 
-        
         
         day = (day.length() == 1)? "0" + day : day;
 
