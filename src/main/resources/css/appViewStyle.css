@@ -182,3 +182,7 @@
     -fx-border-radius: 100%;
     -fx-border-insets: 2px;
 }
+
+.activeDate:hover {
+    -fx-background-radius: 100%;
+}
