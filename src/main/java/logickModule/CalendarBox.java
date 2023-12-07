@@ -71,10 +71,10 @@ public class CalendarBox extends StackPane implements EventHandler{
         currentMonth = calendar.get(Calendar.MONTH);
         currentYear = calendar.get(Calendar.YEAR);
         
+        activeDate = LocalDate.now();
+        
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         refillGrid();
-        
-        activeDate = LocalDate.now();
     }
     
     public void setNextMonth() {
@@ -152,13 +152,21 @@ public class CalendarBox extends StackPane implements EventHandler{
             row.getStyleClass().add("calendar-row");
             for (int k = 0; k < colCount; k++) {
                 Button day = grid[i][k];
+
+                int activeDay = activeDate.getDayOfMonth();
+                int activeMonth = (activeDate.getMonthValue() - 1) % 12;
+                int activeYear = activeDate.getYear();    
+
+                if (calendar.checkForMonth(activeMonth, activeYear) &&
+                    Integer.parseInt(day.getText()) == activeDay &&
+                    day.getId() != passiveDayID)
+                    { setActiveButton(day); }
+
                 if (calendar.checkForMonth(currentMonth, currentYear) &&
                     Integer.parseInt(day.getText()) == currentDay &&
                     day.getId() != passiveDayID)
-                    {
-                        day.setId(todayID);
-                        activeButton = day;
-                    }
+                    {   day.setId(todayID); }
+
                 day.setOnMouseClicked(this);
                 row.getChildren().add(day);
             }
@@ -193,7 +201,7 @@ public class CalendarBox extends StackPane implements EventHandler{
         if (activeButton == eventItem) return;
 
         updateActiveDate(eventItem);
-        activeButton.getStyleClass().remove(activeDateClass);
+        if (activeButton != null) activeButton.getStyleClass().remove(activeDateClass);
         activeButton = eventItem;
         activeButton.getStyleClass().add(activeDateClass);
     }
