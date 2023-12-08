@@ -12,6 +12,20 @@
   <build>
     <plugins>
         <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.19.1</version>
+            <configuration>
+                <useFile>false</useFile>    
+            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-surefire-provider</artifactId>
+                    <version>1.0.0-M2</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+        <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.0</version>
             <configuration>
@@ -65,8 +79,15 @@
 	<dependency>
 		  <groupId>org.junit.jupiter</groupId>	
 	      <artifactId>junit-jupiter-api</artifactId>
-	      <version>5.10.0</version>
+	      <version>5.0.0-M2</version>
+          <scope>test</scope>
 	</dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.0.0-M2</version>
+        <scope>test</scope>
+    </dependency>
     <dependency>
         <groupId>org.kordamp.ikonli</groupId>
         <artifactId>ikonli-javafx</artifactId>
