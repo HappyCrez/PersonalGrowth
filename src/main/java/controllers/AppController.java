@@ -59,9 +59,12 @@ public class AppController {
     void addTask() {
         TaskItem taskItem = new TaskItem(
             contentField.getText(),
-            calendarBox.getActiveDate());
+            calendarBox.getActiveDate()
+            );
         list.add(taskItem);
         taskList.getChildren().clear();
         taskList.getChildren().addAll(list);
+        
+        contentField.setText("");
     }
 }

@@ -2,25 +2,29 @@
 
 .topBar {
     -fx-max-width: 300px;
-    -fx-pref-width: 150px;
-    -fx-pref-height: 70px;
+    -fx-pref-height: 80px;
     
     -fx-alignment: center;
-    -fx-spacing: 20px;
-    -fx-padding: 20px 50px;
-    -fx-background-color: root-blocks-color;
+    -fx-spacing: 25px;
+    -fx-background-color: transparent;
     -fx-background-radius: 10px;
     -fx-background-insets: 10px;
 }
 
 .topBar > .button {
-    -fx-pref-width: 80px;
-    -fx-pref-height: 30px;
+    -fx-pref-width: 90px;
+    -fx-pref-height: 40px;
     -fx-background-radius: 5px;
 }
 
 .topBar > .button > .ikonli-font-icon {
-    -fx-icon-size: 17px;
+    -fx-icon-size: 20px;
+}
+
+/* TOP_BAR LOGO */
+#logo {
+    -fx-effect: dropshadow(three-pass-box, rgb(0, 0, 0), 0, 0, 0, 0);
+    -fx-image: url("../images/logo.png");
 }
 
 /*      Center       */

@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
 
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
@@ -18,25 +19,34 @@
     
     <!-- TOP BAR MOVEMENT BUTTONS -->
     <top>
-        <HBox  styleClass="topBar"
-                    BorderPane.alignment="CENTER" >
-            <children>
-                <Button styleClass="barButton"
-                        fx:id="toTimer"
-                        onAction="#toTimerClicked"   >
-                    <graphic>
-                        <FontIcon iconLiteral="mdi-clock"/>
-                    </graphic>
-                </Button>
-                <Button styleClass="barButton"
-                        fx:id="toSettings"
-                        onAction="#toSettingsClicked">
-                    <graphic>
-                        <FontIcon iconLiteral="mdi-settings"/>
-                    </graphic>
-                </Button>
-            </children>
-        </HBox>
+        <AnchorPane>
+        <children>
+            <ImageView  fx:id="logo"
+                        fitWidth="70"
+                        fitHeight="70"
+                        AnchorPane.leftAnchor="100.0"
+                        AnchorPane.topAnchor="10.0" />
+            <HBox   styleClass="topBar"
+                    AnchorPane.rightAnchor="50.0">
+                <children>
+                    <Button styleClass="barButton"
+                            fx:id="toTimer"
+                            onAction="#toTimerClicked"   >
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-clock"/>
+                        </graphic>
+                    </Button>
+                    <Button styleClass="barButton"
+                            fx:id="toSettings"
+                            onAction="#toSettingsClicked">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-settings"/>
+                        </graphic>
+                    </Button>
+                </children>
+            </HBox>
+        </children>
+        </AnchorPane>
     </top>
 
     <center>
@@ -51,12 +61,12 @@
                         <AnchorPane styleClass="taskForm">
                             <children>
                                 <TextArea fx:id="contentField"
-                                    AnchorPane.leftAnchor="0"
-                                    AnchorPane.topAnchor="0"
-                                    AnchorPane.bottomAnchor="0"/>
+                                    AnchorPane.leftAnchor="0.0"
+                                    AnchorPane.topAnchor="0.0"
+                                    AnchorPane.bottomAnchor="0.0"/>
                                 <Button fx:id="addButton" onAction="#addTask"
-                                    AnchorPane.rightAnchor="10"
-                                    AnchorPane.bottomAnchor="0">
+                                    AnchorPane.rightAnchor="10.0"
+                                    AnchorPane.bottomAnchor="0.0">
                                     <graphic>
                                         <FontIcon styleClass="small-icon" iconLiteral="mdi-plus"/>
                                     </graphic>

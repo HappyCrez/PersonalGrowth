@@ -1,5 +1,5 @@
 .root {
-    root-light-color: #102e4a;
+    root-light-color: #acb0b5;
     root-dark-color: #855757;
     
     root-blocks-color: #fff; 
@@ -19,14 +19,16 @@
     -fx-background-color: root-light-color;
 }
 
+/*      SCROLL-PANE      */
+
 .scroll-pane {
     -fx-alignment: center;
+
+    -fx-background-color: transparent;
     
     -fx-hbar-policy: never;
     -fx-vbar-policy: as-needed;
 }
-
-/*      SCROLL-PANE      */
 
 .scroll-pane > .viewport {
     -fx-background-color: root-light-color;
