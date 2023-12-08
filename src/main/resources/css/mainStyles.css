@@ -1,6 +1,6 @@
 .root {
-    root-light-color: #d3d6da;
-    root-dark-color: #3c2d2d;
+    root-light-color: #102e4a;
+    root-dark-color: #855757;
     
     root-blocks-color: #fff; 
     root-task-list-color: #adb3b9;
@@ -22,9 +22,6 @@
 .scroll-pane {
     -fx-alignment: center;
     
-    -fx-border-color: root-dark-color;
-    -fx-border-width: 0;
-    
     -fx-hbar-policy: never;
     -fx-vbar-policy: as-needed;
 }
@@ -38,6 +35,7 @@
 .scroll-pane > .scroll-bar:vertical {
     -fx-background-color: root-scroller-bg-color;
     -fx-background-radius: 5px;
+    -fx-pref-width: 5px;
 }
 
 /*      REMOVE SCROLL BUTTONS         */
@@ -66,19 +64,6 @@
 
 .ikonli-font-icon {
     -fx-icon-size: 20px;
-}
-
-.task-item {
-    -fx-alignment: top-left;
-    -fx-spacing: 20px;
-    -fx-padding: 5px 5px;
-    -fx-border-color: #000;
-    -fx-border-width: 0 0 1px 0;
-}
-
-.task-item > .label{
-    -fx-max-width: 150px;
-    -fx-wrap-text: true;
 }
 
 .button {

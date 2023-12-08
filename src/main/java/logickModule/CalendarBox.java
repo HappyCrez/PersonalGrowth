@@ -96,7 +96,7 @@ public class CalendarBox extends StackPane {
 		timeline.getKeyFrames().addAll(prevPaneKeyFrame, nextPaneKeyFrame);
         timeline.onFinishedProperty().set((ActionEvent e)->{
             prevPane.getChildren().clear();
-            calendarContainer = nextCalendarContainer;
+            calendarContainer = nextCalendarContainer;  // Can't 
         });
 		timeline.play();
     }

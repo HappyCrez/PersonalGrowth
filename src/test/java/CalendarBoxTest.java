@@ -13,6 +13,6 @@ class CalendarBoxTest {
 
     @Test
     public void sampleTest() {
-        
+        assertEquals(2, 1 + 1);
     }
 }

@@ -25,9 +25,14 @@ public class TaskItem extends AnchorPane{
 		group.getStyleClass().add("task-left-group");
 		
 		this.getChildren().addAll(this.contentField, group);
-		this.getStyleClass().add("task-item");
+		this.getStyleClass().add("taskItem");
 
+
+		setTopAnchor(contentField, 10.0);
+		setBottomAnchor(contentField, 10.0);
 		setLeftAnchor(contentField, 0.0);
+		setTopAnchor(group, 10.0);
+		setBottomAnchor(group, 10.0);
 		setRightAnchor(group, 0.0);
 	}
 	

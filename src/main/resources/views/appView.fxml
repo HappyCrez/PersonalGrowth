@@ -18,25 +18,25 @@
     
     <!-- TOP BAR MOVEMENT BUTTONS -->
     <top>
-        <ButtonBar  styleClass="topBar"
+        <HBox  styleClass="topBar"
                     BorderPane.alignment="CENTER" >
-            <buttons>
-                <Button styleClass="barButtons"
+            <children>
+                <Button styleClass="barButton"
                         fx:id="toTimer"
                         onAction="#toTimerClicked"   >
                     <graphic>
                         <FontIcon iconLiteral="mdi-clock"/>
                     </graphic>
                 </Button>
-                <Button styleClass="barButtons"
+                <Button styleClass="barButton"
                         fx:id="toSettings"
                         onAction="#toSettingsClicked">
                     <graphic>
                         <FontIcon iconLiteral="mdi-settings"/>
                     </graphic>
                 </Button>
-            </buttons>
-        </ButtonBar>
+            </children>
+        </HBox>
     </top>
 
     <center>

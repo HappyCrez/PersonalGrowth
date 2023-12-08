@@ -1,5 +1,6 @@
 package loader;
 
+import controllers.LoadHelper;
 import javafx.application.Preloader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
@@ -8,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import plannerApp.LoadHelper;
 
 public class LoadWindow extends Preloader {
     
