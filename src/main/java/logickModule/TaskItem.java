@@ -1,5 +1,7 @@
 package logickModule;
 
+import java.time.LocalDate;
+
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -10,9 +12,9 @@ public class TaskItem extends AnchorPane{
 	private CheckBox checkerField;
 	private Label dateField;
 
-	private Date dateInfo;
+	private LocalDate dateInfo;
 
-	public TaskItem(String content, Date date) {
+	public TaskItem(String content, LocalDate date) {
 		this.contentField = new Label(content);
 		this.dateField = new Label(date.toString());
 		this.dateInfo = date;
@@ -27,7 +29,7 @@ public class TaskItem extends AnchorPane{
 		setRightAnchor(group, 0.0);
 	}
 	
-	public Date getDateField() {
+	public LocalDate getDateField() {
 		return dateInfo;
 	}
 
