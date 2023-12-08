@@ -2,6 +2,7 @@ package plannerApp;
 
 import java.util.HashMap;
 
+import controllers.Animation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;

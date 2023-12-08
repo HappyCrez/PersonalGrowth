@@ -1,4 +1,4 @@
-package plannerApp;
+package controllers;
 
 import java.time.LocalDate;
 
@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import logickModule.CalendarBox;
 import logickModule.TaskItem;
+import plannerApp.ScreenController;
 
 public class AppController {
     ScreenController controller;
