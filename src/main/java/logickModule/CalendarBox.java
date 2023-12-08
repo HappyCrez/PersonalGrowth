@@ -207,7 +207,7 @@ public class CalendarBox extends StackPane {
 
     private boolean compareActiveDate(Button day) {
         int activeDay = activeDate.getDayOfMonth();
-        int activeMonth = (activeDate.getMonthValue() - 1) % 12;
+        int activeMonth = activeDate.getMonthValue();
         int activeYear = activeDate.getYear();
 
         if (calendar.compareMonthYear(activeMonth, activeYear) &&
@@ -247,7 +247,7 @@ public class CalendarBox extends StackPane {
     private LocalDate parseDate(String day) throws DateTimeParseException {
         String year = Integer.toString(calendar.get(Calendar.YEAR));
         
-        String month = Integer.toString((calendar.get(Calendar.MONTH) + 1) % 13);
+        String month = Integer.toString(calendar.get(Calendar.MONTH));
         month = (month.length() == 1)? "0" + month : month; 
         
         day = (day.length() == 1)? "0" + day : day;
