@@ -13,18 +13,12 @@
 
 .topBar > .button {
     -fx-pref-width: 90px;
-    -fx-pref-height: 40px;
+    -fx-pref-height: 30px;
     -fx-background-radius: 5px;
 }
 
 .topBar > .button > .ikonli-font-icon {
-    -fx-icon-size: 20px;
-}
-
-/* TOP_BAR LOGO */
-#logo {
-    -fx-effect: dropshadow(three-pass-box, rgb(0, 0, 0), 0, 0, 0, 0);
-    -fx-image: url("../images/logo.png");
+    -fx-icon-size: 18px;
 }
 
 /*      Center       */
@@ -56,16 +50,22 @@
 }
 
 .taskItem {
-    -fx-alignment: top-left;
-    -fx-spacing: 20px;
     -fx-padding: 10px;
     -fx-background-color: #eeeded;
     -fx-background-radius: 5px;
 }
 
-.taskItem > .label{
-    -fx-max-width: 150px;
+.taskItem > .taskContent {
+    -fx-max-width: 300px;
     -fx-wrap-text: true;
+
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #999;
+}
+
+.taskItem > .secondaryInfo {
+    -fx-alignment: bottom-right;
+    -fx-font-size: 0.9em;
 }
 
 .taskItem:hover {
@@ -171,7 +171,7 @@
 }
 
 .btnArrow:hover > .ikonli-font-icon {
-    -fx-icon-color: root-light-color;
+    -fx-icon-color: #000;
 }
 
 #calendarLabel {
@@ -205,13 +205,15 @@
 }
 
 .activeDate {
-    /* -fx-background-color: root-append-color!important; */
     -fx-border-width: 1px;
     -fx-border-color: root-append-color;
-    -fx-border-radius: 100%;
+    -fx-border-radius: 5px;
     -fx-border-insets: 2px;
+    
+    /* -fx-background-color: root-append-color!important; */
+    /* -fx-border-radius: 100%; */
 }
 
 .activeDate:hover {
-    -fx-background-radius: 100%;
+    /* -fx-background-radius: 100%; */
 }

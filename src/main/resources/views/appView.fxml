@@ -21,11 +21,6 @@
     <top>
         <AnchorPane>
         <children>
-            <ImageView  fx:id="logo"
-                        fitWidth="70"
-                        fitHeight="70"
-                        AnchorPane.leftAnchor="100.0"
-                        AnchorPane.topAnchor="10.0" />
             <HBox   styleClass="topBar"
                     AnchorPane.rightAnchor="50.0">
                 <children>
