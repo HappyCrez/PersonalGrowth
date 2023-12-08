@@ -1,4 +1,4 @@
-package plannerApp;
+package controllers;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
