@@ -7,18 +7,18 @@ import java.util.HashMap;
 public class ExtendedCalendar extends GregorianCalendar{
     
     public static HashMap <Integer, String> monthDict = new HashMap<>() {{
-        put(1,  "Январь"    );
-        put(2,  "Февраль"   );
-        put(3,  "Март"      );
-        put(4,  "Апрель"    );
-        put(5,  "Май"       );
-        put(6,  "Июнь"      );
-        put(7,  "Июль"      );
-        put(8,  "Август"    );
-        put(9,  "Сентябрь"  );
-        put(10, "Октябрь"   );
-        put(11, "Ноябрь"    );
-        put(12, "Декабрь"   );
+        put(0,  "Январь"    );
+        put(1,  "Февраль"   );
+        put(2,  "Март"      );
+        put(3,  "Апрель"    );
+        put(4,  "Май"       );
+        put(5,  "Июнь"      );
+        put(6,  "Июль"      );
+        put(7,  "Август"    );
+        put(8,  "Сентябрь"  );
+        put(9,  "Октябрь"   );
+        put(10, "Ноябрь"    );
+        put(11, "Декабрь"   );
     }};
 
     public int getCountDaysMonthBefore() {
@@ -37,13 +37,5 @@ public class ExtendedCalendar extends GregorianCalendar{
 
     public String getCurrMonthName() {
         return monthDict.get(this.get(Calendar.MONTH));
-    }
-
-    @Override
-    public int get(int field) {
-        // Java numerate months starts from 0
-        if (field == Calendar.MONTH)
-            return super.get(field) + 1;
-        return super.get(field);
     }
 }

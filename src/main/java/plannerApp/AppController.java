@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import logickModule.CalendarBox;
+import logickModule.Date;
 import logickModule.TaskItem;
 
 public class AppController {
@@ -39,7 +40,7 @@ public class AppController {
         for (Node e : taskList.getChildren())
             list.add(e);
         for (int i = 0; i < 2; i++)
-            list.add(new TaskItem("Content", LocalDate.now().toString()));
+            list.add(new TaskItem("Content", new Date(1,1,1973)));
 		taskList.getChildren().clear();
         taskList.getChildren().addAll(list);
     }

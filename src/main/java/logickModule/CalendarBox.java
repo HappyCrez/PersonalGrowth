@@ -37,7 +37,7 @@ public class CalendarBox extends StackPane {
     private static String activeDateClass = "activeDate", todayID = "today", passiveDayID = "passiveDay";
 
     private Button dayLabelForGrid;
-    private LocalDate activeDate;
+    private Date activeDate;
     private Button activeButton;
 
     private ExtendedCalendar calendar;
@@ -74,7 +74,7 @@ public class CalendarBox extends StackPane {
         currentMonth = calendar.get(Calendar.MONTH);
         currentYear = calendar.get(Calendar.YEAR);
         
-        activeDate = LocalDate.now();
+        activeDate = Date.now();
         
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         fillCallendarBox(calendarContainer);
@@ -90,8 +90,8 @@ public class CalendarBox extends StackPane {
         fillCallendarBox(calendarContainer);
     }
 
-    public String getActiveDate() {
-        return activeDate.toString();
+    public Date getActiveDate() {
+        return activeDate;
     }
 
     private void onSwitchAnimation(final Pane prevPane, final Pane nextPane) {
@@ -206,8 +206,8 @@ public class CalendarBox extends StackPane {
     }
 
     private boolean compareActiveDate(Button day) {
-        int activeDay = activeDate.getDayOfMonth();
-        int activeMonth = activeDate.getMonthValue();
+        int activeDay = activeDate.getDate();
+        int activeMonth = activeDate.getMonth();
         int activeYear = activeDate.getYear();
 
         if (calendar.compareMonthYear(activeMonth, activeYear) &&
@@ -244,15 +244,9 @@ public class CalendarBox extends StackPane {
         }
     }
 
-    private LocalDate parseDate(String day) throws DateTimeParseException {
-        String year = Integer.toString(calendar.get(Calendar.YEAR));
-        
-        String month = Integer.toString(calendar.get(Calendar.MONTH));
-        month = (month.length() == 1)? "0" + month : month; 
-        
-        day = (day.length() == 1)? "0" + day : day;
-
-        String date = String.format("%s-%s-%s", year, month, day);
-        return LocalDate.parse(date);
+    private Date parseDate(String day) throws DateTimeParseException {
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        return new Date(Integer.parseInt(day), month, year);
     }
 }

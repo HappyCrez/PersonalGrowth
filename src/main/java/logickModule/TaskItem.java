@@ -4,46 +4,46 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import java.time.LocalDate;
 
 public class TaskItem extends AnchorPane{
-	private Label contentLabel;
-	private CheckBox checkTask;
-	private Label date;
-	private LocalDate dateInfo;
+	private Label contentField;
+	private CheckBox checkerField;
+	private Label dateField;
 
-	public TaskItem(String content, String date) {
-		this.contentLabel = new Label(content);
-		this.date = new Label(date);
-		this.dateInfo = LocalDate.parse(date);
-		this.checkTask = new CheckBox();
-		HBox group = new HBox(this.date, this.checkTask);
+	private Date dateInfo;
+
+	public TaskItem(String content, Date date) {
+		this.contentField = new Label(content);
+		this.dateField = new Label(date.toString());
+		this.dateInfo = date;
+		this.checkerField = new CheckBox();
+		HBox group = new HBox(this.dateField, this.checkerField);
 		group.getStyleClass().add("task-left-group");
 		
-		this.getChildren().addAll(this.contentLabel, group);
+		this.getChildren().addAll(this.contentField, group);
 		this.getStyleClass().add("task-item");
 
-		setLeftAnchor(contentLabel, 0.0);
+		setLeftAnchor(contentField, 0.0);
 		setRightAnchor(group, 0.0);
 	}
 	
-	public LocalDate getDate() {
+	public Date getDateField() {
 		return dateInfo;
 	}
 
-	public CheckBox getCheckTask() {
-		return checkTask;
+	public CheckBox getCheckerField() {
+		return checkerField;
 	}
 
 	public void setContent(String content) {
-		this.contentLabel.setText(content);
+		this.contentField.setText(content);
 	}
 	
 	public void setDateTask(String DateTask) {
-		this.date.setText(DateTask);
+		this.dateField.setText(DateTask);
 	}
 
-	public void setCheckTask(CheckBox checkBox) {
-		this.checkTask = checkBox;
+	public void setCheckerField(CheckBox checkBox) {
+		this.checkerField = checkBox;
 	}
 }
