@@ -10,7 +10,7 @@ class ExtendedCalendarTest {
     ExtendedCalendarTest () {
         calendar = new ExtendedCalendar();
     }
-    
+
     @Test
     public void compareMonthYearTest() {
         int monthTest = 1, yearTest = 1970;

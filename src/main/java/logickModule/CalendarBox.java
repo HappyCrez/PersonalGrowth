@@ -1,6 +1,5 @@
 package logickModule;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 
@@ -244,9 +243,9 @@ public class CalendarBox extends StackPane {
         }
     }
 
-    private Date parseDate(String day) throws DateTimeParseException {
+    private Date parseDate(String date) throws DateTimeParseException {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
-        return new Date(Integer.parseInt(day), month, year);
+        return new Date(Integer.parseInt(date), month, year);
     }
 }

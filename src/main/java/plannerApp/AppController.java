@@ -40,7 +40,7 @@ public class AppController {
         for (Node e : taskList.getChildren())
             list.add(e);
         for (int i = 0; i < 2; i++)
-            list.add(new TaskItem("Content", new Date(1,1,1973)));
+            list.add(new TaskItem("Content", Date.now()));
 		taskList.getChildren().clear();
         taskList.getChildren().addAll(list);
     }
