@@ -66,6 +66,7 @@
 .taskItem > .secondaryInfo {
     -fx-alignment: bottom-right;
     -fx-font-size: 0.9em;
+    -fx-text-fill: #999;
 }
 
 .taskItem:hover {
@@ -197,7 +198,7 @@
 }
 
 #today:hover {
-    -fx-background-color: rgba(29, 84, 102, 0.5);
+    -fx-background-color: rgba(48, 129, 156, 0.951)!important;
 }
 
 #passiveDay {

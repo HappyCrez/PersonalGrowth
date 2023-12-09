@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import logickModule.CalendarBox;
+import logickModule.TaskGroup;
 import logickModule.TaskItem;
 import plannerApp.ScreenController;
 
@@ -36,11 +37,13 @@ public class AppController {
 		calendarBox = new CalendarBox();
         centerView.getChildren().add(calendarBox);
 
+        // TODO::CLASS TASK FORM
+        // Now it's Load from view
         list = FXCollections.observableArrayList();
         for (Node e : taskList.getChildren())
             list.add(e);
         for (int i = 0; i < 2; i++)
-            list.add(new TaskItem("Content", LocalDate.now()));
+            list.add(new TaskItem("Content", LocalDate.now(), new TaskGroup("Group#" + (i + 1), null)));
 		taskList.getChildren().clear();
         taskList.getChildren().addAll(list);
     }
@@ -59,7 +62,8 @@ public class AppController {
     void addTask() {
         TaskItem taskItem = new TaskItem(
             contentField.getText(),
-            calendarBox.getActiveDate()
+            calendarBox.getActiveDate(),
+            new TaskGroup("Tasks", null)  //TODO::CORRECT GROUP
             );
         list.add(taskItem);
         taskList.getChildren().clear();

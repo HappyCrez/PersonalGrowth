@@ -13,22 +13,26 @@ public class TaskItem extends AnchorPane{
 	private Label contentField;
 	private RadioButton checkerField;
 	private Label dateField;
+	private Label groupField;
 
 	private LocalDate dateInfo;
 
-	public TaskItem(String content, LocalDate date) {
-		this.contentField = new Label(content);
-		this.contentField.getStyleClass().add("taskContent");
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyy");
-		this.dateField = new Label(date.format(format));
-		this.dateField.getStyleClass().add("secondaryInfo");
-		this.dateInfo = date;
-		this.checkerField = new RadioButton();
-
+	public TaskItem(String content, LocalDate date, TaskGroup group) {
+		contentField = new Label(content);
+		contentField.getStyleClass().add("taskContent");
 		
-		this.getChildren().addAll(this.contentField, this.checkerField, this.dateField);
-		this.getStyleClass().add("taskItem");
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyy");
+		dateField = new Label(date.format(format));
+		dateField.getStyleClass().add("secondaryInfo");
+		
+		groupField = new Label(group.getName());
+		groupField.getStyleClass().add("secondaryInfo");
+		
+		dateInfo = date;
+		checkerField = new RadioButton();
 
+		this.getChildren().addAll(contentField, checkerField, dateField, groupField);
+		this.getStyleClass().add("taskItem");
 
 		setTopAnchor(contentField, 0.0);
 		setBottomAnchor(contentField, 10.0);
@@ -39,9 +43,11 @@ public class TaskItem extends AnchorPane{
 		setBottomAnchor(checkerField, 10.0);
 		setLeftAnchor(checkerField, -2.5);
 		
+		setBottomAnchor(groupField, -5.0);
+		setLeftAnchor(groupField, 20.0);
+
 		setBottomAnchor(dateField, -5.0);
 		setRightAnchor(dateField, 0.0);
-		setLeftAnchor(dateField, 0.0);
 	}
 	
 	public LocalDate getDateField() {

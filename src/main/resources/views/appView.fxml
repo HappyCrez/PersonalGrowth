@@ -17,6 +17,11 @@
             xmlns="http://javafx.com/javafx/15.0.1"
             xmlns:fx="http://javafx.com/fxml/1">
     
+    <!-- LEFT BAR GROUPS -->
+    <!-- <left>
+
+    <left> -->
+
     <!-- TOP BAR MOVEMENT BUTTONS -->
     <top>
         <AnchorPane>
