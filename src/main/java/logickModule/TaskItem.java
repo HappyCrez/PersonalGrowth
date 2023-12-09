@@ -2,12 +2,9 @@ package logickModule;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 
 public class TaskItem extends AnchorPane{
 	private Label contentField;

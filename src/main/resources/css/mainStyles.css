@@ -1,5 +1,5 @@
 .root {
-    root-light-color: #acb0b5;
+    root-light-color: #eb4e8d;
     root-dark-color: #855757;
     
     root-blocks-color: #fff; 
@@ -15,10 +15,6 @@
     -fx-font-weight: 400;
 }
 
-.v-box, .anchor-pane, .split-pane, .stack-pane, .border-pane{
-    -fx-background-color: root-light-color;
-}
-
 /*      SCROLL-PANE      */
 
 .scroll-pane {
@@ -28,10 +24,6 @@
     
     -fx-hbar-policy: never;
     -fx-vbar-policy: as-needed;
-}
-
-.scroll-pane > .viewport {
-    -fx-background-color: root-light-color;
 }
 
 .scroll-pane > .scroll-bar:vertical {

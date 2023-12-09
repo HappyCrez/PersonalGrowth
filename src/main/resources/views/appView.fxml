@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -18,25 +19,84 @@
             xmlns:fx="http://javafx.com/fxml/1">
     
     <!-- LEFT BAR GROUPS -->
-    <!-- <left>
-
-    <left> -->
-
-    <!-- TOP BAR MOVEMENT BUTTONS -->
-    <top>
-        <AnchorPane>
+    <left>
+    <AnchorPane styleClass="leftBarBG">
         <children>
-            <HBox   styleClass="topBar"
-                    AnchorPane.rightAnchor="50.0">
+            <ScrollPane styleClass="groupBG"
+                        AnchorPane.topAnchor="0.0"
+                        AnchorPane.bottomAnchor="70.0"
+                        AnchorPane.leftAnchor="0.0">
+            <content>
+                <VBox   styleClass="groupList">
                 <children>
-                    <Button styleClass="barButton"
+                    <AnchorPane styleClass="groupItem">
+                    <children>
+                        <Label  AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0">
+                            Tasks
+                        </Label>
+                        <Button styleClass="deleteGroup"
+                                AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                            <graphic>
+                                <FontIcon iconLiteral="mdi-delete-forever"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                    </AnchorPane>
+                    <AnchorPane styleClass="groupItem">
+                    <children>
+                        <Label  AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0">
+                            Group#1
+                        </Label>
+                        <Button styleClass="deleteGroup"
+                                AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                            <graphic>
+                                <FontIcon iconLiteral="mdi-delete-forever"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                    </AnchorPane>
+                    <AnchorPane styleClass="groupItem">
+                    <children>
+                        <Label  AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0">
+                            Group#2
+                        </Label>
+                        <Button styleClass="deleteGroup"
+                                AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                            <graphic>
+                                <FontIcon iconLiteral="mdi-delete-forever"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                    </AnchorPane>
+                </children>
+                </VBox>
+            </content>
+            </ScrollPane>
+            <VBox   styleClass="movsBox"
+                    AnchorPane.bottomAnchor="10.0"
+                    AnchorPane.rightAnchor="0.0"
+                    AnchorPane.leftAnchor="10.0">
+                <children>
+                    <Button styleClass="movBtn"
                             fx:id="toTimer"
                             onAction="#toTimerClicked"   >
                         <graphic>
                             <FontIcon iconLiteral="mdi-clock"/>
                         </graphic>
                     </Button>
-                    <Button styleClass="barButton"
+                    <Button styleClass="movBtn"
                             fx:id="toSettings"
                             onAction="#toSettingsClicked">
                         <graphic>
@@ -44,17 +104,17 @@
                         </graphic>
                     </Button>
                 </children>
-            </HBox>
+            </VBox>
         </children>
         </AnchorPane>
-    </top>
+    </left>
 
     <center>
         <HBox   fx:id="centerView"
                 styleClass="center-view">
         <children>
             <!-- TO DO LIST -->
-            <ScrollPane styleClass="scroll-pane">
+            <ScrollPane styleClass="task-scroll">
                 <content>
                     <VBox fx:id="taskList">
                     <children>

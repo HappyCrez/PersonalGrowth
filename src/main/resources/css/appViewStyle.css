@@ -1,23 +1,82 @@
-/*      Top bar     */
 
-.topBar {
-    -fx-max-width: 300px;
-    -fx-pref-height: 80px;
+.border-pane {
+    -fx-background-image: url("../images/bg.jpg");
+}
+
+/*      Left bar    */
+
+.leftBarBG {
+    -fx-background-color: rgba(240,240,240, 1);
+}
+
+.groupBG {
+    -fx-pref-width: 200px;
+    -fx-background-color: rgba(240,240,240, 1);
+}
+
+.groupBG > .viewport {
+    -fx-background-color: rgba(240,240,240, 1);
+}
+
+.groupList {
+    -fx-spacing: 7px;
+    -fx-padding: 10px;
+
+    -fx-background-color: transparent;
+}
+
+.groupItem {
+    -fx-pref-width: 170px;
+    -fx-pref-height: 10px;
+    -fx-padding: 7px 5px;
     
+    -fx-background-color: transparent;
+    -fx-background-radius: 3px;
+
     -fx-alignment: center;
-    -fx-spacing: 25px;
+}
+
+.groupItem > .deleteGroup {
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+    -fx-background-color: transparent;
+}
+
+.groupItem > .deleteGroup > .ikonli-font-icon {
+    -fx-icon-size: 17px;
+}
+
+.groupItem > .label {
+    -fx-text-fill: #000;
+    -fx-font-weight: 400;
+}
+
+.groupItem:hover {
+    -fx-text-fill: #000;
+    -fx-background-color: rgba(230,230,230, 0.7);
+}
+
+.deleteGroup:hover > .ikonli-font-icon {
+    -fx-icon-color: red;
+}
+
+/*      Left bar movs Btns     */
+
+.movsBox {
+    -fx-alignment: center-left;
+    -fx-spacing: 20px;
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
     -fx-background-insets: 10px;
 }
 
-.topBar > .button {
+.movsBox > .button {
     -fx-pref-width: 90px;
     -fx-pref-height: 30px;
     -fx-background-radius: 5px;
 }
 
-.topBar > .button > .ikonli-font-icon {
+.movsBox > .button > .ikonli-font-icon {
     -fx-icon-size: 18px;
 }
 
@@ -31,6 +90,14 @@
 
 /*      ToDoList         */
 
+.task-scroll {
+    -fx-background-color: transparent!important;
+}
+
+.task-scroll > .viewport {
+    -fx-background-color: transparent !important;
+}
+
 #taskList {
     -fx-pref-width: 300px;
     -fx-padding: 10px 20px;
@@ -39,6 +106,8 @@
 
     -fx-alignment: top-right;
     -fx-node-orientation: left_to_right;
+
+    -fx-background-color: transparent;
 }
 
 .taskForm {  
