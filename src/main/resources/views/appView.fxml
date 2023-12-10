@@ -84,27 +84,26 @@
                 </VBox>
             </content>
             </ScrollPane>
-            <VBox   styleClass="movsBox"
+            <HBox   styleClass="movsBox"
                     AnchorPane.bottomAnchor="10.0"
                     AnchorPane.rightAnchor="0.0"
                     AnchorPane.leftAnchor="10.0">
                 <children>
-                    <Button styleClass="movBtn"
-                            fx:id="toTimer"
-                            onAction="#toTimerClicked"   >
-                        <graphic>
-                            <FontIcon iconLiteral="mdi-clock"/>
-                        </graphic>
-                    </Button>
-                    <Button styleClass="movBtn"
-                            fx:id="toSettings"
+                    <Button styleClass="movBtn" fx:id="toSettings"
                             onAction="#toSettingsClicked">
                         <graphic>
                             <FontIcon iconLiteral="mdi-settings"/>
                         </graphic>
                     </Button>
+                    <Button styleClass="movBtn" fx:id="toTimer"
+                            onAction="#toTimerClicked"   >
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-clock"/>
+                        </graphic>
+                        Timer
+                    </Button>
                 </children>
-            </VBox>
+            </HBox>
         </children>
         </AnchorPane>
     </left>

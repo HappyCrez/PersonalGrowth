@@ -1,34 +1,35 @@
 
 .border-pane {
     -fx-background-image: url("../images/bg.jpg");
+    -fx-background-repeat: stretch;
 }
 
 /*      Left bar    */
 
 .leftBarBG {
-    -fx-background-color: rgba(240,240,240, 1);
+    -fx-background-color: rgba(255,255,255, 1);
 }
 
 .groupBG {
     -fx-pref-width: 200px;
-    -fx-background-color: rgba(240,240,240, 1);
+    -fx-background-color: rgba(250,250,250, 1);
 }
 
 .groupBG > .viewport {
-    -fx-background-color: rgba(240,240,240, 1);
+    -fx-background-color: rgba(250,250,250, 1);
 }
 
 .groupList {
-    -fx-spacing: 7px;
+    -fx-spacing: 3px;
     -fx-padding: 10px;
 
     -fx-background-color: transparent;
 }
 
 .groupItem {
-    -fx-pref-width: 170px;
-    -fx-pref-height: 10px;
-    -fx-padding: 7px 5px;
+    -fx-pref-width: 190px;
+    -fx-padding: 2px 14px;
+    -fx-background-insets: 0 7px;
     
     -fx-background-color: transparent;
     -fx-background-radius: 3px;
@@ -37,8 +38,8 @@
 }
 
 .groupItem > .deleteGroup {
-    -fx-pref-width: 20px;
-    -fx-pref-height: 20px;
+    -fx-pref-width: 15px;
+    -fx-pref-height: 15px;
     -fx-background-color: transparent;
 }
 
@@ -64,20 +65,39 @@
 
 .movsBox {
     -fx-alignment: center-left;
-    -fx-spacing: 20px;
+    -fx-spacing: 10px;
     -fx-background-color: transparent;
     -fx-background-radius: 10px;
     -fx-background-insets: 10px;
 }
 
 .movsBox > .button {
-    -fx-pref-width: 90px;
     -fx-pref-height: 30px;
+    
+    -fx-text-fill: #000;
     -fx-background-radius: 5px;
+    -fx-background-color: transparent;
+}
+
+#toTimer {
+    -fx-pref-width: 120px;
+}
+
+#toSettings {
+    -fx-pref-width: 30px;
 }
 
 .movsBox > .button > .ikonli-font-icon {
     -fx-icon-size: 18px;
+}
+
+.movsBox > .button:hover {
+    -fx-text-fill: root-light-color;
+    -fx-background-color: rgba(230,230,230, 0.7);
+}
+
+.movsBox > .button:hover > .ikonli-font-icon {
+    -fx-icon-color: root-light-color;
 }
 
 /*      Center       */
@@ -143,9 +163,27 @@
 }
 
 #addButton {
-    -fx-pref-width: 70px;
-    -fx-pref-height: 25px;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #eee;
+    -fx-background-radius: 5px;
     -fx-padding: 0;
+}
+
+#addButton > .ikonli-font-icon {
+    -fx-icon-color: #000;
+}
+
+#addButton:hover {
+    -fx-background-color: #fff;
+}
+
+#addButton:pressed {
+    -fx-background-color: #bbb;
+}
+
+#addButton:hover > .ikonli-font-icon {
+    -fx-icon-color: root-light-color;
 }
 
 #checkTask > .box {
@@ -267,7 +305,7 @@
 }
 
 #today:hover {
-    -fx-background-color: rgba(48, 129, 156, 0.951)!important;
+    -fx-background-color: #d1618e!important;
 }
 
 #passiveDay {
