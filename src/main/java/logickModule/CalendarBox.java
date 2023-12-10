@@ -22,7 +22,7 @@ public class CalendarBox extends StackPane {
 
     private HBox topBar;
     private Label MonthYear;
-    private Button nextMonth, prevMonth;
+    private Button prevMonth, nextMonth;
 	
     // Calendar containers
     private VBox calendarContainer;
@@ -43,16 +43,16 @@ public class CalendarBox extends StackPane {
         content = new VBox();
         topBar = new HBox();
         
-        nextMonth = createArrow(new FontIcon("mdi-arrow-up"));
-        nextMonth.setOnAction((ActionEvent e)-> {setNextMonth();});
-        prevMonth = createArrow(new FontIcon("mdi-arrow-down"));
+        prevMonth = createArrow(new FontIcon("mdi-arrow-up"));
         prevMonth.setOnAction((ActionEvent e)-> {setPrevMonth();});
+        nextMonth = createArrow(new FontIcon("mdi-arrow-down"));
+        nextMonth.setOnAction((ActionEvent e)-> {setNextMonth();});
         
         MonthYear = new Label();
         MonthYear.setId("calendarLabel");
 
         topBar.getStyleClass().add("calendar-top-bar");
-        topBar.getChildren().addAll(MonthYear, nextMonth, prevMonth);
+        topBar.getChildren().addAll(MonthYear, prevMonth, nextMonth);
 
         calendarContainer = new VBox();
         calendarContainer.getStyleClass().add("calendar-row-container");
@@ -198,8 +198,8 @@ public class CalendarBox extends StackPane {
 
     private void passiveHandle(ActionEvent event) {
         Button eventItem = (Button)event.getSource();
-        if (Integer.parseInt(eventItem.getText()) < 15) setPrevMonth();
-        else setNextMonth();
+        if (Integer.parseInt(eventItem.getText()) < 15) setNextMonth();
+        else setPrevMonth();
     }
 
     private void activeHandle(ActionEvent event) {
