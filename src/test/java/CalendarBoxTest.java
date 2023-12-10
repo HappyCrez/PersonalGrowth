@@ -8,7 +8,8 @@ class CalendarBoxTest {
     CalendarBox calendar;
 
     CalendarBoxTest () {
-        calendar = new CalendarBox();
+        // How to test class that use javaFX components???
+        // Maybe use Spring?
     }
 
     @Test
