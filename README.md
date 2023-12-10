@@ -3,7 +3,7 @@
 ## Authors  
 1. __Gorbunov Vladimir Evgenevich__  
 2. __Kupalov Pavel Sergeevich__  
-3. __Roor Ivan Olegovich__
+3. ~~__Roor Ivan Olegovich__~~
 
 ## Project's describtion
 Our idea make world some better by new planner application.  
