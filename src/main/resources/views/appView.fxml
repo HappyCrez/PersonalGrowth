@@ -36,7 +36,7 @@
                                 AnchorPane.leftAnchor="0.0">
                             Tasks
                         </Label>
-                        <Button styleClass="deleteGroup"
+                        <Button styleClass="deleteBtn"
                                 AnchorPane.topAnchor="0.0"
                                 AnchorPane.bottomAnchor="0.0"
                                 AnchorPane.rightAnchor="0.0">
@@ -53,7 +53,7 @@
                                 AnchorPane.leftAnchor="0.0">
                             Group#1
                         </Label>
-                        <Button styleClass="deleteGroup"
+                        <Button styleClass="deleteBtn"
                                 AnchorPane.topAnchor="0.0"
                                 AnchorPane.bottomAnchor="0.0"
                                 AnchorPane.rightAnchor="0.0">
@@ -70,7 +70,7 @@
                                 AnchorPane.leftAnchor="0.0">
                             Group#2
                         </Label>
-                        <Button styleClass="deleteGroup"
+                        <Button styleClass="deleteBtn"
                                 AnchorPane.topAnchor="0.0"
                                 AnchorPane.bottomAnchor="0.0"
                                 AnchorPane.rightAnchor="0.0">
