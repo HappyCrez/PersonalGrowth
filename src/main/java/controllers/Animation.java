@@ -10,8 +10,7 @@ import javafx.util.Duration;
 
 public class Animation {
     public enum animationStyles
-	{
-		instantShow,
+	{	instantShow,
 		rightToLeft,
 		leftToRight,
 		downToUp
