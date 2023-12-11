@@ -78,4 +78,9 @@ public class TaskItem extends AnchorPane{
 	public void setCheckerField(RadioButton checkBox) {
 		this.checkerField = checkBox;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%s§%s§%s", contentField.getText(), this.groupField.getText(), this.dateField.getText());
+	}
 }
