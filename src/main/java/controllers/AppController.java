@@ -1,6 +1,7 @@
 package controllers;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
@@ -40,10 +41,13 @@ public class AppController {
         // TODO::CLASS TASK FORM
         // Now it's Load from view
         list = FXCollections.observableArrayList();
-        for (Node e : taskList.getChildren())
+        for (Node e : taskList.getChildren()) {
             list.add(e);
-        for (int i = 0; i < 2; i++)
-            list.add(new TaskItem("Content", LocalDate.now(), new TaskGroup("Group#" + (i + 1), null)));
+        }
+        ArrayList<TaskItem> info = FileHelper.ReadFile();
+        for (TaskItem e : info) {
+            list.add(e);
+        }
 		taskList.getChildren().clear();
         taskList.getChildren().addAll(list);
     }
@@ -65,6 +69,7 @@ public class AppController {
             calendarBox.getActiveDate(),
             new TaskGroup("Tasks", null)  //TODO::CORRECT GROUP
             );
+        FileHelper.WriteFile(taskItem);
         list.add(taskItem);
         taskList.getChildren().clear();
         taskList.getChildren().addAll(list);
