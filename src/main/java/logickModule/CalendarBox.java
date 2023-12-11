@@ -45,28 +45,7 @@ public class CalendarBox extends StackPane {
         weekDays = new HBox();
         weekDays.getStyleClass().add("calendar-row");
         
-        Button monday = new Button("Пн");
-        monday.getStyleClass().add("weekDays");
-
-        Button tuesday = new Button("Вт");
-        tuesday.getStyleClass().add("weekDays");
-
-        Button wednesday = new Button("Ср");
-        wednesday.getStyleClass().add("weekDays");
-
-        Button thursday = new Button("Чт");
-        thursday.getStyleClass().add("weekDays");
-
-        Button friday = new Button("Пт");
-        friday.getStyleClass().add("weekDays");
-        
-        Button saturday = new Button("Сб");
-        saturday.getStyleClass().add("weekDays");
-        
-        Button sunday = new Button("Вс");
-        sunday.getStyleClass().add("weekDays");
-
-        weekDays.getChildren().addAll(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
+        fillWeekDays();
         
         prevMonth = createArrow(new FontIcon("mdi-arrow-up"));
         prevMonth.setOnAction((ActionEvent e)-> {setPrevMonth();});
@@ -127,6 +106,31 @@ public class CalendarBox extends StackPane {
             calendarContainer = nextCalendarContainer;  // Can't 
         });
 		timeline.play();
+    }
+
+    private void fillWeekDays() {
+        Button monday = new Button("Пн");
+        monday.getStyleClass().add("weekDays");
+
+        Button tuesday = new Button("Вт");
+        tuesday.getStyleClass().add("weekDays");
+
+        Button wednesday = new Button("Ср");
+        wednesday.getStyleClass().add("weekDays");
+
+        Button thursday = new Button("Чт");
+        thursday.getStyleClass().add("weekDays");
+
+        Button friday = new Button("Пт");
+        friday.getStyleClass().add("weekDays");
+        
+        Button saturday = new Button("Сб");
+        saturday.getStyleClass().add("weekDays");
+        
+        Button sunday = new Button("Вс");
+        sunday.getStyleClass().add("weekDays");
+
+        weekDays.getChildren().addAll(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
     }
     
     private Button createArrow(FontIcon content) {
