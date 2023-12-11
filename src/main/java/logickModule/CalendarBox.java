@@ -1,5 +1,6 @@
 package logickModule;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -20,6 +21,8 @@ public class CalendarBox extends StackPane {
     
     private VBox content;
 
+    private HBox weekDays;
+
     private HBox topBar;
     private Label MonthYear;
     private Button prevMonth, nextMonth;
@@ -33,15 +36,37 @@ public class CalendarBox extends StackPane {
     private static final int rowCount = 6, colCount = 7;
     private static String activeDateClass = "activeDate", todayID = "today", passiveDayID = "passiveDay";
 
-    private Button dayLabelForGrid;
     private LocalDate activeDate;
     private Button activeButton;
 
     private LocalDate calendar;
     
     public CalendarBox() {
-        content = new VBox();
-        topBar = new HBox();
+        weekDays = new HBox();
+        weekDays.getStyleClass().add("calendar-row");
+        
+        Button monday = new Button("Пн");
+        monday.getStyleClass().add("weekDays");
+
+        Button tuesday = new Button("Вт");
+        tuesday.getStyleClass().add("weekDays");
+
+        Button wednesday = new Button("Ср");
+        wednesday.getStyleClass().add("weekDays");
+
+        Button thursday = new Button("Чт");
+        thursday.getStyleClass().add("weekDays");
+
+        Button friday = new Button("Пт");
+        friday.getStyleClass().add("weekDays");
+        
+        Button saturday = new Button("Сб");
+        saturday.getStyleClass().add("weekDays");
+        
+        Button sunday = new Button("Вс");
+        sunday.getStyleClass().add("weekDays");
+
+        weekDays.getChildren().addAll(monday, tuesday, wednesday, thursday, friday, saturday, sunday);
         
         prevMonth = createArrow(new FontIcon("mdi-arrow-up"));
         prevMonth.setOnAction((ActionEvent e)-> {setPrevMonth();});
@@ -50,13 +75,16 @@ public class CalendarBox extends StackPane {
         
         MonthYear = new Label();
         MonthYear.setId("calendarLabel");
-
+        
+        topBar = new HBox();
         topBar.getStyleClass().add("calendar-top-bar");
         topBar.getChildren().addAll(MonthYear, prevMonth, nextMonth);
-
+        
         calendarContainer = new VBox();
         calendarContainer.getStyleClass().add("calendar-row-container");
-
+        calendarContainer.getChildren().add(weekDays);
+        
+        content = new VBox();
         content.getStyleClass().add("calendar-container");
         content.getChildren().addAll(topBar, calendarContainer);
         this.getChildren().add(content);
@@ -109,6 +137,7 @@ public class CalendarBox extends StackPane {
     
     private void fillCallendarBox(VBox container) {
         container.getChildren().clear();
+        container.getChildren().add(weekDays);
         updateCalendarLabel();
         setMonthDays(container);
     }
@@ -120,11 +149,11 @@ public class CalendarBox extends StackPane {
 
     private void setMonthDays(VBox container) {
         int dayCount = calendar.lengthOfMonth();
-        int firstDayOfWeek = calendar.getDayOfWeek().getValue();
-        
+        int firstDayOfWeek = calendar.withDayOfMonth(1).getDayOfWeek().getValue();
+
         int lastMonthNum = calendar.getMonthValue() > 1 ? calendar.getMonthValue() - 1 : 12; 
         int daysCountBefore = calendar.withMonth(lastMonthNum).lengthOfMonth();
-        int lastFillCellNum = dayCount + firstDayOfWeek;
+        int lastFillCellNum = dayCount + firstDayOfWeek - 1;
 
         fillDaysBeforeOfGridMassive(daysCountBefore, firstDayOfWeek);
         fillDaysOfGridMassive(dayCount, firstDayOfWeek);
@@ -134,21 +163,21 @@ public class CalendarBox extends StackPane {
     }
 
     private void fillDaysBeforeOfGridMassive(int daysCountBefore, int firstDayOfWeek) {
-        for (int i = 0; i < firstDayOfWeek; i++) {
-            String dayText = Integer.toString(daysCountBefore + i - firstDayOfWeek + 1);
-            dayLabelForGrid = new Button(dayText);
-            dayLabelForGrid.setId(passiveDayID);
-            grid[0][i] = dayLabelForGrid;
+        for (int i = 0; i < firstDayOfWeek - 1; i++) {
+            String dayText = Integer.toString(daysCountBefore + i - firstDayOfWeek + 2);
+            Button dateGrid = new Button(dayText);
+            dateGrid.setId(passiveDayID);
+            grid[0][i] = dateGrid;
         }
     }
 
     private void fillDaysOfGridMassive(int dayCount, int firstDayOfWeek) {
         for (int i = 0; i < dayCount; i++) {
             String dayText = Integer.toString(i + 1);
-            dayLabelForGrid = new Button(dayText);
-            int row = (i + firstDayOfWeek) / 7;
-            int col = (i + firstDayOfWeek) % 7;
-            grid[row][col] = dayLabelForGrid;
+            Button dateGrid = new Button(dayText);
+            int row = (i + firstDayOfWeek - 1) / 7;
+            int col = (i + firstDayOfWeek - 1) % 7;
+            grid[row][col] = dateGrid;
         }
     }
     
@@ -156,12 +185,13 @@ public class CalendarBox extends StackPane {
         int cellsCount = countFreeCellsAtEndOfMassive(lastFillCellNum);
         for (int i = 0; i < cellsCount; i++) {
             String dayText = Integer.toString(i + 1);
-            dayLabelForGrid = new Button(dayText);
-            dayLabelForGrid.setId(passiveDayID);
-
+            Button dateGrid = new Button(dayText);
+            dateGrid.setId(passiveDayID);
+            
+            
             int row = rowCount - (cellsCount - i - 1) / 7 - 1;
             int col = (rowCount * colCount - cellsCount + i) % 7;
-            grid[row][col] = dayLabelForGrid;
+            grid[row][col] = dateGrid;
         }
     }
 
