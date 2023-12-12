@@ -8,6 +8,24 @@
 
 .leftBarBG {
     -fx-background-color: rgba(255,255,255, 1);
+    -fx-pref-width: 210px;
+}
+
+.groupsTopBar {
+    -fx-alignment: center-left;
+    -fx-pref-height: 50px;
+
+    -fx-spacing: 10px;
+    -fx-padding: 10px 35px;
+} 
+
+.groupsTopBar > .label {
+    -fx-font-weight: 400;
+    -fx-font-size: 12px;
+}
+
+.groupsTopBar > .label > .ikonli-font-icon {
+    -fx-icon-size: 30px;
 }
 
 .groupBG {
@@ -28,6 +46,8 @@
 
 .groupItem {
     -fx-pref-width: 190px;
+    -fx-pref-height: 40px;
+    
     -fx-padding: 2px 14px;
     -fx-background-insets: 0 7px;
     
@@ -128,10 +148,6 @@
     -fx-node-orientation: left_to_right;
 
     -fx-background-color: transparent;
-}
-
-.task-left-group {
-    -fx-spacing: 20px;
 }
 
 .taskItem {

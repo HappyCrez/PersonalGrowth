@@ -22,8 +22,21 @@
     <left>
     <AnchorPane styleClass="leftBarBG">
         <children>
+            <HBox   styleClass="groupsTopBar"
+                    AnchorPane.topAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0">
+            <children>
+                <Label>
+                    <graphic>
+                        <FontIcon iconLiteral="mdi-account-circle"/>
+                    </graphic>
+                </Label>
+                <Label>nickname@mail.ru</Label>
+            </children>
+            </HBox>
             <ScrollPane styleClass="groupBG"
-                        AnchorPane.topAnchor="0.0"
+                        AnchorPane.topAnchor="50.0"
                         AnchorPane.bottomAnchor="70.0"
                         AnchorPane.leftAnchor="0.0">
             <content>
@@ -36,14 +49,6 @@
                                 AnchorPane.leftAnchor="0.0">
                             Tasks
                         </Label>
-                        <Button styleClass="deleteBtn"
-                                AnchorPane.topAnchor="0.0"
-                                AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.rightAnchor="0.0">
-                            <graphic>
-                                <FontIcon iconLiteral="mdi-delete-forever"/>
-                            </graphic>
-                        </Button>
                     </children>
                     </AnchorPane>
                     <AnchorPane styleClass="groupItem">

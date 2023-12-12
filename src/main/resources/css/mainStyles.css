@@ -10,7 +10,7 @@
     root-scroller-color: rgba(70,70,70,0.7);
     root-scroller-bg-color: rgba(160,160,160,1);
 
-    -fx-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    -fx-font-family: 'Open Sans';
     -fx-font-size: 12px;
     -fx-font-weight: 400;
 }
