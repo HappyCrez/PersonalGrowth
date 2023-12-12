@@ -27,6 +27,9 @@ public class TaskItem extends AnchorPane{
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyy");
 		dateField = new Label(date.format(format));
 		dateField.getStyleClass().add("secondaryInfo");
+		if (date.compareTo(LocalDate.now()) < 0) {
+			dateField.getStyleClass().add("overdueDate");
+		}
 		
 		groupField = new Label(group.getName());
 		groupField.getStyleClass().add("secondaryInfo");

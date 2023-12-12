@@ -154,6 +154,10 @@
     -fx-text-fill: #999;
 }
 
+.taskItem > .overdueDate {
+    -fx-text-fill: red;
+}
+
 .taskItem:hover {
     -fx-background-color: #fff;
 }
