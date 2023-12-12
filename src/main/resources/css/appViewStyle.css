@@ -11,7 +11,7 @@
     -fx-pref-width: 210px;
 }
 
-.groupsTopBar {
+.groupsHeader {
     -fx-alignment: center-left;
     -fx-pref-height: 50px;
 
@@ -19,12 +19,12 @@
     -fx-padding: 10px 35px;
 } 
 
-.groupsTopBar > .label {
+.groupsHeader > .label {
     -fx-font-weight: 400;
     -fx-font-size: 12px;
 }
 
-.groupsTopBar > .label > .ikonli-font-icon {
+.groupsHeader > .label > .ikonli-font-icon {
     -fx-icon-size: 30px;
 }
 
@@ -210,12 +210,13 @@
 /* TASK FORM */
 
 .taskForm {  
-    -fx-pref-height: 20px;
+    -fx-pref-height: 60px;
 }
 
 #contentField {
     -fx-max-width: 200px;
     -fx-pref-width: 190px;
+    -fx-pref-height: 25px;
     -fx-wrap-text: true;
 }
 
@@ -239,6 +240,10 @@
 }
 #contentField:focused > .content {
     -fx-background-color:-fx-control-inner-background;
+}
+
+.groupSelector {
+    -fx-background-color: #fff;
 }
 
 /*      Calendar     */
