@@ -42,6 +42,8 @@ public class AppController {
 
         // TODO::CLASS TASK FORM
         // Now it's Load from view
+
+        //TODO::CLASS GROUP SELECTOR
          ObservableList<String> groups = FXCollections.observableArrayList("Tasks", "Group#1", "Group#2");
         groupSelector = new ChoiceBox<String>(groups);
         groupSelector.setValue("Tasks");
@@ -55,11 +57,13 @@ public class AppController {
 
     @FXML
     private void toTimerClicked() {
+        //TODO::Timer view
         System.out.println("to Timer Clicked");
     }
     
     @FXML
     private void toSettingsClicked() {
+        //TODO::Settings
         System.out.println("to Settings Clicked");
     }
 
