@@ -19,7 +19,7 @@ import plannerApp.ScreenController;
 public class AppController {
     ScreenController controller;
     CalendarBox calendarBox;
-    private ObservableList<Node> list;
+
     @FXML
     private HBox centerView;
 	@FXML
@@ -40,16 +40,8 @@ public class AppController {
 
         // TODO::CLASS TASK FORM
         // Now it's Load from view
-        list = FXCollections.observableArrayList();
-        for (Node e : taskList.getChildren()) {
-            list.add(e);
-        }
-        ArrayList<TaskItem> info = FileHelper.ReadFile();
-        for (TaskItem e : info) {
-            list.add(e);
-        }
-		taskList.getChildren().clear();
-        taskList.getChildren().addAll(list);
+        for (TaskItem item : FileHelper.ReadFile())
+            taskList.getChildren().add(item);
     }
 
     @FXML
@@ -70,9 +62,7 @@ public class AppController {
             new TaskGroup("Tasks", null)  //TODO::CORRECT GROUP
             );
         FileHelper.WriteFile(taskItem);
-        list.add(taskItem);
-        taskList.getChildren().clear();
-        taskList.getChildren().addAll(list);
+        taskList.getChildren().add(taskItem);
         
         contentField.setText("");
     }

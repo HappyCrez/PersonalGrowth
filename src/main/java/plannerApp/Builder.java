@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 
 public class Builder extends Application{
 	
-	private int mainWindowWidth = 1000, mainWindowHeight = 550;
+	private int mainWindowWidth = 1000, mainWindowHeight = 600;
 	private Scene mainScene;
 	private ScreenController screenController;
 	private Image windowIcon;
