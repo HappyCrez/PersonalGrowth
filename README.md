@@ -5,7 +5,7 @@
 2. __Kupalov Pavel Sergeevich__  
 3. ~~__Roor Ivan Olegovich__~~
 
-*He wasn't useful but he was part of team. We sorry for that was happend*
+*He wasn't useful but he was part of team. We sorry for that happend*
 😭😭😭
 
 ## Project's describtion
