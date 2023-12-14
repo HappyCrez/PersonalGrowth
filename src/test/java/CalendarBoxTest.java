@@ -2,7 +2,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import logickModule.CalendarBox;
+import plannerApp.javafxWidget.calendar.CalendarBox;
 
 class CalendarBoxTest {
     CalendarBox calendar;

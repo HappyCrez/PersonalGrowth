@@ -1,6 +1,5 @@
-package loader;
+package plannerApp.loader;
 
-import controllers.LoadHelper;
 import javafx.application.Preloader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
@@ -9,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import plannerApp.controllers.FileHelper;
 
 public class LoadWindow extends Preloader {
     
@@ -23,7 +23,7 @@ public class LoadWindow extends Preloader {
     }
 
     private Scene createLoadScene() {
-        Parent root = LoadHelper.loadView(new Object(), "loadingView");
+        Parent root = FileHelper.loadView(new Object(), "loadingView");
         Scene scene = new Scene(root, loadWindowSize, loadWindowSize);
         scene.setFill(null);
         return scene;

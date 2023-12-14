@@ -1,13 +1,14 @@
 package plannerApp;
 
-import controllers.Animation;
-import controllers.LoadHelper;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import plannerApp.controllers.Animation;
+import plannerApp.controllers.FileHelper;
+import plannerApp.controllers.ScreenController;
 
 public class Builder extends Application{
 	
@@ -17,7 +18,7 @@ public class Builder extends Application{
 	private Image windowIcon;
 	
 	public static void main(String args[]) {
-		System.setProperty("javafx.preloader", "loader.LoadWindow");
+		System.setProperty("javafx.preloader", "plannerApp.loader.LoadWindow");
 		launch(args);
 	}
 
@@ -30,7 +31,7 @@ public class Builder extends Application{
 		windowIcon = new Image("/images/logo.png");
 		mainScene = createScene();
 		screenController = new ScreenController(mainScene);
-		LoadHelper.loadAllViews(screenController);
+		FileHelper.loadAllViews(screenController);
 	}
 
 	@Override

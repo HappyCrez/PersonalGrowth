@@ -1,4 +1,4 @@
-package logickModule;
+package plannerApp.javafxWidget.calendar;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package logickModule;
+package plannerApp.javafxWidget;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,4 +1,4 @@
-package controllers;
+package plannerApp.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,10 +9,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import logickModule.CalendarBox;
-import logickModule.TaskGroup;
-import logickModule.TaskItem;
-import plannerApp.ScreenController;
+import plannerApp.javafxWidget.TaskGroup;
+import plannerApp.javafxWidget.TaskItem;
+import plannerApp.javafxWidget.calendar.CalendarBox;
 
 public class AppController {
     ScreenController controller;
@@ -51,7 +50,7 @@ public class AppController {
         taskForm.getChildren().add(groupSelector);
         AnchorPane.setBottomAnchor(groupSelector, 0.0);
 
-        for (TaskItem item : FileHelper.ReadFile())
+        for (TaskItem item : FileHelper.ReadTaskList())
             taskList.getChildren().add(item);
     }
 
@@ -74,7 +73,7 @@ public class AppController {
             calendarBox.getActiveDate(),
             new TaskGroup(groupSelector.getValue(), null)  //TODO::CORRECT GROUP
             );
-        FileHelper.WriteFile(taskItem);
+        FileHelper.SaveTask(taskItem);
         taskList.getChildren().add(taskItem);
         
         contentField.setText("");

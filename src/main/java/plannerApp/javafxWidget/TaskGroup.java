@@ -1,4 +1,4 @@
-package logickModule;
+package plannerApp.javafxWidget;
 
 public class TaskGroup {
 
