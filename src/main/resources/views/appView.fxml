@@ -40,39 +40,19 @@
                         AnchorPane.bottomAnchor="70.0"
                         AnchorPane.leftAnchor="0.0">
             <content>
-                <VBox   styleClass="groupList">
+                <VBox   styleClass="groupList"
+                        fx:id="groupList">
                 <children>
-                    <HBox styleClass="groupItem">
+                    <AnchorPane styleClass="groupItem">
                     <children>
-                        <Label>
+                        <Label  AnchorPane.topAnchor="0.0"
+                                AnchorPane.bottomAnchor="0.0"
+                                AnchorPane.leftAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
                             Tasks
                         </Label>
                     </children>
-                    </HBox>
-                    <HBox styleClass="groupItem">
-                    <children>
-                        <Label>
-                            Group#1
-                        </Label>
-                        <Button styleClass="deleteBtn">
-                            <graphic>
-                                <FontIcon iconLiteral="mdi-delete-forever"/>
-                            </graphic>
-                        </Button>
-                    </children>
-                    </HBox>
-                    <HBox styleClass="groupItem">
-                    <children>
-                        <Label>
-                            Group#2
-                        </Label>
-                        <Button styleClass="deleteBtn">
-                            <graphic>
-                                <FontIcon iconLiteral="mdi-delete-forever"/>
-                            </graphic>
-                        </Button>
-                    </children>
-                    </HBox>
+                    </AnchorPane>
                     <HBox   styleClass="addGroupBox"
                             fx:id="addGroupBox">
                     <children>

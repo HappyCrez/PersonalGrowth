@@ -7,6 +7,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -30,7 +32,7 @@ public class AppController {
     @FXML
     private AnchorPane taskForm;
 	@FXML
-	private VBox taskList;
+	private VBox taskList, groupList;
     @FXML
     private TextArea contentField, addGroupField;
 
@@ -51,9 +53,7 @@ public class AppController {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
         addGroupField.setTextFormatter(formatter);
-        addGroupField.focusedProperty().addListener(new ChangeListener<Boolean>()
-        {   @Override
-            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+        addGroupField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
             {   if (!newPropertyValue)
                 { addGroup(); }
             }
@@ -104,11 +104,17 @@ public class AppController {
         if (addGroupBox.getChildrenUnmodifiable().contains(addGroupButton)) {
             addGroupBox.getChildren().remove(addGroupButton);
             addGroupBox.getChildren().add(addGroupField);
+            addGroupField.requestFocus();
         }
         else {
             addGroupBox.getChildren().remove(addGroupField);
             addGroupBox.getChildren().add(addGroupButton);
-            System.out.println(addGroupField.getText());
+            
+            String groupName = addGroupField.getText();
+            if (groupName.length() <= 0) return;
+
+            TaskGroup group = new TaskGroup(groupName, "none");
+            groupList.getChildren().add(group);
             addGroupField.setText("");
         }
     }
