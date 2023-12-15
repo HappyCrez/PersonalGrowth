@@ -27,16 +27,43 @@ public class FileHelper {
     public static ArrayList<TaskItem> ReadTaskList() {
         ArrayList<TaskItem> list = new ArrayList<TaskItem>();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyy");
-        try (FileReader reader = new FileReader("./Resources/tasklist.txt")) {
+        for (String line : ReadFile("taskList.txt")) {
+            String[] words = line.split("§");
+            list.add(new TaskItem(
+                words[0],
+                LocalDate.parse(words[1], format),
+                new TaskGroup(words[2], null),
+                Long.parseLong(words[3])
+            ));
+        }
+        return list;
+    }
+
+    public static void SaveGroup(TaskGroup group) {
+        try(FileWriter writer = new FileWriter("./Resources/tasklist.txt", true)){
+            String taskList = group.getTaskList().toString();
+            writer.write(String.format("%s%s%s", group.getName(), group.getColor(), taskList));
+        } catch (IOException e) { e.getStackTrace(); }
+    }
+
+    public static ArrayList<TaskGroup> ReadGroupList() {
+        ArrayList<TaskGroup> list = new ArrayList<TaskGroup>();
+        for (String line : ReadFile("groupkList.txt")) {
+            String[] words = line.split("§");
+            list.add(new TaskGroup(
+                words[0],
+                words[1]
+            ));
+        }
+        return list;
+    }
+
+    private static ArrayList<String> ReadFile(String filename) {
+        ArrayList<String> list = new ArrayList<String>();
+        try (FileReader reader = new FileReader("./Resources/" + filename)) {
             Scanner scan = new Scanner(reader);
             while(scan.hasNextLine()) {
-                String[] words = scan.nextLine().split("§");
-                list.add(new TaskItem(
-                    words[0],
-                    LocalDate.parse(words[1], format),
-                    new TaskGroup(words[2], null),
-                    Long.parseLong(words[3])
-                ));
+                list.add(scan.nextLine());
             }
             scan.close();
         } catch (FileNotFoundException e) { e.getStackTrace(); }

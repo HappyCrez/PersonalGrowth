@@ -81,3 +81,25 @@
 .button:hover > .ikonli-font-icon {
     -fx-icon-color: white;
 }
+
+.text-area > .scroll-pane > .scroll-bar:vertical {
+    -fx-pref-width: 4px;
+}
+
+.text-area {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.text-area:focused {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border), -fx-control-inner-background;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3, 2;
+}
+
+.text-area > .content {
+    -fx-background-color:-fx-control-inner-background;
+}
+.text-area:focused > .content {
+    -fx-background-color:-fx-control-inner-background;
+}

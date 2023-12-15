@@ -49,12 +49,13 @@
     -fx-pref-height: 40px;
     
     -fx-padding: 2px 14px;
-    -fx-background-insets: 0 7px;
+    -fx-background-insets: 2px 7px;
     
     -fx-background-color: transparent;
     -fx-background-radius: 3px;
 
-    -fx-alignment: center;
+    -fx-alignment: center-left;
+    -fx-spacing: 70px;
 }
 
 .deleteBtn {
@@ -79,6 +80,41 @@
 
 .deleteBtn:hover > .ikonli-font-icon {
     -fx-icon-color: red;
+}
+
+/*      Left bar addGroup    */
+
+.addGroupBox {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 10px;
+}
+
+.addGroupBox > .text-area {
+    -fx-pref-width: 160px;
+    -fx-max-height: 25px;
+
+    -fx-wrap-text: false;
+}
+
+.addGroupBox > .button {
+    -fx-pref-width: 180px;
+    -fx-pref-height: 17px;
+    -fx-background-color: transparent;
+}
+
+.addGroupBox > .button > .ikonli-font-icon {
+    -fx-icon-size: 18px;
+}
+
+.addGroupBox > .button:hover {
+    -fx-background-color: rgba(230,230,230, 0.7);
+}
+
+.addGroupBox > .button:hover > .ikonli-font-icon {
+    -fx-icon-color: root-light-color;
 }
 
 /*      Left bar movs Btns     */
@@ -218,28 +254,6 @@
     -fx-pref-width: 190px;
     -fx-pref-height: 25px;
     -fx-wrap-text: true;
-}
-
-#contentField > .scroll-pane > .scroll-bar:vertical {
-    -fx-pref-width: 4px;
-}
-
-#contentField {
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-}
-
-#contentField:focused {
-    -fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border), -fx-control-inner-background;
-    -fx-background-insets: 0, 1;
-    -fx-background-radius: 3, 2;
-}
-
-#contentField > .content {
-    -fx-background-color:-fx-control-inner-background;
-}
-#contentField:focused > .content {
-    -fx-background-color:-fx-control-inner-background;
 }
 
 .groupSelector {

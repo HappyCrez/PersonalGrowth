@@ -1,11 +1,17 @@
 package plannerApp.controllers;
 
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -18,15 +24,15 @@ public class AppController {
     CalendarBox calendarBox;
 
     @FXML
-    private HBox centerView;
+    private HBox centerView, addGroupBox;
 	@FXML
-	private Button toTimer, toSettings, addButton;
+	private Button toTimer, toSettings, addButton, addGroupButton;
     @FXML
     private AnchorPane taskForm;
 	@FXML
 	private VBox taskList;
     @FXML
-    private TextArea contentField;
+    private TextArea contentField, addGroupField;
 
     ChoiceBox<String> groupSelector;
 
@@ -38,6 +44,20 @@ public class AppController {
 	private void initialize() {
 		calendarBox = new CalendarBox();
         centerView.getChildren().add(calendarBox);
+
+        addGroupField = new TextArea();
+        Pattern pattern = Pattern.compile(".{0,15}");
+        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+            return pattern.matcher(change.getControlNewText()).matches() ? change : null;
+        });
+        addGroupField.setTextFormatter(formatter);
+        addGroupField.focusedProperty().addListener(new ChangeListener<Boolean>()
+        {   @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+            {   if (!newPropertyValue)
+                { addGroup(); }
+            }
+        });
 
         // TODO::CLASS TASK FORM
         // Now it's Load from view
@@ -77,5 +97,19 @@ public class AppController {
         taskList.getChildren().add(taskItem);
         
         contentField.setText("");
+    }
+
+    @FXML
+    void addGroup() {
+        if (addGroupBox.getChildrenUnmodifiable().contains(addGroupButton)) {
+            addGroupBox.getChildren().remove(addGroupButton);
+            addGroupBox.getChildren().add(addGroupField);
+        }
+        else {
+            addGroupBox.getChildren().remove(addGroupField);
+            addGroupBox.getChildren().add(addGroupButton);
+            System.out.println(addGroupField.getText());
+            addGroupField.setText("");
+        }
     }
 }

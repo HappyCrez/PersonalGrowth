@@ -42,57 +42,57 @@
             <content>
                 <VBox   styleClass="groupList">
                 <children>
-                    <AnchorPane styleClass="groupItem">
+                    <HBox styleClass="groupItem">
                     <children>
-                        <Label  AnchorPane.topAnchor="0.0"
-                                AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.leftAnchor="0.0">
+                        <Label>
                             Tasks
                         </Label>
                     </children>
-                    </AnchorPane>
-                    <AnchorPane styleClass="groupItem">
+                    </HBox>
+                    <HBox styleClass="groupItem">
                     <children>
-                        <Label  AnchorPane.topAnchor="0.0"
-                                AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.leftAnchor="0.0">
+                        <Label>
                             Group#1
                         </Label>
-                        <Button styleClass="deleteBtn"
-                                AnchorPane.topAnchor="0.0"
-                                AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.rightAnchor="0.0">
+                        <Button styleClass="deleteBtn">
                             <graphic>
                                 <FontIcon iconLiteral="mdi-delete-forever"/>
                             </graphic>
                         </Button>
                     </children>
-                    </AnchorPane>
-                    <AnchorPane styleClass="groupItem">
+                    </HBox>
+                    <HBox styleClass="groupItem">
                     <children>
-                        <Label  AnchorPane.topAnchor="0.0"
-                                AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.leftAnchor="0.0">
+                        <Label>
                             Group#2
                         </Label>
-                        <Button styleClass="deleteBtn"
-                                AnchorPane.topAnchor="0.0"
-                                AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.rightAnchor="0.0">
+                        <Button styleClass="deleteBtn">
                             <graphic>
                                 <FontIcon iconLiteral="mdi-delete-forever"/>
                             </graphic>
                         </Button>
                     </children>
-                    </AnchorPane>
+                    </HBox>
+                    <HBox   styleClass="addGroupBox"
+                            fx:id="addGroupBox">
+                    <children>
+                        <Button fx:id="addGroupButton"
+                                onAction="#addGroup">
+                            <graphic>
+                                <FontIcon styleClass="small-icon" iconLiteral="mdi-menu-down-outline"/>
+                            </graphic>
+                        </Button>
+                    </children>
+                    </HBox>
                 </children>
                 </VBox>
             </content>
             </ScrollPane>
+            
             <HBox   styleClass="movsBox"
                     AnchorPane.bottomAnchor="10.0"
                     AnchorPane.rightAnchor="0.0"
-                    AnchorPane.leftAnchor="10.0">
+                    AnchorPane.leftAnchor="20.0">
                 <children>
                     <Button styleClass="movBtn" fx:id="toSettings"
                             onAction="#toSettingsClicked">
@@ -126,11 +126,11 @@
                                     fx:id="taskForm">
                             <children>
                                 <TextArea fx:id="contentField"
-                                    AnchorPane.leftAnchor="0.0"
-                                    AnchorPane.topAnchor="0.0"/>
+                                    AnchorPane.topAnchor="0.0"
+                                    AnchorPane.leftAnchor="0.0"/>
                                 <Button fx:id="addButton" onAction="#addTask"
-                                    AnchorPane.rightAnchor="10.0"
-                                    AnchorPane.topAnchor="0.0">
+                                    AnchorPane.topAnchor="0.0"
+                                    AnchorPane.rightAnchor="10.0">
                                     <graphic>
                                         <FontIcon styleClass="small-icon" iconLiteral="mdi-plus"/>
                                     </graphic>
