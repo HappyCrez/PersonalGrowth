@@ -19,8 +19,16 @@ public class TaskItem extends AnchorPane{
 	private Label groupField;
 
 	private LocalDate dateInfo;
+	private long ID;
+
+	public TaskItem(String content, LocalDate date, TaskGroup group, long ID) {
+		this(content, date, group);
+		this.ID = ID;
+	}
 
 	public TaskItem(String content, LocalDate date, TaskGroup group) {
+		ID = System.currentTimeMillis();
+
 		contentField = new Label(content);
 		contentField.getStyleClass().add("taskContent");
 		
@@ -62,6 +70,10 @@ public class TaskItem extends AnchorPane{
 		setRightAnchor(dateField, 30.0);
 	}
 	
+	public long getID() {
+		return ID;
+	}
+
 	public LocalDate getDateField() {
 		return dateInfo;
 	}
@@ -84,6 +96,7 @@ public class TaskItem extends AnchorPane{
 
 	@Override
 	public String toString() {
-		return String.format("%s§%s§%s", contentField.getText(), this.groupField.getText(), this.dateField.getText());
+		return String.format("%s§%s§%s§%d",
+		contentField.getText(), this.dateField.getText(), this.groupField.getText(), this.ID);
 	}
 }

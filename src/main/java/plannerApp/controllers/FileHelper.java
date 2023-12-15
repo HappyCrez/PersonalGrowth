@@ -33,8 +33,9 @@ public class FileHelper {
                 String[] words = scan.nextLine().split("§");
                 list.add(new TaskItem(
                     words[0],
-                    LocalDate.parse(words[2], format),
-                    new TaskGroup(words[1], null)
+                    LocalDate.parse(words[1], format),
+                    new TaskGroup(words[2], null),
+                    Long.parseLong(words[3])
                 ));
             }
             scan.close();

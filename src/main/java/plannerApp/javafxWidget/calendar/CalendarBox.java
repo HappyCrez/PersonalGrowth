@@ -1,6 +1,5 @@
 package plannerApp.javafxWidget.calendar;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import org.kordamp.ikonli.javafx.FontIcon;
 
