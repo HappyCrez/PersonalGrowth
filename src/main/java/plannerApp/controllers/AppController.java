@@ -114,7 +114,7 @@ public class AppController {
             if (groupName.length() <= 0) return;
 
             TaskGroup group = new TaskGroup(groupName, "none");
-            groupList.getChildren().add(group);
+            groupList.getChildren().add(groupList.getChildren().size() - 1, group);
             addGroupField.setText("");
         }
     }
