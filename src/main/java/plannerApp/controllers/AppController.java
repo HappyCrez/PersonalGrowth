@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -49,7 +50,7 @@ public class AppController {
 
         addGroupField = new TextArea();
         Pattern pattern = Pattern.compile(".{0,15}");
-        TextFormatter formatter = new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
+        TextFormatter<Change> formatter = new TextFormatter<Change>((UnaryOperator<TextFormatter.Change>) change -> {
             return pattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
         addGroupField.setTextFormatter(formatter);
@@ -96,13 +97,10 @@ public class AppController {
 
     @FXML
     void addTask() {
-        TaskItem taskItem = new TaskItem(
-            contentField.getText(),
-            calendarBox.getActiveDate(),
-            groupSelector.getValue()
-            );
-        FileHelper.SaveTask(taskItem);
-        taskBox.getChildren().add(taskItem);
+        TaskItem task = createTask();
+        
+        taskList.add(task);
+        taskBox.getChildren().add(task);
         
         contentField.setText("");
     }
@@ -132,6 +130,17 @@ public class AppController {
         GroupItem newGroup = new GroupItem(groupName, "none");
         FileHelper.SaveGroup(newGroup);
         return newGroup; 
+    }
+
+    private TaskItem createTask() {
+        TaskItem taskItem = new TaskItem(
+            contentField.getText(),
+            calendarBox.getActiveDate(),
+            groupSelector.getValue()
+            );
+        FileHelper.SaveTask(taskItem);
+        
+        return taskItem;
     }
 
     private void appendGroup(GroupItem group) {
