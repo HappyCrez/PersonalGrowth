@@ -21,12 +21,12 @@ public class TaskItem extends AnchorPane{
 	private LocalDate dateInfo;
 	private long ID;
 
-	public TaskItem(String content, LocalDate date, TaskGroup group, long ID) {
+	public TaskItem(String content, LocalDate date, GroupItem group, long ID) {
 		this(content, date, group);
 		this.ID = ID;
 	}
 
-	public TaskItem(String content, LocalDate date, TaskGroup group) {
+	public TaskItem(String content, LocalDate date, GroupItem group) {
 		ID = System.currentTimeMillis();
 
 		contentField = new Label(content);

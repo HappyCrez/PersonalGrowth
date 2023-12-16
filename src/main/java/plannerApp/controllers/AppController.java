@@ -1,15 +1,13 @@
 package plannerApp.controllers;
 
+import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
-import javafx.event.EventType;
-import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
@@ -17,7 +15,7 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import plannerApp.javafxWidget.TaskGroup;
+import plannerApp.javafxWidget.GroupItem;
 import plannerApp.javafxWidget.TaskItem;
 import plannerApp.javafxWidget.calendar.CalendarBox;
 
@@ -32,11 +30,13 @@ public class AppController {
     @FXML
     private AnchorPane taskForm;
 	@FXML
-	private VBox taskList, groupList;
+	private VBox taskBox, groupBox;
+    private ArrayList<TaskItem> taskList;
+    private ArrayList<GroupItem> groupList;
     @FXML
     private TextArea contentField, addGroupField;
 
-    ChoiceBox<String> groupSelector;
+    ChoiceBox<GroupItem> groupSelector;
 
     AppController(ScreenController controller) {
         this.controller = controller; 
@@ -54,24 +54,32 @@ public class AppController {
         });
         addGroupField.setTextFormatter(formatter);
         addGroupField.focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
-            {   if (!newPropertyValue)
+            {   if (!newPropertyValue) // true then field lose Focus 
                 { addGroup(); }
             }
         });
 
-        // TODO::CLASS TASK FORM
-        // Now it's Load from view
-
-        //TODO::CLASS GROUP SELECTOR
-         ObservableList<String> groups = FXCollections.observableArrayList("Tasks", "Group#1", "Group#2");
-        groupSelector = new ChoiceBox<String>(groups);
-        groupSelector.setValue("Tasks");
+        taskList = new ArrayList<>();
+        groupList = new ArrayList<>();
+        GroupItem mainGroup = new GroupItem("Tasks", "none"); 
+        
+        // TODO::Class TaskForm
+        // It should include the same GroupSelector
+        groupSelector = new ChoiceBox<GroupItem>();
+        groupSelector.setValue(mainGroup);
         groupSelector.getStyleClass().add("groupSelector");
         taskForm.getChildren().add(groupSelector);
         AnchorPane.setBottomAnchor(groupSelector, 0.0);
+        
+        appendGroup(mainGroup);
+        for (GroupItem group : FileHelper.ReadGroupList()) {
+            appendGroup(group);
+        }
 
-        for (TaskItem item : FileHelper.ReadTaskList())
-            taskList.getChildren().add(item);
+        for (TaskItem item : FileHelper.ReadTaskList()) {
+            taskList.add(item);
+            taskBox.getChildren().add(item);
+        }
     }
 
     @FXML
@@ -91,10 +99,10 @@ public class AppController {
         TaskItem taskItem = new TaskItem(
             contentField.getText(),
             calendarBox.getActiveDate(),
-            new TaskGroup(groupSelector.getValue(), null)  //TODO::CORRECT GROUP
+            groupSelector.getValue()
             );
         FileHelper.SaveTask(taskItem);
-        taskList.getChildren().add(taskItem);
+        taskBox.getChildren().add(taskItem);
         
         contentField.setText("");
     }
@@ -113,9 +121,22 @@ public class AppController {
             String groupName = addGroupField.getText();
             if (groupName.length() <= 0) return;
 
-            TaskGroup group = new TaskGroup(groupName, "none");
-            groupList.getChildren().add(groupList.getChildren().size() - 1, group);
+            GroupItem group = createGroup(groupName);
+            appendGroup(group);
+
             addGroupField.setText("");
         }
+    }
+
+    private GroupItem createGroup(String groupName) {
+        GroupItem newGroup = new GroupItem(groupName, "none");
+        FileHelper.SaveGroup(newGroup);
+        return newGroup; 
+    }
+
+    private void appendGroup(GroupItem group) {
+        groupList.add(group);
+        groupSelector.getItems().add(group);
+        groupBox.getChildren().add(groupBox.getChildren().size() - 1, group);
     }
 }

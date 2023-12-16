@@ -8,7 +8,7 @@ import java.util.Scanner;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
-import plannerApp.javafxWidget.TaskGroup;
+import plannerApp.javafxWidget.GroupItem;
 import plannerApp.javafxWidget.TaskItem;
 
 import java.io.*;
@@ -32,25 +32,25 @@ public class FileHelper {
             list.add(new TaskItem(
                 words[0],
                 LocalDate.parse(words[1], format),
-                new TaskGroup(words[2], null),
+                new GroupItem(words[2], null),
                 Long.parseLong(words[3])
             ));
         }
         return list;
     }
 
-    public static void SaveGroup(TaskGroup group) {
-        try(FileWriter writer = new FileWriter("./Resources/tasklist.txt", true)){
+    public static void SaveGroup(GroupItem group) {
+        try(FileWriter writer = new FileWriter("./Resources/grouplist.txt", true)){
             String taskList = group.getTaskList().toString();
-            writer.write(String.format("%s%s%s", group.getName(), group.getColor(), taskList));
+            writer.write(String.format("%s§%s§%s\n", group.getName(), group.getColor(), taskList));
         } catch (IOException e) { e.getStackTrace(); }
     }
 
-    public static ArrayList<TaskGroup> ReadGroupList() {
-        ArrayList<TaskGroup> list = new ArrayList<TaskGroup>();
-        for (String line : ReadFile("groupkList.txt")) {
+    public static ArrayList<GroupItem> ReadGroupList() {
+        ArrayList<GroupItem> list = new ArrayList<GroupItem>();
+        for (String line : ReadFile("groupList.txt")) {
             String[] words = line.split("§");
-            list.add(new TaskGroup(
+            list.add(new GroupItem(
                 words[0],
                 words[1]
             ));

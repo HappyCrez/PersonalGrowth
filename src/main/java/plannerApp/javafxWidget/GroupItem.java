@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class TaskGroup extends AnchorPane {
+public class GroupItem extends AnchorPane {
 
     String color;
     Label groupName;
@@ -16,7 +16,7 @@ public class TaskGroup extends AnchorPane {
 
     ArrayList<Long> taskList;
 
-    public TaskGroup (String name, String color) {
+    public GroupItem (String name, String color) {
         groupName = new Label(name);
         deleteGroup = new Button("", new FontIcon("mdi-delete-forever"));
         deleteGroup.getStyleClass().add("deleteBtn");
@@ -50,5 +50,10 @@ public class TaskGroup extends AnchorPane {
 
     public ArrayList<Long> getTaskList() {
         return taskList;
+    }
+
+    @Override
+    public String toString() {
+        return groupName.getText();
     }
 }

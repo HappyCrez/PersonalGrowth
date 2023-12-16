@@ -40,19 +40,9 @@
                         AnchorPane.bottomAnchor="70.0"
                         AnchorPane.leftAnchor="0.0">
             <content>
-                <VBox   styleClass="groupList"
-                        fx:id="groupList">
+                <VBox   styleClass="groupBox"
+                        fx:id="groupBox">
                 <children>
-                    <AnchorPane styleClass="groupItem">
-                    <children>
-                        <Label  AnchorPane.topAnchor="0.0"
-                                AnchorPane.bottomAnchor="0.0"
-                                AnchorPane.leftAnchor="0.0"
-                                AnchorPane.rightAnchor="0.0">
-                            Tasks
-                        </Label>
-                    </children>
-                    </AnchorPane>
                     <HBox   styleClass="addGroupBox"
                             fx:id="addGroupBox">
                     <children>
@@ -100,7 +90,8 @@
             <!-- TO DO LIST -->
             <ScrollPane styleClass="task-scroll">
                 <content>
-                    <VBox fx:id="taskList">
+                    <VBox   styleClass="taskBox"
+                            fx:id="taskBox">
                     <children>
                         <AnchorPane styleClass="taskForm"
                                     fx:id="taskForm">
