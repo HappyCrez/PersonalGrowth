@@ -96,13 +96,10 @@ public class AppController {
 
     @FXML
     void addTask() {
-        TaskItem taskItem = new TaskItem(
-            contentField.getText(),
-            calendarBox.getActiveDate(),
-            groupSelector.getValue()
-            );
-        FileHelper.SaveTask(taskItem);
-        taskBox.getChildren().add(taskItem);
+        TaskItem task = createTask();
+        
+        taskList.add(task);
+        taskBox.getChildren().add(task);
         
         contentField.setText("");
     }
@@ -132,6 +129,17 @@ public class AppController {
         GroupItem newGroup = new GroupItem(groupName, "none");
         FileHelper.SaveGroup(newGroup);
         return newGroup; 
+    }
+
+    private TaskItem createTask() {
+        TaskItem taskItem = new TaskItem(
+            contentField.getText(),
+            calendarBox.getActiveDate(),
+            groupSelector.getValue()
+            );
+        FileHelper.SaveTask(taskItem);
+        
+        return taskItem;
     }
 
     private void appendGroup(GroupItem group) {
