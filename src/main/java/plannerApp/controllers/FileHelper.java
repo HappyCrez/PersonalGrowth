@@ -24,7 +24,7 @@ public class FileHelper {
         } catch (IOException e) { e.getStackTrace(); }
     }
 
-    public static ArrayList<TaskItem> ReadTaskList() {
+    public static ArrayList<TaskItem> ReadTaskList(DeleteItem deleteItem) {
         ArrayList<TaskItem> list = new ArrayList<TaskItem>();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyy");
         for (String line : ReadFile("taskList.txt")) {
@@ -33,10 +33,26 @@ public class FileHelper {
                 words[0],
                 LocalDate.parse(words[1], format),
                 new GroupItem(words[2], null),
+                    deleteItem,
                 Long.parseLong(words[3])
             ));
         }
         return list;
+    }
+
+    public static void DeleteTask(long ID){
+        File file = new File("./Resources/tasklist.txt");
+        File newFile = new File("./Resources/newtasklist.txt");
+        for(String line : ReadFile("tasklist.txt")){
+            String[] words = line.split("§");
+            if(ID != Long.parseLong(words[3])){
+                try(FileWriter writer = new FileWriter("./Resources/newtasklist.txt", true)){
+                    writer.write(line + "\n");
+                } catch (IOException e) { e.getStackTrace(); }
+            }
+        }
+        file.delete();
+        newFile.renameTo(file);
     }
 
     public static void SaveGroup(GroupItem group) {

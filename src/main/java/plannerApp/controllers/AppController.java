@@ -5,13 +5,7 @@ import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
 import javafx.fxml.FXML;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -20,7 +14,7 @@ import plannerApp.javafxWidget.GroupItem;
 import plannerApp.javafxWidget.TaskItem;
 import plannerApp.javafxWidget.calendar.CalendarBox;
 
-public class AppController {
+public class AppController implements DeleteItem {
     ScreenController controller;
     CalendarBox calendarBox;
 
@@ -32,7 +26,7 @@ public class AppController {
     private AnchorPane taskForm;
 	@FXML
 	private VBox taskBox, groupBox;
-    private ArrayList<TaskItem> taskList;
+    private ArrayList<TaskItem> taskList, completeList;
     private ArrayList<GroupItem> groupList;
     @FXML
     private TextArea contentField, addGroupField;
@@ -77,7 +71,7 @@ public class AppController {
             appendGroup(group);
         }
 
-        for (TaskItem item : FileHelper.ReadTaskList()) {
+        for (TaskItem item : FileHelper.ReadTaskList(this)) {
             taskList.add(item);
             taskBox.getChildren().add(item);
         }
@@ -101,7 +95,7 @@ public class AppController {
         
         taskList.add(task);
         taskBox.getChildren().add(task);
-        
+
         contentField.setText("");
     }
 
@@ -125,7 +119,6 @@ public class AppController {
             addGroupField.setText("");
         }
     }
-
     private GroupItem createGroup(String groupName) {
         GroupItem newGroup = new GroupItem(groupName, "none");
         FileHelper.SaveGroup(newGroup);
@@ -136,7 +129,8 @@ public class AppController {
         TaskItem taskItem = new TaskItem(
             contentField.getText(),
             calendarBox.getActiveDate(),
-            groupSelector.getValue()
+            groupSelector.getValue(),
+                this
             );
         FileHelper.SaveTask(taskItem);
         
@@ -147,5 +141,12 @@ public class AppController {
         groupList.add(group);
         groupSelector.getItems().add(group);
         groupBox.getChildren().add(groupBox.getChildren().size() - 1, group);
+    }
+
+    public void deleteItem(TaskItem item){
+        if (item.getCheckerField().isSelected()){
+            taskBox.getChildren().remove(item);
+            FileHelper.DeleteTask(item.getID());
+        }
     }
 }
