@@ -19,7 +19,7 @@ public class FileHelper {
     FileHelper() { }
 
     public static void SaveTask(TaskItem taskItem) {
-        try(FileWriter writer = new FileWriter("./Resources/tasklist.txt", true)){
+        try(FileWriter writer = new FileWriter("./Resources/taskList.txt", true)){
             writer.write(taskItem.toString() + "\n");
         } catch (IOException e) { e.getStackTrace(); }
     }
@@ -41,12 +41,12 @@ public class FileHelper {
     }
 
     public static void DeleteTask(long ID){
-        File file = new File("./Resources/tasklist.txt");
-        File newFile = new File("./Resources/newtasklist.txt");
-        for(String line : ReadFile("tasklist.txt")){
+        File file = new File("./Resources/taskList.txt");
+        File newFile = new File("./Resources/newtaskList.txt");
+        for(String line : ReadFile("taskList.txt")){
             String[] words = line.split("§");
             if(ID != Long.parseLong(words[3])){
-                try(FileWriter writer = new FileWriter("./Resources/newtasklist.txt", true)){
+                try(FileWriter writer = new FileWriter("./Resources/newtaskList.txt", true)){
                     writer.write(line + "\n");
                 } catch (IOException e) { e.getStackTrace(); }
             }
@@ -56,7 +56,7 @@ public class FileHelper {
     }
 
     public static void SaveGroup(GroupItem group) {
-        try(FileWriter writer = new FileWriter("./Resources/grouplist.txt", true)){
+        try(FileWriter writer = new FileWriter("./Resources/groupList.txt", true)){
             String taskList = group.getTaskList().toString();
             writer.write(String.format("%s§%s§%s\n", group.getName(), group.getColor(), taskList));
         } catch (IOException e) { e.getStackTrace(); }
