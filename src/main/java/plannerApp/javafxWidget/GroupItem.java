@@ -16,11 +16,8 @@ public class GroupItem extends AnchorPane {
     Button deleteGroup;
 
     ArrayList<Long> taskList;
-    GroupAction action;
-
 
     public GroupItem (String name, String color, GroupAction action) {
-        this.action = action;
         this.onMouseClickedProperty().set((e) -> {
             action.chooseItem(this);
         });

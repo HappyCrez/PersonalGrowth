@@ -69,7 +69,7 @@ public class AppController implements TaskAction, GroupAction {
 
         // TODO::Class TaskForm
 
-        chosenGroup = mainGroup;
+        chooseItem(mainGroup);
         for (GroupItem group : FileHelper.ReadGroupList(this)) {
             System.out.println(group.getTaskList());
             appendGroup(group);
@@ -158,8 +158,15 @@ public class AppController implements TaskAction, GroupAction {
         groupBox.getChildren().add(groupBox.getChildren().size() - 1, group);
     }
 
-    public void chooseItem(GroupItem item) {
-        chosenGroup = item;
+    public void chooseItem(GroupItem currentGroup) {
+        chosenGroup = currentGroup;
+        
+        mainGroup.setStyle("-fx-background-color: transparent;");
+        completeGroup.setStyle("-fx-background-color: transparent;");
+        for (GroupItem group : groupList)
+            group.setStyle("-fx-background-color: transparent;");    
+
+        currentGroup.setStyle("-fx-background-color: rgba(235,235,235, 0.7);");
         updateTaskList();
     }
 
