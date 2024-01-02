@@ -9,11 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
-import plannerApp.controllers.DeleteItem;
+import plannerApp.controllers.TaskAction;
 
 public class TaskItem extends AnchorPane{
-
-	private DeleteItem deleteItem;
 
 	private RadioButton checkerField;
 	private Button deleteField;
@@ -25,13 +23,12 @@ public class TaskItem extends AnchorPane{
 	private LocalDate dateInfo;
 	private long ID;
 
-	public TaskItem(String content, LocalDate date, GroupItem group, DeleteItem deleteItem, long ID) {
-		this(content, date, group, deleteItem);
+	public TaskItem(String content, LocalDate date, TaskAction deleteItem, long ID) {
+		this(content, date, deleteItem);
 		this.ID = ID;
 	}
 
-	public TaskItem(String content, LocalDate date, GroupItem group, DeleteItem deleteItem) {
-		this.deleteItem = deleteItem;
+	public TaskItem(String content, LocalDate date, TaskAction action) {
 		ID = System.currentTimeMillis();
 
 		contentField = new Label(content);
@@ -44,7 +41,7 @@ public class TaskItem extends AnchorPane{
 			dateField.getStyleClass().add("overdueDate");
 		}
 		
-		groupField = new Label(group.getName());
+		groupField = new Label("Tasks");
 		groupField.getStyleClass().add("secondaryInfo");
 		
 		dateInfo = date;
@@ -52,7 +49,7 @@ public class TaskItem extends AnchorPane{
 		deleteField.getStyleClass().add("deleteBtn");
 		checkerField = new RadioButton();
 		checkerField.setOnAction((e) -> {
-			deleteItem.deleteItem(this);
+			action.deleteItem(this);
 		});
 
 		this.getChildren().addAll(contentField, checkerField, dateField, groupField, deleteField);
@@ -98,7 +95,13 @@ public class TaskItem extends AnchorPane{
 		this.dateField.setText(DateTask);
 	}
 
-	public void setCheckerField(RadioButton checkBox) { this.checkerField = checkBox; }
+	public void setCheckerField(RadioButton checkBox) {
+		this.checkerField = checkBox;
+	}
+
+	public void setGroup(GroupItem group) {
+		this.groupField.setText(group.getName());
+	}
 
 	@Override
 	public String toString() {

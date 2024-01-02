@@ -14,7 +14,7 @@ import plannerApp.javafxWidget.GroupItem;
 import plannerApp.javafxWidget.TaskItem;
 import plannerApp.javafxWidget.calendar.CalendarBox;
 
-public class AppController implements DeleteItem {
+public class AppController implements TaskAction, GroupAction {
     ScreenController controller;
     CalendarBox calendarBox;
 
@@ -31,7 +31,9 @@ public class AppController implements DeleteItem {
     @FXML
     private TextArea contentField, addGroupField;
 
-    ChoiceBox<GroupItem> groupSelector;
+    private GroupItem chosenGroup;
+
+    private GroupItem mainGroup, completeGroup;
 
     AppController(ScreenController controller) {
         this.controller = controller; 
@@ -56,24 +58,30 @@ public class AppController implements DeleteItem {
 
         taskList = new ArrayList<>();
         groupList = new ArrayList<>();
-        GroupItem mainGroup = new GroupItem("Tasks", "none"); 
         
+        mainGroup = new GroupItem("Tasks", "none", this);
+        groupBox.getChildren().add(groupBox.getChildren().size() - 1, mainGroup);
+        
+        completeGroup = new GroupItem("Complete", "none", this); 
+        groupBox.getChildren().add(groupBox.getChildren().size() - 1, completeGroup);
+       
+        // TODO::Fill complete group from file
+
         // TODO::Class TaskForm
-        // It should include the same GroupSelector
-        groupSelector = new ChoiceBox<GroupItem>();
-        groupSelector.setValue(mainGroup);
-        groupSelector.getStyleClass().add("groupSelector");
-        taskForm.getChildren().add(groupSelector);
-        AnchorPane.setBottomAnchor(groupSelector, 0.0);
-        
-        appendGroup(mainGroup);
-        for (GroupItem group : FileHelper.ReadGroupList()) {
+
+        chosenGroup = mainGroup;
+        for (GroupItem group : FileHelper.ReadGroupList(this)) {
+            System.out.println(group.getTaskList());
             appendGroup(group);
         }
 
-        for (TaskItem item : FileHelper.ReadTaskList(this)) {
-            taskList.add(item);
-            taskBox.getChildren().add(item);
+        for (TaskItem task : FileHelper.ReadTaskList(this)) {    
+            for (GroupItem group : groupList)
+                if (group.getTaskList().contains(task.getID())) {
+                    task.setGroup(group);
+                    break;
+                }
+            appendTask(task);
         }
     }
 
@@ -92,9 +100,11 @@ public class AppController implements DeleteItem {
     @FXML
     void addTask() {
         TaskItem task = createTask();
-        
-        taskList.add(task);
-        taskBox.getChildren().add(task);
+
+        appendTask(task);
+        chosenGroup.addTaskID(task.getID());
+
+        FileHelper.UpdateGroupList(groupList);
 
         contentField.setText("");
     }
@@ -113,15 +123,15 @@ public class AppController implements DeleteItem {
             String groupName = addGroupField.getText();
             if (groupName.length() <= 0) return;
 
-            GroupItem group = createGroup(groupName);
+            GroupItem group = createGroup(groupName, "none");
             appendGroup(group);
+            FileHelper.UpdateGroupList(groupList);
 
             addGroupField.setText("");
         }
     }
-    private GroupItem createGroup(String groupName) {
-        GroupItem newGroup = new GroupItem(groupName, "none");
-        FileHelper.SaveGroup(newGroup);
+    private GroupItem createGroup(String groupName, String style) {
+        GroupItem newGroup = new GroupItem(groupName, style, this);
         return newGroup; 
     }
 
@@ -129,18 +139,32 @@ public class AppController implements DeleteItem {
         TaskItem taskItem = new TaskItem(
             contentField.getText(),
             calendarBox.getActiveDate(),
-            groupSelector.getValue(),
-                this
+            this
             );
+        taskItem.setGroup(chosenGroup);
         FileHelper.SaveTask(taskItem);
         
         return taskItem;
     }
 
+    private void appendTask(TaskItem task) {
+        taskList.add(task);
+        taskBox.getChildren().add(task);
+        mainGroup.addTaskID(task.getID());
+    }
+
     private void appendGroup(GroupItem group) {
         groupList.add(group);
-        groupSelector.getItems().add(group);
         groupBox.getChildren().add(groupBox.getChildren().size() - 1, group);
+    }
+
+    public void chooseItem(GroupItem item) {
+        chosenGroup = item;
+        updateTaskList();
+    }
+
+    public void chooseItem(TaskItem item) {
+        // TODO::Highlight task
     }
 
     public void deleteItem(TaskItem item){
@@ -148,5 +172,17 @@ public class AppController implements DeleteItem {
             taskBox.getChildren().remove(item);
             FileHelper.DeleteTask(item.getID());
         }
+    }
+
+    public void deleteItem(GroupItem item){
+        groupBox.getChildren().remove(item);
+        // FileHelper.DeleteTask(item.getID());
+    }
+
+    private void updateTaskList() {
+        taskBox.getChildren().clear();
+        for (TaskItem item : taskList)
+            if (chosenGroup.getTaskList().contains(item.getID()))
+                taskBox.getChildren().add(item);
     }
 }

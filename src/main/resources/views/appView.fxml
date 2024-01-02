@@ -90,8 +90,7 @@
             <!-- TO DO LIST -->
             <ScrollPane styleClass="task-scroll">
                 <content>
-                    <VBox   styleClass="taskBox"
-                            fx:id="taskBox">
+                    <VBox   styleClass="taskBox">
                     <children>
                         <AnchorPane styleClass="taskForm"
                                     fx:id="taskForm">
@@ -109,7 +108,12 @@
                             </children>
                         </AnchorPane>
 
-                        <!-- TASK LIST -->
+                        <VBox   styleClass="taskBox"
+                                fx:id="taskBox">
+                        <children>
+                            <!-- TASK LIST -->
+                        </children>
+                        </VBox>
 
                     </children>
                     </VBox>

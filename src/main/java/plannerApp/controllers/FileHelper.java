@@ -3,6 +3,7 @@ package plannerApp.controllers;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,7 @@ public class FileHelper {
         } catch (IOException e) { e.getStackTrace(); }
     }
 
-    public static ArrayList<TaskItem> ReadTaskList(DeleteItem deleteItem) {
+    public static ArrayList<TaskItem> ReadTaskList(TaskAction action) {
         ArrayList<TaskItem> list = new ArrayList<TaskItem>();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyy");
         for (String line : ReadFile("taskList.txt")) {
@@ -32,8 +33,7 @@ public class FileHelper {
             list.add(new TaskItem(
                 words[0],
                 LocalDate.parse(words[1], format),
-                new GroupItem(words[2], null),
-                    deleteItem,
+                action,
                 Long.parseLong(words[3])
             ));
         }
@@ -55,21 +55,34 @@ public class FileHelper {
         newFile.renameTo(file);
     }
 
-    public static void SaveGroup(GroupItem group) {
-        try(FileWriter writer = new FileWriter("./Resources/groupList.txt", true)){
-            String taskList = group.getTaskList().toString();
-            writer.write(String.format("%s§%s§%s\n", group.getName(), group.getColor(), taskList));
+    public static void UpdateGroupList(ArrayList<GroupItem> groupList) {
+        try(FileWriter writer = new FileWriter("./Resources/groupList.txt", false)){
+            for (GroupItem item : groupList) {
+                String taskList = item.getTaskList().toString();
+                writer.write(String.format("%s§%s§%s\n", item.getName(), item.getColor(), taskList));
+            }
         } catch (IOException e) { e.getStackTrace(); }
     }
 
-    public static ArrayList<GroupItem> ReadGroupList() {
+    public static ArrayList<GroupItem> ReadGroupList(GroupAction action) {
         ArrayList<GroupItem> list = new ArrayList<GroupItem>();
         for (String line : ReadFile("groupList.txt")) {
             String[] words = line.split("§");
-            list.add(new GroupItem(
+            GroupItem group = new GroupItem(
                 words[0],
-                words[1]
-            ));
+                words[1],
+                action
+            ); 
+            words[2] = words[2].substring(1, words[2].length() - 1);
+            for (String ID : Arrays.asList(words[2].split(", "))) {
+                System.out.println(ID);
+                try {
+                    group.addTaskID(Long.parseLong(ID));
+                } catch(NumberFormatException e) {
+                    e.getStackTrace();
+                }
+            }
+            list.add(group);
         }
         return list;
     }

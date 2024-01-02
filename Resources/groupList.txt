@@ -1,3 +1,2 @@
-Group#1§red
-Group#2§green
-Group#3§none§[]
+New group§none§[1704152591721, 1704152729342]
+group3§none§[1704152701748, 1704152733356]
