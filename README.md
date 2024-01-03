@@ -1,6 +1,6 @@
 # Personal Growth
 
-## Author - __Gorbunov Vladimir Evgenevich__  
+Author - __Gorbunov Vladimir Evgenevich__  
 
 ## Project's describtion
 Our idea make world some better by new planner application.  
