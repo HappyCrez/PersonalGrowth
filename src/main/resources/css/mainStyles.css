@@ -103,3 +103,48 @@
 .text-area:focused > .content {
     -fx-background-color:-fx-control-inner-background;
 }
+
+/*      TASK ITEM    */
+
+.taskItem {
+    -fx-padding: 10px;
+    -fx-background-color: #eeeded;
+    -fx-background-radius: 5px;
+}
+
+.taskItem > .taskContent {
+    -fx-max-width: 300px;
+    -fx-wrap-text: true;
+
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #999;
+}
+
+.taskItem > .secondaryInfo {
+    -fx-alignment: bottom-right;
+    -fx-font-size: 0.9em;
+    -fx-text-fill: #999;
+}
+
+.taskItem > .overdueDate {
+    -fx-text-fill: red;
+}
+
+.taskItem:hover {
+    -fx-background-color: #fff;
+}
+
+/*      DELETE BTN       */
+
+.deleteBtn {
+    -fx-pref-width: 10px;
+    -fx-background-color: transparent!important;
+}
+
+.deleteBtn > .ikonli-font-icon {
+    -fx-icon-size: 17px;
+}
+
+.deleteBtn:hover > .ikonli-font-icon {
+    -fx-icon-color: red;
+}

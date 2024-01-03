@@ -36,82 +36,12 @@
     -fx-background-color: rgba(250,250,250, 1);
 }
 
-.groupBox {
+.leftListBox {
+    -fx-pref-width: 200px;
     -fx-spacing: 3px;
     -fx-padding: 10px;
 
     -fx-background-color: transparent;
-}
-
-.groupItem {
-    -fx-pref-width: 190px;
-    -fx-pref-height: 40px;
-    
-    -fx-padding: 4px 13px 4px 20px;
-    -fx-background-insets: 2px 0px;
-    
-    -fx-background-color: transparent;
-    -fx-background-radius: 3px;
-
-    -fx-alignment: center;
-}
-
-.deleteBtn {
-    -fx-pref-width: 10px;
-    -fx-background-color: transparent!important;
-}
-
-.deleteBtn > .ikonli-font-icon {
-    -fx-icon-size: 17px;
-}
-
-.groupItem > .label {
-    -fx-text-fill: #000;
-    -fx-font-weight: 400;
-}
-
-.groupItem:hover {
-    -fx-text-fill: #000;
-    -fx-background-color: rgba(230,230,230, 0.7)!important;
-}
-
-.deleteBtn:hover > .ikonli-font-icon {
-    -fx-icon-color: red;
-}
-
-/*      Left bar addGroup    */
-
-.addGroupBox {
-    -fx-alignment: center;
-    -fx-spacing: 10px;
-    -fx-background-color: transparent;
-    -fx-background-radius: 10px;
-    -fx-background-insets: 10px;
-}
-
-.addGroupBox > .text-area {
-    -fx-pref-width: 160px;
-    -fx-max-height: 25px;
-
-    -fx-wrap-text: false;
-}
-
-.addGroupBox > .button {
-    -fx-pref-width: 180px;
-    -fx-pref-height: 17px;
-    -fx-background-color: transparent;
-}
-
-.addGroupBox > .button > .ikonli-font-icon {
-    -fx-icon-size: 18px;
-}
-
-.addGroupBox > .button:hover {
-    -fx-background-color: rgba(230,230,230, 0.7);
-}
-
-.addGroupBox > .button:hover > .ikonli-font-icon {
-    -fx-icon-color: root-light-color;
 }
 
 /*      Left bar movs Btns     */
@@ -151,4 +81,18 @@
 
 .movsBox > .button:hover > .ikonli-font-icon {
     -fx-icon-color: root-light-color;
+}
+
+/*  Content */
+
+#timerBox {
+    -fx-alignment: center;
+    -fx-spacing: 15px;
+}
+
+#TimerStart {
+    -fx-pref-width: 160px;
+    -fx-pref-height: 35px;
+    
+    -fx-text-fill: white;
 }

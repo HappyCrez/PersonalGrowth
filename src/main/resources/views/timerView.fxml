@@ -40,7 +40,12 @@
                         AnchorPane.bottomAnchor="70.0"
                         AnchorPane.leftAnchor="0.0">
             <content>
-                
+                <VBox   styleClass="leftListBox"
+                        fx:id="leftListBox">
+                <children>
+
+                </children>
+                </VBox>
             </content>
             </ScrollPane>
             
@@ -69,8 +74,23 @@
     </left>
 
     <center>
+        <AnchorPane fx:id="content">
+        <children>
 
-        <!-- TIMER -->
-        
+                <!-- TIMER -->
+            <!-- <VBox fx:id="timerBox"
+                    AnchorPane.bottomAnchor="50.0"
+                    AnchorPane.topAnchor="100.0"
+                    AnchorPane.leftAnchor="300.0"
+                    AnchorPane.rightAnchor="50.0">
+            <children>
+
+                
+            </children>
+            </VBox> -->
+
+
+        </children>
+        </AnchorPane>
     </center>
 </BorderPane>

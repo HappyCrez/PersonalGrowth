@@ -57,15 +57,6 @@
     -fx-alignment: center;
 }
 
-.deleteBtn {
-    -fx-pref-width: 10px;
-    -fx-background-color: transparent!important;
-}
-
-.deleteBtn > .ikonli-font-icon {
-    -fx-icon-size: 17px;
-}
-
 .groupItem > .label {
     -fx-text-fill: #000;
     -fx-font-weight: 400;
@@ -74,10 +65,6 @@
 .groupItem:hover {
     -fx-text-fill: #000;
     -fx-background-color: rgba(230,230,230, 0.7)!important;
-}
-
-.deleteBtn:hover > .ikonli-font-icon {
-    -fx-icon-color: red;
 }
 
 /*      Left bar addGroup    */
@@ -182,34 +169,6 @@
     -fx-node-orientation: left_to_right;
 
     -fx-background-color: transparent;
-}
-
-.taskItem {
-    -fx-padding: 10px;
-    -fx-background-color: #eeeded;
-    -fx-background-radius: 5px;
-}
-
-.taskItem > .taskContent {
-    -fx-max-width: 300px;
-    -fx-wrap-text: true;
-
-    -fx-border-width: 0 0 1px 0;
-    -fx-border-color: #999;
-}
-
-.taskItem > .secondaryInfo {
-    -fx-alignment: bottom-right;
-    -fx-font-size: 0.9em;
-    -fx-text-fill: #999;
-}
-
-.taskItem > .overdueDate {
-    -fx-text-fill: red;
-}
-
-.taskItem:hover {
-    -fx-background-color: #fff;
 }
 
 #addButton {
