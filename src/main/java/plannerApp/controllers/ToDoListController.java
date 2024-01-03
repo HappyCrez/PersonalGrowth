@@ -14,7 +14,7 @@ import plannerApp.javafxWidget.GroupItem;
 import plannerApp.javafxWidget.TaskItem;
 import plannerApp.javafxWidget.calendar.CalendarBox;
 
-public class AppController implements TaskAction, GroupAction {
+public class ToDoListController implements TaskAction, GroupAction {
     ScreenController controller;
     CalendarBox calendarBox;
 
@@ -35,7 +35,7 @@ public class AppController implements TaskAction, GroupAction {
 
     private GroupItem mainGroup, completeGroup;
 
-    AppController(ScreenController controller) {
+    ToDoListController(ScreenController controller) {
         this.controller = controller; 
     }
     
@@ -71,7 +71,6 @@ public class AppController implements TaskAction, GroupAction {
 
         chooseItem(mainGroup);
         for (GroupItem group : FileHelper.ReadGroupList(this)) {
-            System.out.println(group.getTaskList());
             appendGroup(group);
         }
 
@@ -88,7 +87,7 @@ public class AppController implements TaskAction, GroupAction {
     @FXML
     private void toTimerClicked() {
         //TODO::Timer view
-        System.out.println("to Timer Clicked");
+        controller.activateScreen("timerView", Animation.animationStyles.instantShow);
     }
     
     @FXML

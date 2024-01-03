@@ -14,7 +14,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane styleClass="border-pane"
-            stylesheets="@../css/appViewStyle.css"
+            stylesheets="@../css/toDoListViewStyle.css"
             xmlns="http://javafx.com/javafx/15.0.1"
             xmlns:fx="http://javafx.com/fxml/1">
     

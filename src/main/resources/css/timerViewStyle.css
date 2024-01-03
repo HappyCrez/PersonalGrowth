@@ -1,0 +1,154 @@
+.border-pane {
+    -fx-background-image: url("../images/bg.png");
+    -fx-background-repeat: stretch;
+}
+
+/*      Left bar    */
+
+.leftBarBG {
+    -fx-background-color: rgba(255,255,255, 1);
+    -fx-pref-width: 210px;
+}
+
+.leftBarHeader {
+    -fx-alignment: center-left;
+    -fx-pref-height: 50px;
+
+    -fx-spacing: 10px;
+    -fx-padding: 10px 35px;
+} 
+
+.leftBarHeader > .label {
+    -fx-font-weight: 400;
+    -fx-font-size: 12px;
+}
+
+.leftBarHeader > .label > .ikonli-font-icon {
+    -fx-icon-size: 30px;
+}
+
+.leftListBG {
+    -fx-pref-width: 200px;
+    -fx-background-color: rgba(250,250,250, 1);
+}
+
+.leftListBG > .viewport {
+    -fx-background-color: rgba(250,250,250, 1);
+}
+
+.groupBox {
+    -fx-spacing: 3px;
+    -fx-padding: 10px;
+
+    -fx-background-color: transparent;
+}
+
+.groupItem {
+    -fx-pref-width: 190px;
+    -fx-pref-height: 40px;
+    
+    -fx-padding: 4px 13px 4px 20px;
+    -fx-background-insets: 2px 0px;
+    
+    -fx-background-color: transparent;
+    -fx-background-radius: 3px;
+
+    -fx-alignment: center;
+}
+
+.deleteBtn {
+    -fx-pref-width: 10px;
+    -fx-background-color: transparent!important;
+}
+
+.deleteBtn > .ikonli-font-icon {
+    -fx-icon-size: 17px;
+}
+
+.groupItem > .label {
+    -fx-text-fill: #000;
+    -fx-font-weight: 400;
+}
+
+.groupItem:hover {
+    -fx-text-fill: #000;
+    -fx-background-color: rgba(230,230,230, 0.7)!important;
+}
+
+.deleteBtn:hover > .ikonli-font-icon {
+    -fx-icon-color: red;
+}
+
+/*      Left bar addGroup    */
+
+.addGroupBox {
+    -fx-alignment: center;
+    -fx-spacing: 10px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 10px;
+}
+
+.addGroupBox > .text-area {
+    -fx-pref-width: 160px;
+    -fx-max-height: 25px;
+
+    -fx-wrap-text: false;
+}
+
+.addGroupBox > .button {
+    -fx-pref-width: 180px;
+    -fx-pref-height: 17px;
+    -fx-background-color: transparent;
+}
+
+.addGroupBox > .button > .ikonli-font-icon {
+    -fx-icon-size: 18px;
+}
+
+.addGroupBox > .button:hover {
+    -fx-background-color: rgba(230,230,230, 0.7);
+}
+
+.addGroupBox > .button:hover > .ikonli-font-icon {
+    -fx-icon-color: root-light-color;
+}
+
+/*      Left bar movs Btns     */
+
+.movsBox {
+    -fx-alignment: center-left;
+    -fx-spacing: 10px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 10px;
+}
+
+.movsBox > .button {
+    -fx-pref-height: 30px;
+    
+    -fx-text-fill: #000;
+    -fx-background-radius: 5px;
+    -fx-background-color: transparent;
+}
+
+#toList {
+    -fx-pref-width: 120px;
+}
+
+#toSettings {
+    -fx-pref-width: 30px;
+}
+
+.movsBox > .button > .ikonli-font-icon {
+    -fx-icon-size: 18px;
+}
+
+.movsBox > .button:hover {
+    -fx-text-fill: root-light-color;
+    -fx-background-color: rgba(230,230,230, 0.7);
+}
+
+.movsBox > .button:hover > .ikonli-font-icon {
+    -fx-icon-color: root-light-color;
+}

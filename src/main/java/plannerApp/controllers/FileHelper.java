@@ -75,7 +75,6 @@ public class FileHelper {
             ); 
             words[2] = words[2].substring(1, words[2].length() - 1);
             for (String ID : Arrays.asList(words[2].split(", "))) {
-                System.out.println(ID);
                 try {
                     group.addTaskID(Long.parseLong(ID));
                 } catch(NumberFormatException e) {
@@ -101,9 +100,11 @@ public class FileHelper {
     }
 
     public static void loadAllViews(ScreenController controller) {
-		Parent appView = FileHelper.loadView(new AppController(controller), "appView");
+		Parent toDoListView = FileHelper.loadView(new ToDoListController(controller), "toDoListView");
+		Parent timerView = FileHelper.loadView(new TimerController(controller), "timerView");
 		
-		controller.addScreen("appView", appView);
+		controller.addScreen("toDoListView", toDoListView);
+        controller.addScreen("timerView", timerView);
 	}
 
     public static Parent loadView(Object controller, String screenName) {
