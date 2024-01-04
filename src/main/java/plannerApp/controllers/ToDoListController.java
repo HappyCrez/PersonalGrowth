@@ -1,5 +1,6 @@
 package plannerApp.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -14,26 +15,24 @@ import plannerApp.javafxWidget.GroupItem;
 import plannerApp.javafxWidget.TaskItem;
 import plannerApp.javafxWidget.calendar.CalendarBox;
 
-public class ToDoListController implements TaskAction, GroupAction {
+public class ToDoListController implements Notification {
     ScreenController controller;
     CalendarBox calendarBox;
 
     @FXML
     private HBox centerView, addGroupBox;
-	@FXML
+	
+    @FXML
 	private Button toTimer, toSettings, addButton, addGroupButton;
+    
     @FXML
     private AnchorPane taskForm;
-	@FXML
+	
+    @FXML
 	private VBox taskBox, groupBox;
-    private ArrayList<TaskItem> taskList, completeList;
-    private ArrayList<GroupItem> groupList;
+    
     @FXML
     private TextArea contentField, addGroupField;
-
-    private GroupItem chosenGroup;
-
-    private GroupItem mainGroup, completeGroup;
 
     ToDoListController(ScreenController controller) {
         this.controller = controller; 
@@ -56,32 +55,11 @@ public class ToDoListController implements TaskAction, GroupAction {
             }
         });
 
-        taskList = new ArrayList<>();
-        groupList = new ArrayList<>();
+        Container.addObservable(this);
+        Notify();
         
-        mainGroup = new GroupItem("Tasks", "none", this);
-        groupBox.getChildren().add(groupBox.getChildren().size() - 1, mainGroup);
-        
-        completeGroup = new GroupItem("Complete", "none", this); 
-        groupBox.getChildren().add(groupBox.getChildren().size() - 1, completeGroup);
-       
         // TODO::Fill complete group from file
-
         // TODO::Class TaskForm
-
-        chooseItem(mainGroup);
-        for (GroupItem group : FileHelper.ReadGroupList(this)) {
-            appendGroup(group);
-        }
-
-        for (TaskItem task : FileHelper.ReadTaskList(this)) {    
-            for (GroupItem group : groupList)
-                if (group.getTaskList().contains(task.getID())) {
-                    task.setGroup(group);
-                    break;
-                }
-            appendTask(task);
-        }
     }
 
     @FXML
@@ -99,12 +77,8 @@ public class ToDoListController implements TaskAction, GroupAction {
     @FXML
     void addTask() {
         TaskItem task = createTask();
-
-        appendTask(task);
-        chosenGroup.addTaskID(task.getID());
-
-        FileHelper.UpdateGroupList(groupList);
-
+        Container.addTask(task);
+        
         contentField.setText("");
     }
 
@@ -123,72 +97,41 @@ public class ToDoListController implements TaskAction, GroupAction {
             if (groupName.length() <= 0) return;
 
             GroupItem group = createGroup(groupName, "none");
-            appendGroup(group);
-            FileHelper.UpdateGroupList(groupList);
+            Container.addGroup(group);
 
             addGroupField.setText("");
         }
     }
     private GroupItem createGroup(String groupName, String style) {
-        GroupItem newGroup = new GroupItem(groupName, style, this);
+        GroupItem newGroup = new GroupItem(groupName, style);
         return newGroup; 
     }
 
     private TaskItem createTask() {
-        TaskItem taskItem = new TaskItem(
+        TaskItem task = new TaskItem(
             contentField.getText(),
-            calendarBox.getActiveDate(),
-            this
+            calendarBox.getActiveDate()
             );
-        taskItem.setGroup(chosenGroup);
-        FileHelper.SaveTask(taskItem);
+        return task;
+    }
+
+    @Override
+    public void Notify() {
+        groupBox.getChildren().clear();
+        groupBox.getChildren().add(Container.getMainGroup());
+        groupBox.getChildren().add(Container.getCompleteGroup());
+        for (GroupItem group : Container.getGroupList())
+            groupBox.getChildren().add(group);
         
-        return taskItem;
-    }
+        groupBox.getChildren().add(addGroupBox);
 
-    private void appendTask(TaskItem task) {
-        taskList.add(task);
-        taskBox.getChildren().add(task);
-        mainGroup.addTaskID(task.getID());
-    }
-
-    private void appendGroup(GroupItem group) {
-        groupList.add(group);
-        groupBox.getChildren().add(groupBox.getChildren().size() - 1, group);
-    }
-
-    public void chooseItem(GroupItem currentGroup) {
-        chosenGroup = currentGroup;
-        
-        mainGroup.setStyle("-fx-background-color: transparent;");
-        completeGroup.setStyle("-fx-background-color: transparent;");
-        for (GroupItem group : groupList)
-            group.setStyle("-fx-background-color: transparent;");    
-
-        currentGroup.setStyle("-fx-background-color: rgba(235,235,235, 0.7);");
-        updateTaskList();
-    }
-
-    public void chooseItem(TaskItem item) {
-        // TODO::Highlight task
-    }
-
-    public void deleteItem(TaskItem item){
-        if (item.getCheckerField().isSelected()){
-            taskBox.getChildren().remove(item);
-            FileHelper.DeleteTask(item.getID());
-        }
-    }
-
-    public void deleteItem(GroupItem item){
-        groupBox.getChildren().remove(item);
-        // FileHelper.DeleteTask(item.getID());
-    }
-
-    private void updateTaskList() {
         taskBox.getChildren().clear();
-        for (TaskItem item : taskList)
-            if (chosenGroup.getTaskList().contains(item.getID()))
-                taskBox.getChildren().add(item);
+        ArrayList<Long> idList = Container.getChooseGroup().getTaskList();
+        for (TaskItem task : Container.getTaskList()) {
+            if (idList.contains(task.getID())) {
+                TaskItem copy = new TaskItem(task);
+                taskBox.getChildren().add(copy);
+            }
+        }
     }
 }

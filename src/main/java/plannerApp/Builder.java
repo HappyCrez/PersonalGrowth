@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import plannerApp.controllers.Animation;
+import plannerApp.controllers.Container;
 import plannerApp.controllers.FileHelper;
 import plannerApp.controllers.ScreenController;
 
@@ -30,6 +31,9 @@ public class Builder extends Application{
 
 		windowIcon = new Image("/images/logo.png");
 		mainScene = createScene();
+		
+		Container.initialize();
+		
 		screenController = new ScreenController(mainScene);
 		FileHelper.loadAllViews(screenController);
 	}

@@ -6,7 +6,7 @@ import javafx.scene.layout.VBox;
 import plannerApp.javafxWidget.TaskItem;
 import plannerApp.javafxWidget.timer.Timer;
 
-public class TimerController {
+public class TimerController implements Notification {
     private ScreenController controller;
     private Timer timer;
 
@@ -27,7 +27,8 @@ public class TimerController {
         AnchorPane.setRightAnchor(timer, 100.0);
         AnchorPane.setBottomAnchor(timer, 100.0);
 
-        updateTaskList();
+        Container.addObservable(this);
+        Notify();
     }
 
     public void toSettingsClicked() {
@@ -39,8 +40,10 @@ public class TimerController {
         controller.activateScreen("toDoListView", Animation.animationStyles.instantShow);
     }
     
-    private void updateTaskList() {
-        for (TaskItem task : FileHelper.ReadTaskList(null))
+    @Override
+    public void Notify() {
+        leftListBox.getChildren().clear();
+        for (TaskItem task : Container.getTaskList())
             leftListBox.getChildren().add(task);
     }
 }

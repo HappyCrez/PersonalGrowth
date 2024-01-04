@@ -7,7 +7,7 @@ import org.kordamp.ikonli.javafx.FontIcon;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import plannerApp.controllers.GroupAction;
+import plannerApp.controllers.Container;
 
 public class GroupItem extends AnchorPane {
 
@@ -17,14 +17,17 @@ public class GroupItem extends AnchorPane {
 
     ArrayList<Long> taskList;
 
-    public GroupItem (String name, String color, GroupAction action) {
+    public GroupItem (String name, String color) {
         this.onMouseClickedProperty().set((e) -> {
-            action.chooseItem(this);
+            Container.chooseItem(this);
         });
 
         groupName = new Label(name);
         deleteGroup = new Button("", new FontIcon("mdi-delete-forever"));
         deleteGroup.getStyleClass().add("deleteBtn");
+        deleteGroup.setOnAction((e) -> {
+            Container.deleteItem(this);
+        });
 
         this.color = color;
         taskList = new ArrayList<Long>();
