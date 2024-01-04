@@ -19,16 +19,12 @@ public class FileHelper {
 
     FileHelper() { }
 
-    public static void SaveTask(TaskItem taskItem) {
-        try(FileWriter writer = new FileWriter("./Resources/taskList.txt", true)){
-            writer.write(taskItem.toString() + "\n");
-        } catch (IOException e) { }
-    }
-
     public static void UpdateTaskList(ArrayList<TaskItem> taskList) {
         try(FileWriter writer = new FileWriter("./Resources/taskList.txt", false)){
             for (TaskItem task : taskList) {
-                writer.write(task.toString() + "\n");
+                writer.write(task.getID() + "\n");
+                writer.write(task.getContent() + "\n");
+                writer.write("§" + task.getDateField() + "\n");
             }
         } catch (IOException e) { }
     }
@@ -44,14 +40,23 @@ public class FileHelper {
 
     public static ArrayList<TaskItem> ReadTaskList() {
         ArrayList<TaskItem> list = new ArrayList<TaskItem>();
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.yyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyy-MM-dd");
+        String content = "", id = "";
         for (String line : ReadFile("taskList.txt")) {
-            String[] words = line.split("§");
-            list.add(new TaskItem(
-                words[0],
-                LocalDate.parse(words[1], format),
-                Long.parseLong(words[2])
-            ));
+            if (line.length() > 0 && line.charAt(0) == '§') {
+                line = line.substring(1);
+                list.add(new TaskItem(
+                    content,
+                    LocalDate.parse(line, format),
+                    Long.parseLong(id)
+                    ));
+                id = "";
+                content = "";
+            }
+            else {
+                if (id == "") id = line;
+                else content += line + "\n";
+            }
         }
         return list;
     }

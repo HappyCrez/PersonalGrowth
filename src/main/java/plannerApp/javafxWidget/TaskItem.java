@@ -5,11 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
-import com.sun.prism.paint.Color;
-
-import javafx.animation.Interpolatable;
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
