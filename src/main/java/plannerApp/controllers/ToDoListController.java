@@ -103,7 +103,7 @@ public class ToDoListController implements Notification {
         }
     }
     private GroupItem createGroup(String groupName, String style) {
-        GroupItem newGroup = new GroupItem(groupName, style);
+        GroupItem newGroup = new GroupItem(groupName, style, true);
         return newGroup; 
     }
 
@@ -127,9 +127,14 @@ public class ToDoListController implements Notification {
 
         taskBox.getChildren().clear();
         ArrayList<Long> idList = Container.getChooseGroup().getTaskList();
+        Boolean isCompleteTasks = false;
+        if (Container.getChooseGroup() == Container.getCompleteGroup())
+            isCompleteTasks = true;
         for (TaskItem task : Container.getTaskList()) {
             if (idList.contains(task.getID())) {
                 TaskItem copy = new TaskItem(task);
+                if (isCompleteTasks)
+                    copy.setChecked();
                 taskBox.getChildren().add(copy);
             }
         }

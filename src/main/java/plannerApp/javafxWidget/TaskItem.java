@@ -66,7 +66,7 @@ public class TaskItem extends AnchorPane{
 			new KeyFrame(Duration.seconds(0.1), null)
 		);
 		strokethrough.setOnFinished((e) -> {
-			Container.deleteItem(this);
+			Container.checkTask(this);
 		});
 		checkerField = new RadioButton();
 		checkerField.setOnAction((e) -> {
@@ -95,6 +95,10 @@ public class TaskItem extends AnchorPane{
 
 		setBottomAnchor(dateField, -5.0);
 		setRightAnchor(dateField, 30.0);
+	}
+
+	public void setChecked() {
+		this.getChildren().remove(checkerField);
 	}
 	
 	public long getID() {

@@ -34,8 +34,9 @@ public class Container {
     }
 
     public static void initialize() {
-        mainGroup = new GroupItem("Tasks", "none");
-        completeGroup = new GroupItem("Complete", "none");
+        mainGroup = new GroupItem("Tasks", "none", false);
+        completeGroup = new GroupItem("Complete", "none", false);
+        completeGroup.getTaskList().addAll(FileHelper.ReadCompleteGroup());
 
         chooseItem(mainGroup);
 
@@ -102,6 +103,16 @@ public class Container {
         // TODO::Highlight task
     }
 
+    public static void checkTask(TaskItem task) {
+        mainGroup.deleteTaskID(task.getID());
+        for (GroupItem group : groupList)
+            group.deleteTaskID(task.getID());
+
+        completeGroup.addTaskID(task.getID());
+        FileHelper.updateCompleteGroup(completeGroup);
+        notifyObservers();
+    }
+
     public static void deleteItem(TaskItem task){
         int deleteIndex = -1;
         for (int i = 0; i < taskList.size(); i++) {    
@@ -113,7 +124,14 @@ public class Container {
         }
         if (deleteIndex == -1) return;
         taskList.remove(deleteIndex);
+
+        mainGroup.deleteTaskID(task.getID());
+        completeGroup.deleteTaskID(task.getID());
+        for (GroupItem group : groupList)
+            group.deleteTaskID(task.getID());
             
+        FileHelper.updateCompleteGroup(completeGroup);
+        FileHelper.UpdateGroupList(groupList);
         FileHelper.UpdateTaskList(taskList);
         notifyObservers();
     }

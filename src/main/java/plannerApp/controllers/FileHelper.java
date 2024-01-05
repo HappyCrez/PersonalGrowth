@@ -19,6 +19,13 @@ public class FileHelper {
 
     FileHelper() { }
 
+    public static void updateCompleteGroup(GroupItem completeGroup) {
+         try(FileWriter writer = new FileWriter("./Resources/completeTasks.txt", false)){
+            for (Long id : completeGroup.getTaskList())
+                writer.write(id + "\n");
+        } catch (IOException e) { }
+    }
+
     public static void UpdateTaskList(ArrayList<TaskItem> taskList) {
         try(FileWriter writer = new FileWriter("./Resources/taskList.txt", false)){
             for (TaskItem task : taskList) {
@@ -38,6 +45,14 @@ public class FileHelper {
         } catch (IOException e) { }
     }
 
+    public static ArrayList<Long> ReadCompleteGroup() {
+        ArrayList<Long> completeTaskIdList = new ArrayList<Long>();
+        for (String line : ReadFile("./Resources/completeTasks.txt")) {
+            completeTaskIdList.add(Long.parseLong(line));
+        }
+        return completeTaskIdList;
+    }
+
     public static ArrayList<TaskItem> ReadTaskList() {
         ArrayList<TaskItem> list = new ArrayList<TaskItem>();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyy-MM-dd");
@@ -45,6 +60,7 @@ public class FileHelper {
         for (String line : ReadFile("taskList.txt")) {
             if (line.length() > 0 && line.charAt(0) == '§') {
                 line = line.substring(1);
+                content = content.substring(0, content.length() - 1);
                 list.add(new TaskItem(
                     content,
                     LocalDate.parse(line, format),
@@ -67,7 +83,8 @@ public class FileHelper {
             String[] words = line.split("§");
             GroupItem group = new GroupItem(
                 words[0],
-                words[1]
+                words[1],
+                true
             ); 
             words[2] = words[2].substring(1, words[2].length() - 1);
             for (String ID : Arrays.asList(words[2].split(", "))) {

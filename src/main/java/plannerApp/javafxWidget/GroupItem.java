@@ -17,7 +17,7 @@ public class GroupItem extends AnchorPane {
 
     ArrayList<Long> taskList;
 
-    public GroupItem (String name, String color) {
+    public GroupItem (String name, String color, Boolean canBeDeleted) {
         this.onMouseClickedProperty().set((e) -> {
             Container.chooseItem(this);
         });
@@ -32,16 +32,19 @@ public class GroupItem extends AnchorPane {
         this.color = color;
         taskList = new ArrayList<Long>();
 
-        this.getChildren().addAll(groupName, deleteGroup);
+        this.getChildren().add(groupName);
         this.getStyleClass().add("groupItem");
-
+        
         AnchorPane.setLeftAnchor(groupName, 0.0);
         AnchorPane.setTopAnchor(groupName, 0.0);
         AnchorPane.setBottomAnchor(groupName, 0.0);
-
-        AnchorPane.setRightAnchor(deleteGroup, 0.0);
-        AnchorPane.setTopAnchor(deleteGroup, 0.0);
-        AnchorPane.setBottomAnchor(deleteGroup, 0.0);
+        
+        if (canBeDeleted) {
+            this.getChildren().add(deleteGroup);
+            AnchorPane.setRightAnchor(deleteGroup, 0.0);
+            AnchorPane.setTopAnchor(deleteGroup, 0.0);
+            AnchorPane.setBottomAnchor(deleteGroup, 0.0);
+        }
     }
 
     public void addTaskID(long taskID) {
@@ -58,6 +61,10 @@ public class GroupItem extends AnchorPane {
 
     public ArrayList<Long> getTaskList() {
         return taskList;
+    }
+
+    public Boolean deleteTaskID(Long ID) {
+        return taskList.remove(ID);
     }
 
     @Override
