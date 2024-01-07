@@ -1,0 +1,11 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.7)
+project(MyLib)
+
+set(SOURCE_LIB  Launcher.cpp
+                Application.cpp
+                Input.cpp
+                Options/Timer.cpp
+                Options/ToDoList.cpp
+                FileHelper.cpp
+                Container.cpp)
+add_library(MyLib STATIC "${SOURCE_LIB}")
