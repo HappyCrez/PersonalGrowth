@@ -19,7 +19,6 @@ import javafx.util.Duration;
 public class CalendarBox extends StackPane {
     
     private VBox content;
-
     private HBox weekDays;
 
     private HBox topBar;

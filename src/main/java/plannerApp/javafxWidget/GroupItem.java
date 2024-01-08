@@ -11,11 +11,11 @@ import plannerApp.controllers.Container;
 
 public class GroupItem extends AnchorPane {
 
-    String color;
-    Label groupName;
-    Button deleteGroup;
+    private String color;
+    private Label groupName;
+    private Button deleteGroup;
 
-    ArrayList<Long> taskList;
+    private ArrayList<Long> taskList;
 
     public GroupItem (String name, String color, Boolean canBeDeleted) {
         this.onMouseClickedProperty().set((e) -> {

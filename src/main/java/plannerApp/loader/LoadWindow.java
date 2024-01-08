@@ -45,9 +45,7 @@ public class LoadWindow extends Preloader {
     }
     
     @Override
-    public void handleProgressNotification(ProgressNotification pn) {
-        // TODO::Track load status by -> pn.getProgress()
-    }
+    public void handleProgressNotification(ProgressNotification pn) { }
  
     @Override
     public void handleStateChangeNotification(StateChangeNotification evt) {

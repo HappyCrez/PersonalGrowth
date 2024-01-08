@@ -26,11 +26,11 @@ public class Timer extends VBox{
     private Rectangle bigArrow;
 
     private ImageView smallClock;
-    private Rectangle smallArrow;    
+    private Rectangle smallArrow;
 
     private Button startBtn;
     
-    private Rotate rotation; 
+    private Rotate rotation;
     private Rotate smallClockRotation;
     private Timeline timelineBigClock;
     private Duration timeStop;

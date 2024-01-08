@@ -26,7 +26,7 @@ public class FileHelper {
         } catch (IOException e) { }
     }
 
-    public static void UpdateTaskList(ArrayList<TaskItem> taskList) {
+    public static void updateTaskList(ArrayList<TaskItem> taskList) {
         try(FileWriter writer = new FileWriter("./Resources/taskList.txt", false)){
             for (TaskItem task : taskList) {
                 writer.write(task.getID() + "\n");
@@ -36,7 +36,7 @@ public class FileHelper {
         } catch (IOException e) { }
     }
 
-    public static void UpdateGroupList(ArrayList<GroupItem> groupList) {
+    public static void updateGroupList(ArrayList<GroupItem> groupList) {
         try(FileWriter writer = new FileWriter("./Resources/groupList.txt", false)){
             for (GroupItem group : groupList) {
                 String taskList = group.getTaskList().toString();
@@ -45,19 +45,19 @@ public class FileHelper {
         } catch (IOException e) { }
     }
 
-    public static ArrayList<Long> ReadCompleteGroup() {
+    public static ArrayList<Long> readCompleteGroup() {
         ArrayList<Long> completeTaskIdList = new ArrayList<Long>();
-        for (String line : ReadFile("./Resources/completeTasks.txt")) {
+        for (String line : readFile("./Resources/completeTasks.txt")) {
             completeTaskIdList.add(Long.parseLong(line));
         }
         return completeTaskIdList;
     }
 
-    public static ArrayList<TaskItem> ReadTaskList() {
+    public static ArrayList<TaskItem> readTaskList() {
         ArrayList<TaskItem> list = new ArrayList<TaskItem>();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyy-MM-dd");
         String content = "", id = "";
-        for (String line : ReadFile("taskList.txt")) {
+        for (String line : readFile("taskList.txt")) {
             if (line.length() > 0 && line.charAt(0) == '§') {
                 line = line.substring(1);
                 content = content.substring(0, content.length() - 1);
@@ -77,9 +77,9 @@ public class FileHelper {
         return list;
     }
 
-    public static ArrayList<GroupItem> ReadGroupList() {
+    public static ArrayList<GroupItem> readGroupList() {
         ArrayList<GroupItem> list = new ArrayList<GroupItem>();
-        for (String line : ReadFile("groupList.txt")) {
+        for (String line : readFile("groupList.txt")) {
             String[] words = line.split("§");
             GroupItem group = new GroupItem(
                 words[0],
@@ -97,7 +97,7 @@ public class FileHelper {
         return list;
     }
 
-    private static ArrayList<String> ReadFile(String filename) {
+    private static ArrayList<String> readFile(String filename) {
         ArrayList<String> list = new ArrayList<String>();
         try (FileReader reader = new FileReader("./Resources/" + filename)) {
             Scanner scan = new Scanner(reader);
@@ -113,9 +113,11 @@ public class FileHelper {
     public static void loadAllViews(ScreenController controller) {
 		Parent toDoListView = FileHelper.loadView(new ToDoListController(controller), "toDoListView");
 		Parent timerView = FileHelper.loadView(new TimerController(controller), "timerView");
-		
+		Parent settingsView = FileHelper.loadView(new SettingsController(controller), "settingsView");
+
 		controller.addScreen("toDoListView", toDoListView);
         controller.addScreen("timerView", timerView);
+        controller.addScreen("settingsView", settingsView);
 	}
 
     public static Parent loadView(Object controller, String screenName) {

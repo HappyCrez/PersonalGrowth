@@ -77,6 +77,10 @@ public class TaskItem extends AnchorPane{
 		this.getChildren().addAll(contentField, checkerField, dateField, groupField, deleteField);
 		this.getStyleClass().add("taskItem");
 
+		this.setOnMouseClicked((e) -> {
+			Container.chooseItem(this);
+		});
+
 		setTopAnchor(contentField, 0.0);
 		setBottomAnchor(contentField, 10.0);
 		setLeftAnchor(contentField, 20.0);

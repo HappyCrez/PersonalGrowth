@@ -1,6 +1,5 @@
 package plannerApp.controllers;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
@@ -57,25 +56,20 @@ public class ToDoListController implements Notification {
 
         Container.addObservable(this);
         Notify();
-        
-        // TODO::Fill complete group from file
-        // TODO::Class TaskForm
     }
 
     @FXML
     private void toTimerClicked() {
-        //TODO::Timer view
         controller.activateScreen("timerView", Animation.animationStyles.instantShow);
     }
     
     @FXML
     private void toSettingsClicked() {
-        //TODO::Settings
-        System.out.println("to Settings Clicked");
+        controller.activateScreen("settingsView", Animation.animationStyles.downToUp);
     }
 
     @FXML
-    void addTask() {
+    private void addTask() {
         TaskItem task = createTask();
         Container.addTask(task);
         
@@ -83,7 +77,7 @@ public class ToDoListController implements Notification {
     }
 
     @FXML
-    void addGroup() {
+    private void addGroup() {
         if (addGroupBox.getChildrenUnmodifiable().contains(addGroupButton)) {
             addGroupBox.getChildren().remove(addGroupButton);
             addGroupBox.getChildren().add(addGroupField);

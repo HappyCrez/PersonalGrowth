@@ -9,10 +9,11 @@ public class Container {
     
     private final static ArrayList<GroupItem> groupList = new ArrayList<GroupItem>();;
     private static GroupItem mainGroup, completeGroup;
-    private static GroupItem chosenGroup;
     
+    private static GroupItem chosenGroup;
+    private static TaskItem chosenTask;
+
     private final static ArrayList<TaskItem> taskList = new ArrayList<TaskItem>();
-    private final static ArrayList<TaskItem> completeList = new ArrayList<TaskItem>();
 
     private final static String standartStyle = "-fx-background-color: transparent;";
     private final static String chooseStyle = "-fx-background-color: rgba(235,235,235, 0.7);";
@@ -33,17 +34,30 @@ public class Container {
         return chosenGroup;
     }
 
+    public static TaskItem getChooseTask() {
+        return chosenTask;
+    }
+    
+    public static ArrayList<GroupItem> getGroupList() {
+        return groupList;
+    }
+    
+    public static ArrayList<TaskItem> getTaskList() {
+        return taskList;
+    }
+
     public static void initialize() {
         mainGroup = new GroupItem("Tasks", "none", false);
         completeGroup = new GroupItem("Complete", "none", false);
-        completeGroup.getTaskList().addAll(FileHelper.ReadCompleteGroup());
+        completeGroup.getTaskList().addAll(FileHelper.readCompleteGroup());
 
         chooseItem(mainGroup);
+        chosenTask = null;
 
-        for (GroupItem group : FileHelper.ReadGroupList())
+        for (GroupItem group : FileHelper.readGroupList())
             groupList.add(group);
 
-        for (TaskItem task : FileHelper.ReadTaskList()) {
+        for (TaskItem task : FileHelper.readTaskList()) {
             mainGroup.addTaskID(task.getID());
             task.setGroup(mainGroup);
             for (GroupItem group : groupList)
@@ -55,18 +69,10 @@ public class Container {
         }
     }
 
-    public static ArrayList<GroupItem> getGroupList() {
-        return groupList;
-    }
-    
-    public static ArrayList<TaskItem> getTaskList() {
-        return taskList;
-    }
-
     public static void addGroup(GroupItem group) {
         groupList.add(group);
 
-        FileHelper.UpdateGroupList(groupList);
+        FileHelper.updateGroupList(groupList);
         notifyObservers();
     }
 
@@ -78,8 +84,8 @@ public class Container {
             chosenGroup.getTaskList().add(task.getID());
         taskList.add(task);
         
-        FileHelper.UpdateTaskList(taskList);
-        FileHelper.UpdateGroupList(groupList);
+        FileHelper.updateTaskList(taskList);
+        FileHelper.updateGroupList(groupList);
         notifyObservers();
     }
 
@@ -87,12 +93,12 @@ public class Container {
         if (chosenGroup == group) return;
         chosenGroup = group;
            
-        setStandardStyle();
+        setGroupStandardStyle();
         group.setStyle(chooseStyle);
         notifyObservers();
     }
 
-    private static void setStandardStyle() {
+    private static void setGroupStandardStyle() {
         mainGroup.setStyle(standartStyle);
         completeGroup.setStyle(standartStyle);
         for (GroupItem group : groupList)
@@ -100,7 +106,20 @@ public class Container {
     }
 
     public static void chooseItem(TaskItem task) {
-        // TODO::Highlight task
+        for (TaskItem item : taskList)
+            if (item.getID() == task.getID()) {
+                chosenTask = item;
+                break;
+            }
+
+        setTasksStandardStyle();
+        task.setStyle(chooseStyle);
+        notifyObservers();
+    }
+
+    private static void setTasksStandardStyle() {
+        for (TaskItem task : taskList)
+            task.setStyle(standartStyle);
     }
 
     public static void checkTask(TaskItem task) {
@@ -131,15 +150,15 @@ public class Container {
             group.deleteTaskID(task.getID());
             
         FileHelper.updateCompleteGroup(completeGroup);
-        FileHelper.UpdateGroupList(groupList);
-        FileHelper.UpdateTaskList(taskList);
+        FileHelper.updateGroupList(groupList);
+        FileHelper.updateTaskList(taskList);
         notifyObservers();
     }
 
     public static void deleteItem(GroupItem group){
         groupList.remove(group);
 
-        FileHelper.UpdateGroupList(groupList);
+        FileHelper.updateGroupList(groupList);
         notifyObservers();
     }
 
