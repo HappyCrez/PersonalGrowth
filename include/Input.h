@@ -5,6 +5,8 @@ class Input {
 private:
     // Block constructor -> singletone
     Input() { }
+    
+    bool isLineIncorrect(std::string line);
 public:
     // Block other methods to appear
     Input(Input const&)     = delete;
@@ -17,7 +19,6 @@ public:
 
     std::string name();
     std::string lineOnlyEnglishLetters();
-    bool isLineIncorrect(std::string line);
     std::string line();
 
     std::string date();

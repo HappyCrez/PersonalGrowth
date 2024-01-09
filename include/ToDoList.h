@@ -5,11 +5,6 @@
 
 class ToDoList {
 private:
-
-public:
-    enum options {showList_option = 1, createGroup_option, createTask_option, deleteGroup_option, deleteTask_option, return_option};
-    ToDoList();
-    void start();
     void showMenu();
     void callFunctionByOption(int option);
 
@@ -20,4 +15,9 @@ public:
     void deleteTask();
 
     int requestGroupIndex();
+
+public:
+    enum options {showList_option = 1, createGroup_option, createTask_option, deleteGroup_option, deleteTask_option, return_option};
+    ToDoList();
+    void start();
 };
