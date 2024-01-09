@@ -93,7 +93,7 @@ void ToDoList::createTask() {
     Task task(name, date);
 
     std::vector<Group>* group_list = &(Container::getInstance().getGroupList());
-    (*group_list).at(group_index - 1).taskIdList.push_back(task.id);
+    (*group_list).at(group_index).taskIdList.push_back(task.id);
     Container::getInstance().add(task);
 }
 
