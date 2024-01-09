@@ -47,8 +47,9 @@ public class FileHelper {
 
     public static ArrayList<Long> readCompleteGroup() {
         ArrayList<Long> completeTaskIdList = new ArrayList<Long>();
-        for (String line : readFile("./Resources/completeTasks.txt")) {
+        for (String line : readFile("completeTasks.txt")) {
             completeTaskIdList.add(Long.parseLong(line));
+            System.out.println(line);
         }
         return completeTaskIdList;
     }
