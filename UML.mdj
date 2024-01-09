@@ -3120,13 +3120,47 @@
 											"height": 13,
 											"text": "-ScreenController controller",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGM7D000By6XAM=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTltTUY="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D00uBy3JZA="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1085,
+											"width": 278,
+											"height": 13,
+											"text": "-TextArea timeField",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGM7D2lkh3TlVE=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTltTUY="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D2liB3Q67c="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1100,
+											"width": 278,
+											"height": 13,
+											"text": "-int timeFieldValue = 25",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 3168,
 									"top": 1065,
 									"width": 288,
-									"height": 23
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -3149,18 +3183,137 @@
 											},
 											"font": "Arial;13;0",
 											"left": 3173,
-											"top": 1093,
+											"top": 1123,
 											"width": 278,
 											"height": 13,
 											"text": "+SettingsController(ScreenController controller)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D3f6R+vMxc=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTlu95o="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D3f3B+sm/A="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1138,
+											"width": 278,
+											"height": 13,
+											"text": "+initialize()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D4ZdSCgrC4=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTlu95o="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D4ZaiCdE8A="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1153,
+											"width": 278,
+											"height": 13,
+											"text": "+toToDoListClicked()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D4qmyGRNiY=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTlu95o="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D4qjSGONsA="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1168,
+											"width": 278,
+											"height": 13,
+											"text": "+toTimerClicked()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D5BtCKCOfY=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTlu95o="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D5BqiJ/4cE="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1183,
+											"width": 278,
+											"height": 13,
+											"text": "-increment()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D5iECObswQ=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTlu95o="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D5iBiOYRtE="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1198,
+											"width": 278,
+											"height": 13,
+											"text": "-decrement()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D6BEiTcXl8=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTlu95o="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D6BBSTZ6xI="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1213,
+											"width": 278,
+											"height": 13,
+											"text": "-getTimeFieldValue()",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D6i6SYd+hQ=",
+											"_parent": {
+												"$ref": "AAAAAAGM59nVNTlu95o="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D6i3SYa1NA="
+											},
+											"font": "Arial;13;0",
+											"left": 3173,
+											"top": 1228,
+											"width": 278,
+											"height": 13,
+											"text": "-updateTimeField()",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 3168,
-									"top": 1088,
+									"top": 1118,
 									"width": 288,
-									"height": 23
+									"height": 128
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4663,13 +4816,30 @@
 											"height": 13,
 											"text": "+finalize()",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGM7D8lRjf4vo0=",
+											"_parent": {
+												"$ref": "AAAAAAGM5+iImFdzXcQ="
+											},
+											"model": {
+												"$ref": "AAAAAAGM7D8lNTf1ReM="
+											},
+											"font": "Arial;13;0",
+											"left": 2061,
+											"top": 1751,
+											"width": 358,
+											"height": 13,
+											"text": "+setTime(int time)",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 2056,
 									"top": 1626,
 									"width": 368,
-									"height": 128
+									"height": 143
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4709,7 +4879,7 @@
 							"left": 2056,
 							"top": 1368,
 							"width": 368,
-							"height": 386,
+							"height": 401,
 							"nameCompartment": {
 								"$ref": "AAAAAAGM5+iImFdtHvc="
 							},
@@ -8021,16 +8191,6 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAGM6HrsASOtII0="
 							}
-						},
-						{
-							"_type": "RoundRectView",
-							"_id": "AAAAAAGM6ImtcyYy8Jc=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"width": 50,
-							"height": 50
 						},
 						{
 							"_type": "UMLClassView",
@@ -12730,6 +12890,25 @@
 							"name": "ScreenController controller",
 							"visibility": "private",
 							"type": ""
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGM7D00uBy3JZA=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "TextArea timeField",
+							"visibility": "private"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGM7D2liB3Q67c=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "int timeFieldValue",
+							"visibility": "private",
+							"defaultValue": "25"
 						}
 					],
 					"operations": [
@@ -12751,6 +12930,66 @@
 									"type": ""
 								}
 							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D3f3B+sm/A=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "initialize"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D4ZaiCdE8A=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "toToDoListClicked"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D4qjSGONsA=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "toTimerClicked"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D5BqiJ/4cE=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "increment",
+							"visibility": "private"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D5iBiOYRtE=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "decrement",
+							"visibility": "private"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D6BBSTZ6xI=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "getTimeFieldValue",
+							"visibility": "private"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D6i3SYa1NA=",
+							"_parent": {
+								"$ref": "AAAAAAGM59nVNDll/wk="
+							},
+							"name": "updateTimeField",
+							"visibility": "private"
 						}
 					]
 				},
@@ -13458,6 +13697,25 @@
 								"$ref": "AAAAAAGM5+iIl1dqcmg="
 							},
 							"name": "finalize"
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGM7D8lNTf1ReM=",
+							"_parent": {
+								"$ref": "AAAAAAGM5+iIl1dqcmg="
+							},
+							"name": "setTime",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGM7D8qaTi/3gE=",
+									"_parent": {
+										"$ref": "AAAAAAGM7D8lNTf1ReM="
+									},
+									"name": "int time",
+									"type": ""
+								}
+							]
 						}
 					]
 				},
