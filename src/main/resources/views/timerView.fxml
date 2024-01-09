@@ -77,18 +77,7 @@
         <AnchorPane fx:id="content">
         <children>
 
-                <!-- TIMER -->
-            <!-- <VBox fx:id="timerBox"
-                    AnchorPane.bottomAnchor="50.0"
-                    AnchorPane.topAnchor="100.0"
-                    AnchorPane.leftAnchor="300.0"
-                    AnchorPane.rightAnchor="50.0">
-            <children>
-
-                
-            </children>
-            </VBox> -->
-
+            <!-- TIMER -->
 
         </children>
         </AnchorPane>

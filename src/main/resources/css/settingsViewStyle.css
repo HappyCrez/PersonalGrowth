@@ -1,0 +1,33 @@
+.centerBG {
+    -fx-background-image: url("../images/bg.png");
+}
+
+.movsBox {
+    -fx-background-color: #fff;
+    -fx-pref-height: 60px;
+    -fx-alignment: center;
+}
+
+/*      Time form       */
+
+.timeForm {
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+#timeField {
+    -fx-max-width: 220px;
+    -fx-pref-width: 220px;
+    -fx-max-height: 25px;
+    -fx-alignment: center;
+}
+
+.timeFieldBtnBox {
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+.timeFieldBtn {
+    -fx-background-color: transparent;
+    -fx-pref-width: 70px;
+}

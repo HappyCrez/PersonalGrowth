@@ -30,14 +30,15 @@ public class Timer extends VBox{
 
     private Button startBtn;
     
-    private Rotate rotation;
-    private Rotate smallClockRotation;
-    private Timeline timelineBigClock;
+    private static Rotate rotation;
+    private static Rotate smallClockRotation;
+    private static int clockAroundRotationCount = 5;
+    private static Timeline timelineAnimation = new Timeline();
     private Duration timeStop;
     private Boolean isStarted = false;
     
-    private int maxTimeInSeconds = 25 * 60;
-    private Duration maxTime = new Duration(maxTimeInSeconds * 1000);
+    private static int maxTimeInSeconds = 25 * 60;
+    private static Duration maxTime = new Duration(maxTimeInSeconds * 1000);
     
     private AudioInputStream stream;
     private Clip timerBell;
@@ -68,18 +69,9 @@ public class Timer extends VBox{
             timerBell.open(stream);
         } catch(Exception exception) { exception.printStackTrace(); };
         
-        timelineBigClock = new Timeline(
-            new KeyFrame(Duration.ZERO, new KeyValue(rotation.angleProperty(), 0)),
-            new KeyFrame(Duration.seconds(maxTimeInSeconds), new KeyValue(rotation.angleProperty(),360))
-            );
-        int partsCount = 5;
-        for (int partNumber = 0; partNumber < partsCount; partNumber++) {
-            int partDuration = maxTimeInSeconds / partsCount; 
-            timelineBigClock.getKeyFrames().addAll(
-            new KeyFrame(Duration.seconds(partDuration * partNumber), new KeyValue(smallClockRotation.angleProperty(), 0)),
-            new KeyFrame(Duration.seconds(partDuration * partNumber + partDuration), new KeyValue(smallClockRotation.angleProperty(),360)));
-        }
-        timelineBigClock.setOnFinished((e) -> {
+        setTime(maxTimeInSeconds);
+
+        timelineAnimation.setOnFinished((e) -> {
             timelineEnd();
         });
 
@@ -134,15 +126,15 @@ public class Timer extends VBox{
     }
     
     public void start() {
-        timelineBigClock.playFrom(timeStop);
+        timelineAnimation.playFrom(timeStop);
         startBtn.setText("Stop");
     }
 
     public void stop() {
-        timeStop = timelineBigClock.getCurrentTime();
+        timeStop = timelineAnimation.getCurrentTime();
         if (timeStop.greaterThanOrEqualTo(maxTime))
             timeStop = Duration.ZERO;
-        timelineBigClock.stop();
+        timelineAnimation.stop();
         startBtn.setText("Start");
     }
 
@@ -153,4 +145,22 @@ public class Timer extends VBox{
             stream.close();
         } catch (IOException e) { }
     }
+
+    public static void setTime(int time) {
+        maxTimeInSeconds = time;
+        maxTime = new Duration(maxTimeInSeconds * 1000);
+
+        timelineAnimation.getKeyFrames().removeAll();
+        timelineAnimation.getKeyFrames().addAll(
+            new KeyFrame(Duration.ZERO, new KeyValue(rotation.angleProperty(), 0)),
+            new KeyFrame(Duration.seconds(maxTimeInSeconds), new KeyValue(rotation.angleProperty(),360))
+            );
+        
+        for (int partNumber = 0; partNumber < clockAroundRotationCount; partNumber++) {
+            int partDuration = maxTimeInSeconds / clockAroundRotationCount; 
+            timelineAnimation.getKeyFrames().addAll(
+            new KeyFrame(Duration.seconds(partDuration * partNumber), new KeyValue(smallClockRotation.angleProperty(), 0)),
+            new KeyFrame(Duration.seconds(partDuration * partNumber + partDuration), new KeyValue(smallClockRotation.angleProperty(),360)));
+        }
+    } 
 }

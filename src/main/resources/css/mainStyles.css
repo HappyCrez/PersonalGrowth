@@ -104,7 +104,7 @@
     -fx-background-color:-fx-control-inner-background;
 }
 
-/*      TASK ITEM    */
+/*      Task item    */
 
 .taskItem {
     -fx-padding: 10px;
@@ -134,7 +134,7 @@
     -fx-background-color: #fff;
 }
 
-/*      DELETE BTN       */
+/*      delete button       */
 
 .deleteBtn {
     -fx-pref-width: 10px;
@@ -147,4 +147,48 @@
 
 .deleteBtn:hover > .ikonli-font-icon {
     -fx-icon-color: red;
+}
+
+
+/*      Left bar movs Btns     */
+
+.movsBox {
+    -fx-alignment: center-left;
+    -fx-spacing: 10px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 10px;
+}
+
+.movsBox > .button {
+    -fx-pref-height: 30px;
+    
+    -fx-text-fill: #000;
+    -fx-background-radius: 5px;
+    -fx-background-color: transparent;
+}
+
+#toList {
+    -fx-pref-width: 120px;
+}
+
+#toSettings {
+    -fx-pref-width: 30px;
+}
+
+#toTimer {
+    -fx-pref-width: 120px;
+}
+
+.movsBox > .button > .ikonli-font-icon {
+    -fx-icon-size: 18px;
+}
+
+.movsBox > .button:hover {
+    -fx-text-fill: root-light-color;
+    -fx-background-color: rgba(230,230,230, 0.7);
+}
+
+.movsBox > .button:hover > .ikonli-font-icon {
+    -fx-icon-color: root-light-color;
 }

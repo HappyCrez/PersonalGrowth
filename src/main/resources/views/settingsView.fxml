@@ -19,7 +19,51 @@
             xmlns:fx="http://javafx.com/fxml/1">
     
     <center>
-        
+        <AnchorPane styleClass="centerBG" >
+        <children>
+            <HBox   styleClass="movsBox"
+                    AnchorPane.bottomAnchor="10.0"
+                    AnchorPane.rightAnchor="0.0"
+                    AnchorPane.leftAnchor="20.0">
+            <children>
+                <Button styleClass="movBtn" fx:id="toList"
+                        onAction="#toToDoListClicked">
+                    To do list
+                </Button>
+                <Button styleClass="movBtn" fx:id="toTimer"
+                        onAction="#toTimerClicked">
+                    Timer
+                </Button>
+            </children>
+            </HBox>
+
+            <VBox   styleClass="timeForm"
+                    AnchorPane.topAnchor="50.0"
+                    AnchorPane.leftAnchor="150.0"
+                    AnchorPane.rightAnchor="150.0">
+            <children>
+                <TextArea fx:id="timeField" />
+                <HBox styleClass="timeFieldBtnBox">
+                <children>
+                    <Button styleClass="timeFieldBtn"
+                            onAction="#decrement">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-minus-circle-outline"/>
+                        </graphic>
+                    </Button>
+                    <Button styleClass="timeFieldBtn"
+                            onAction="#increment">
+                        <graphic>
+                            <FontIcon iconLiteral="mdi-plus-circle-outline"/>
+                        </graphic>
+                    </Button>
+                </children>
+                </HBox>
+            </children>
+            </VBox>
+
+        </children>
+        </AnchorPane>
     </center>
     <bottom>
 
