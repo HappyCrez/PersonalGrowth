@@ -2,7 +2,7 @@
 
 Автор - __LexCivis__  
 
-## Project's describtion
+## Описание проекта
 Архитектура ПО в файле "UML.mdj"
 
 Собрать и запустить, при наличии зависимостей (jre,maven,javaFX) можно с помощью скрипта (написан под Windows) "auto.bat build"
