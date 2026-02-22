@@ -12,8 +12,7 @@
   
   <build>
     <plugins>
-
-        <plugin>
+	    <plugin>
             <artifactId>org.codehaus.mojo</artifactId>
             <groupId>exec-maven-plugin</groupId>
             <version>1.2.1</version>
@@ -33,13 +32,16 @@
                 </dependency>
             </dependencies>
         </plugin>
+
         <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.0</version>
+            <version>3.11.0</version>
             <configuration>
-                <release>10</release>
+                <release>21</release>
+		        <source>21</source>
             </configuration>
         </plugin>
+
         <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
             <version>3.1.0</version>
